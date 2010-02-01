@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Alexandria.Backend"
+				   namespace="Alexandria.Backend.Model">
+	<class name="User"
+		   table="Users" >
+		<id name="Id">
+			<generator class="hilo"/>
+		</id>
+		<property name="Name" not-null="true"/>
+
+		<component name="Address">
+			<property name="Street"/>
+			<property name="Country"/>
+			<property name="City"/>
+			<property name="ZipCode"/>
+			<property name="HouseNumber"/>
+		</component>
+
+		<list name="Queue" table="UsersWaitingBooks">
+			<key column="`User`"/>
+			<index column="`Index`"/>
+			<many-to-many class="Book" column="Book"/>
+		</list>
+
+		<list name="Recommendations" table="UsersRecommendedBooks">
+			<key column="`User`"/>
+			<index column="`Index`"/>
+			<many-to-many class="Book" column="Book"/>
+		</list>
+
+		<set name="CurrentlyReading" table="UsersReadingBooks">
+			<key column="`User`"/>
+			<many-to-many class="Book" column="Book"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

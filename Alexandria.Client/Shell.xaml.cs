@@ -3,27 +3,52 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Alexandria.Client.ViewModel;
+using Alexandria.Messages;
+using Rhino.ServiceBus;
 
 namespace Alexandria.Client
 {
 	/// <summary>
-	/// Interaction logic for Window1.xaml
+	/// Interaction logic for Shell.xaml
 	/// </summary>
-	public partial class Window1 : Window
+	public partial class Shell : Window
 	{
-		public Window1()
+		private readonly IServiceBus bus;
+
+		public Shell()
+			: this(Program.Container.Resolve<IServiceBus>())
 		{
+
+		}
+
+		public Shell(IServiceBus bus)
+		{
+			this.bus = bus;
 			InitializeComponent();
 
+			this.bus.Send(
+				new MyBooksRequest
+				{
+					UserId = 1
+				},
+				new MyQueueRequest
+				{
+					UserId = 1
+			    },
+				new MyRecommendationsRequest
+				{
+					UserId = 1
+				});
+
+
 			var books = from img in Directory.GetFiles(@"C:\Work\Alexandria\Art", "*.jpg")
-			select new BookModel
-			{
-				CheckedOutTime = TimeSpan.FromDays(14),
-				Image = new BitmapImage(new Uri(img))
-			};
+						select new BookModel
+						{
+							CheckedOutTime = TimeSpan.FromDays(14),
+							Image = new BitmapImage(new Uri(img))
+						};
 
 			DataContext = new ApplicationModel
 			{
