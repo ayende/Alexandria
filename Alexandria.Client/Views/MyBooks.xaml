@@ -7,10 +7,7 @@
 																		 HorizontalAlignment="Left" >
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<StackPanel Orientation="Vertical" >
 						<Image Source="{Binding Path=Image}" Stretch="None" />
-						<TextBlock Text="{Binding Path=CheckedOutTime, Converter={StaticResource TimespanConverter}}"  HorizontalAlignment="Center"/>
-					</StackPanel>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</Controls:HorizontalItemsControl>

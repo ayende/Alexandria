@@ -33,6 +33,11 @@
 			<key column="`User`"/>
 			<many-to-many class="Book" column="Book"/>
 		</set>
-		
+
+		<set name="Subscriptions">
+			<key column="`User`"/>
+			<one-to-many class="Subscription"/>
+		</set>
+
 	</class>
 </hibernate-mapping>

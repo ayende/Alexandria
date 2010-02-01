@@ -2,6 +2,7 @@ using System.Linq;
 using Alexandria.Backend.Model;
 using Alexandria.Messages;
 using NHibernate;
+using NHibernate.Transform;
 using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
@@ -19,9 +20,13 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(MyBooksRequest message)
 		{
-			var books = session.CreateQuery("select b from User u join u.CurrentlyReading b join fetch b.Authors where u.Id = :id")
-				.SetParameter("id", message.UserId)
-				.List<Book>();
+			var books =
+				session.CreateQuery(
+				                   	@"select b from Book b join fetch b.Authors 
+						where b.Id in (select r from User u join u.CurrentlyReading r where u.Id = :id)")
+					.SetParameter("id", message.UserId)
+					.SetResultTransformer(Transformers.DistinctRootEntity)
+					.List<Book>();
 
 			bus.Reply(new MyBooksResponse
 			{

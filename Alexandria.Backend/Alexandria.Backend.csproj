@@ -81,9 +81,11 @@
     <Compile Include="Consumers\MyBooksRequestConsumer.cs" />
     <Compile Include="Consumers\MyQueueRequestConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsRequestConsumer.cs" />
+    <Compile Include="Consumers\SubscriptionDetailsRequestConsumer.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\Subscription.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Modules\NHibernateMessageModule.cs" />
     <Compile Include="Program.cs" />
@@ -107,6 +109,9 @@
     <None Include="nhibernate.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Subscription.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

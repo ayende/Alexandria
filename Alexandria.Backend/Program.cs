@@ -1,5 +1,4 @@
 ﻿using System;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Rhino.ServiceBus.Hosting;
 
 namespace Alexandria.Backend

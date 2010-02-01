@@ -2,11 +2,12 @@ using System.Linq;
 using Alexandria.Backend.Model;
 using Alexandria.Messages;
 using NHibernate;
+using NHibernate.Transform;
 using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
 {
-	public class MyRecommendationsRequestConsumer: ConsumerOf<MyRecommendationsRequest>
+	public class MyRecommendationsRequestConsumer : ConsumerOf<MyRecommendationsRequest>
 	{
 		private readonly ISession session;
 		private readonly IServiceBus bus;
@@ -19,9 +20,13 @@ namespace Alexandria.Backend.Consumers
 		public void Consume(MyRecommendationsRequest message)
 		{
 			var books =
-				session.CreateQuery("select b from User u join u.Recommendations b join fetch b.Authors where u.Id = :id")
+				session.CreateQuery(
+				                   	@"select b from Book b join fetch b.Authors 
+						where b.Id in (select r from User u join u.Recommendations r where u.Id = :id)")
 					.SetParameter("id", message.UserId)
+					.SetResultTransformer(Transformers.DistinctRootEntity)
 					.List<Book>();
+
 
 			bus.Reply(new MyRecommendationsResponse
 			{

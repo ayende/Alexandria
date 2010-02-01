@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Alexandria.Backend"
+				   namespace="Alexandria.Backend.Model">
+	<class name="Subscription"
+		   table="Subscriptions" >
+		<id name="Id">
+			<generator class="hilo"/>
+		</id>
+		<property name="NumberOfPossibleBooksOut" not-null="true"/>
+		<property name="CreditCard" not-null="true"/>
+		<property name="MonthlyCost" not-null="true"/>
+		<property name="Start" not-null="true"/>
+		<property name="End" column="`End`" not-null="true"/>
+		<many-to-one name="User" column="`User`" class="User" not-null="true"/>
+	</class>
+</hibernate-mapping>

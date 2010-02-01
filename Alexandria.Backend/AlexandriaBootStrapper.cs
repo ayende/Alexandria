@@ -9,6 +9,7 @@ using log4net.Core;
 using log4net.Layout;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 using Rhino.ServiceBus.Hosting;
 using Rhino.ServiceBus.MessageModules;
 
@@ -32,6 +33,8 @@ namespace Alexandria.Backend
 
 			var cfg = new Configuration()
 				.Configure("nhibernate.config");
+
+			new SchemaUpdate(cfg).Execute(true, true);
 
 			var sessionFactory = cfg.BuildSessionFactory();
 			container.Register(Component.For<ISessionFactory>().Instance(sessionFactory));
