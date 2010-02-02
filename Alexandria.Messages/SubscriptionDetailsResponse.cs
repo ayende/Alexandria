@@ -1,7 +1,22 @@
-﻿namespace Alexandria.Messages
+﻿using System;
+
+namespace Alexandria.Messages
 {
-	public class SubscriptionDetailsResponse
+	public class SubscriptionDetailsResponse : ICachableResponse
 	{
 		public SubscriptionDetailsDTO SubscriptionDetails { get; set; }
+
+		public string Key
+		{
+			get { return "SubscriptionDetails [UserId #" + UserId + "]"; }
+		}
+
+		public long UserId { get; set; }
+
+		public DateTime Timestamp
+		{
+			get;
+			set;
+		}
 	}
 }

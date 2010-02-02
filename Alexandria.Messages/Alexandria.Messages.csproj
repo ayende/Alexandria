@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookDTO.cs" />
+    <Compile Include="ICachableRequest.cs" />
+    <Compile Include="ICachableResponse.cs" />
     <Compile Include="MyBooksRequest.cs" />
     <Compile Include="MyBooksResponse.cs" />
     <Compile Include="MyQueueRequest.cs" />
