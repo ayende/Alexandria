@@ -26,7 +26,6 @@ namespace Alexandria.Client
 			Container = new WindsorContainer(new XmlInterpreter());
 			Container.Kernel.ComponentModelBuilder.RemoveContributor(Container.Kernel.ComponentModelBuilder.Contributors.OfType<PropertiesDependenciesModelInspector>().Single());
 
-			Container.Register(Component.For<ApplicationModel>().Instance(new ApplicationModel(Dispatcher.CurrentDispatcher)));
 
 			Container.Kernel.AddFacility("rhino.esb", new RhinoServiceBusFacility());
 
@@ -35,19 +34,15 @@ namespace Alexandria.Client
 			                  		.Where(x => typeof (IMessageConsumer).IsAssignableFrom(x))
 			                  		.Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient))
 				);
-			Container.Register(
-				AllTypes.FromAssemblyContaining<App>()
-					.Where(type => typeof(Window).IsAssignableFrom(type) ||
-								typeof(UserControl).IsAssignableFrom(type) ||
-								typeof(Application).IsAssignableFrom(type))
-				);
 
 			var serviceBus = Container.Resolve<IStartableServiceBus>();
 			serviceBus.Start();
 
-			var app = Container.Resolve<App>();
-			app.InitializeComponent();
+			var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher,serviceBus);
+			Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));
 
+			var app = new App();
+			app.InitializeComponent();
 			app.Run();
 
 		}

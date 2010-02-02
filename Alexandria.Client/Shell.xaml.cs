@@ -16,38 +16,19 @@ namespace Alexandria.Client
 	/// </summary>
 	public partial class Shell : Window
 	{
-		private readonly IServiceBus bus;
-		private ApplicationModel applicationModel;
+		private readonly ApplicationModel applicationModel;
 
 		public Shell()
-			: this(Program.Container.Resolve<IServiceBus>(), Program.Container.Resolve<ApplicationModel>())
+			: this(Program.Container.Resolve<ApplicationModel>())
 		{
 		}
 
-		public Shell(IServiceBus bus, ApplicationModel applicationModel)
+		public Shell(ApplicationModel applicationModel)
 		{
-			this.bus = bus;
 			this.applicationModel = applicationModel;
 			InitializeComponent();
 
-			this.bus.Send(
-				new MyBooksRequest
-				{
-					UserId = 1
-				},
-				new MyQueueRequest
-				{
-					UserId = 1
-			    },
-				new MyRecommendationsRequest
-				{
-					UserId = 1
-				},
-				new SubscriptionDetailsRequest
-				{
-					UserId = 1
-				});
-
+			
 			DataContext = this.applicationModel;
 		}
 	}
