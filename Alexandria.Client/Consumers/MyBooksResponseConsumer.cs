@@ -1,4 +1,3 @@
-using System;
 using Alexandria.Client.Infrastructure;
 using Alexandria.Client.ViewModel;
 using Alexandria.Messages;
