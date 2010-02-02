@@ -9,6 +9,11 @@
 						<Image Source="{Binding Path=Image}" Stretch="None" />
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
+			<ItemsControl.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Remove from queue" />
+				</ContextMenu>
+			</ItemsControl.ContextMenu>
 		</Controls:HorizontalItemsControl>
 	</StackPanel>
 </UserControl>
