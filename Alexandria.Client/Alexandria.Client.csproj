@@ -126,7 +126,11 @@
     <Compile Include="Infrastructure\Cache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Infrastructure\DelegatingCommand.cs" />
+    <Compile Include="Infrastructure\Fact.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
+    <Compile Include="Infrastructure\IPresenter.cs" />
+    <Compile Include="Infrastructure\Presenters.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

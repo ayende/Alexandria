@@ -41,6 +41,8 @@ namespace Alexandria.Client
 			var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher,serviceBus);
 			Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));
 
+            applicationModel.Init();
+
 			var app = new App();
 			app.InitializeComponent();
 			app.Run();

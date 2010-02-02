@@ -27,7 +27,6 @@ namespace Alexandria.Client
 		{
 			this.applicationModel = applicationModel;
 			InitializeComponent();
-
 			
 			DataContext = this.applicationModel;
 		}

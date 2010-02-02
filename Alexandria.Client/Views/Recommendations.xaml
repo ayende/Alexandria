@@ -1,20 +1,24 @@
 ﻿<UserControl x:Class="Alexandria.Client.Views.Recommendations"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controls="clr-namespace:Alexandria.Client.Controls" 
-	  >
-	<StackPanel Orientation="Vertical">
-		<TextBlock Text="Recommendations:"/>
-		<Controls:HorizontalItemsControl ItemsSource="{Binding Recommendations}" HorizontalAlignment="Left">
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-						<Image Source="{Binding Path=Image}" Stretch="None"/>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-			<ItemsControl.ContextMenu>
-				<ContextMenu>
-					<MenuItem Header="Add to queue" />
-				</ContextMenu>
-			</ItemsControl.ContextMenu>
-		</Controls:HorizontalItemsControl>
-</StackPanel>
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:Alexandria.Client.Controls">
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="Recommendations:" />
+        <Controls:HorizontalItemsControl ItemsSource="{Binding Recommendations}"
+                                         HorizontalAlignment="Left">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Path=Image}"
+                           Stretch="None" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add to queue" />
+                </ContextMenu>
+            </ItemsControl.ContextMenu>
+        </Controls:HorizontalItemsControl>
+    </StackPanel>
+
 </UserControl>

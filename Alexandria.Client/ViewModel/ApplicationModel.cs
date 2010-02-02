@@ -73,7 +73,7 @@ namespace Alexandria.Client.ViewModel
 			
 		}
 
-		public void AddToQueue()
+		public void AddToQueue(BookModel book)
 		{
 
 		}
