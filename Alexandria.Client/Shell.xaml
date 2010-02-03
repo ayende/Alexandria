@@ -11,7 +11,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -32,7 +31,7 @@
             <Views:Subscription DataContext="{Binding SubscriptionDetails}"
                                 Grid.Column="0"
                                 Grid.Row="2" />
-
+   
             <!--<Views:Search Grid.Row="2" Grid.Column="1" DataContext="{Binding}" />-->
 
         </Grid>

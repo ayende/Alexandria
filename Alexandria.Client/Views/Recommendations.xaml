@@ -1,24 +1,24 @@
 ﻿<UserControl x:Class="Alexandria.Client.Views.Recommendations"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Controls="clr-namespace:Alexandria.Client.Controls"
-             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure">
+             xmlns:c="clr-namespace:Alexandria.Client.Controls"
+             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
 
     <StackPanel Orientation="Vertical">
         <TextBlock Text="Recommendations:" />
-        <Controls:HorizontalItemsControl ItemsSource="{Binding Recommendations}"
-                                         HorizontalAlignment="Left">
+        <c:HorizontalItemsControl ItemsSource="{Binding Recommendations}"
+                                  HorizontalAlignment="Left">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <Image Source="{Binding Path=Image}"
                                Stretch="None" />
-                        <Button i:Method.Bind="AddToQueue"
-                                Content="Add" />
+                        <Button Content="Add"
+                                pf:Message.Attach="AddToQueue($dataContext)" />
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </Controls:HorizontalItemsControl>
+        </c:HorizontalItemsControl>
     </StackPanel>
 
 </UserControl>

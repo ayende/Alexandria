@@ -34,6 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Core, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Windsor, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Rhino Service Bus\Castle.Core.dll</HintPath>
@@ -45,6 +57,10 @@
     <Reference Include="Castle.Windsor, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Rhino Service Bus\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.ServiceBus, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,11 +142,7 @@
     <Compile Include="Infrastructure\Cache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
-    <Compile Include="Infrastructure\DelegatingCommand.cs" />
-    <Compile Include="Infrastructure\Fact.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
-    <Compile Include="Infrastructure\IPresenter.cs" />
-    <Compile Include="Infrastructure\Presenters.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -146,9 +158,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModel\ApplicationModel.cs" />
-    <Compile Include="ViewModel\BookModel.cs" />
-    <Compile Include="ViewModel\SubscriptionDetails.cs" />
+    <Compile Include="ApplicationModel.cs" />
+    <Compile Include="ViewModels\BookModel.cs" />
+    <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>

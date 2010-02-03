@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Media.Imaging;
-using Alexandria.Client.ViewModel;
 using Alexandria.Messages;
 using System.Linq;
 
 namespace Alexandria.Client.Infrastructure
 {
-	public static class CollectionExtensions
+    using ViewModels;
+
+    public static class CollectionExtensions
 	{
 		public static void UpdateFrom(this ObservableCollection<BookModel> collection, IEnumerable<BookDTO> mergeSource)
 		{

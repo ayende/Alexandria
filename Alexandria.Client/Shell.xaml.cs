@@ -1,8 +1,6 @@
 ﻿namespace Alexandria.Client
 {
     using System.Windows;
-    using Infrastructure;
-    using ViewModel;
 
     /// <summary>
     /// Interaction logic for Shell.xaml
@@ -22,8 +20,6 @@
             InitializeComponent();
 
             DataContext = this.applicationModel;
-
-            this.WireTo(applicationModel);
         }
     }
 }

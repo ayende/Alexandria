@@ -1,10 +1,7 @@
 using System;
 using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
 using Alexandria.Client.Consumers;
-using Alexandria.Client.ViewModel;
 using Castle.Core;
 using Castle.MicroKernel.ModelBuilder.Inspectors;
 using Castle.MicroKernel.Registration;
@@ -16,8 +13,6 @@ using Rhino.ServiceBus.Internal;
 
 namespace Alexandria.Client
 {
-    using Infrastructure;
-
     public class Program
 	{
 		public static WindsorContainer Container { get; private set; }
@@ -37,13 +32,13 @@ namespace Alexandria.Client
 			                  		.Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient))
 				);
 
+		    Container.Register(Component.For<Shell>().ImplementedBy<Shell>());
+
 			var serviceBus = Container.Resolve<IStartableServiceBus>();
 			serviceBus.Start();
 
-			var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher,serviceBus);
-			Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));
-
-            applicationModel.Init();
+            var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher, serviceBus);
+            Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));
 
 			var app = new App();
 			app.InitializeComponent();
