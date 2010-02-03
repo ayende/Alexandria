@@ -7,6 +7,9 @@
     using Caliburn.PresentationFramework.ViewModels;
     using Caliburn.Windsor;
     using Microsoft.Practices.ServiceLocation;
+    using ViewModels;
+    using Views;
+    using SubscriptionDetails=Alexandria.Client.Views.SubscriptionDetails;
 
     public partial class App : CaliburnApplication
     {
@@ -41,6 +44,9 @@
             {
                 if (modelType == typeof (ApplicationModel))
                     return _serviceLocator.GetInstance<Shell>();
+
+                if (modelType == typeof(ViewModels.SubscriptionDetails))
+                    return _serviceLocator.GetInstance<SubscriptionDetails>();
 
                 throw new NotImplementedException("The only view model we're expecting to bind is ApplicationModel.");
             }

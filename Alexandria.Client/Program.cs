@@ -13,6 +13,8 @@ using Rhino.ServiceBus.Internal;
 
 namespace Alexandria.Client
 {
+    using Views;
+
     public class Program
 	{
 		public static WindsorContainer Container { get; private set; }
@@ -32,10 +34,11 @@ namespace Alexandria.Client
 			                  		.Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient))
 				);
 
-		    Container.Register(Component.For<Shell>().ImplementedBy<Shell>());
-
 			var serviceBus = Container.Resolve<IStartableServiceBus>();
 			serviceBus.Start();
+
+            Container.Register(Component.For<Shell>().ImplementedBy<Shell>());
+            Container.Register(Component.For<SubscriptionDetails>().ImplementedBy<SubscriptionDetails>());
 
             var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher, serviceBus);
             Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));

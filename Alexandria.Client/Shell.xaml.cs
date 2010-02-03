@@ -12,6 +12,7 @@
         public Shell()
             : this(Program.Container.Resolve<ApplicationModel>())
         {
+            
         }
 
         public Shell(ApplicationModel applicationModel)

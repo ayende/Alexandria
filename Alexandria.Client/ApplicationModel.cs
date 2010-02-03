@@ -1,18 +1,19 @@
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows.Threading;
-using Alexandria.Messages;
-using Rhino.ServiceBus;
-
 namespace Alexandria.Client
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Windows.Threading;
+    using Messages;
+    using Rhino.ServiceBus;
     using ViewModels;
 
     public class ApplicationModel : INotifyPropertyChanged
     {
-        private readonly Dispatcher dispatcher;
         private readonly IServiceBus bus;
+        private readonly Dispatcher dispatcher;
+
+        private SubscriptionDetails subscriptionDetails;
 
         public ApplicationModel(Dispatcher dispatcher, IServiceBus bus)
         {
@@ -24,6 +25,23 @@ namespace Alexandria.Client
             SearchResults = new ObservableCollection<BookModel>();
             subscriptionDetails = new SubscriptionDetails();
         }
+
+        public SubscriptionDetails SubscriptionDetails
+        {
+            get { return subscriptionDetails; }
+            set
+            {
+                subscriptionDetails = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("SubscriptionDetails"));
+            }
+        }
+
+        public ObservableCollection<BookModel> Queue { get; set; }
+        public ObservableCollection<BookModel> Recommendations { get; set; }
+        public ObservableCollection<BookModel> MyBooks { get; set; }
+        public ObservableCollection<BookModel> SearchResults { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void Init()
         {
@@ -44,45 +62,32 @@ namespace Alexandria.Client
                     {
                         UserId = 1
                     });
-
         }
-
-        private SubscriptionDetails subscriptionDetails;
-        public SubscriptionDetails SubscriptionDetails
-        {
-            get { return subscriptionDetails; }
-            set
-            {
-                subscriptionDetails = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("SubscriptionDetails"));
-            }
-        }
-
-        public ObservableCollection<BookModel> Queue { get; set; }
-        public ObservableCollection<BookModel> Recommendations { get; set; }
-        public ObservableCollection<BookModel> MyBooks { get; set; }
-        public ObservableCollection<BookModel> SearchResults { get; set;}
 
         public void UpdateInUIThread(Action action)
         {
             dispatcher.BeginInvoke(action);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
         public void ReorderQueue()
         {
-			
         }
 
         public void AddToQueue(BookModel book)
         {
+            if (Recommendations.Contains(book))
+                Recommendations.Remove(book);
 
+            Queue.Add(book);
+
+            //TODO: send add msg
         }
 
         public void RemoveFromQueue(BookModel book)
         {
+            Queue.Remove(book);
 
+            //TODO: send remove msg
         }
     }
 }

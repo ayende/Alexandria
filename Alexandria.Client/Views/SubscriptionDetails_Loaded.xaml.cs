@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 
 namespace Alexandria.Client.Views
 {
-	/// <summary>
-	/// Interaction logic for Subscription.xaml
-	/// </summary>
-	public partial class Subscription : UserControl
-	{
-		public Subscription()
-		{
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for SubscriptionDetails_Loaded.xaml
+    /// </summary>
+    public partial class SubscriptionDetails_Loaded : UserControl
+    {
+        public SubscriptionDetails_Loaded()
+        {
+            InitializeComponent();
+        }
+    }
 }

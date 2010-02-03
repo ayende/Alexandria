@@ -3,8 +3,21 @@ using Alexandria.Messages;
 
 namespace Alexandria.Client.ViewModels
 {
+    public enum EditState
+    {
+        Retrieving,
+        ChangesPending,
+        Confirmed,
+        Error
+    }
+
     public class SubscriptionDetails : INotifyPropertyChanged
     {
+        public SubscriptionDetails()
+        {
+            EditState = EditState.Retrieving;
+        }
+
         private string city;
         private string country;
         private string creditCard;
@@ -15,6 +28,17 @@ namespace Alexandria.Client.ViewModels
 
         private string street;
         private string zipCode;
+
+        private EditState _editState;
+        public EditState EditState
+        {
+            get { return _editState; }
+            set
+            {
+                _editState = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("EditState"));
+            }
+        }
 
         public string Name
         {
@@ -110,6 +134,8 @@ namespace Alexandria.Client.ViewModels
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
         {
+            EditState = EditState.Confirmed;
+
             Name = subscriptionDetails.Name;
             Street = subscriptionDetails.Street;
             HouseNumber = subscriptionDetails.HouseNumber;

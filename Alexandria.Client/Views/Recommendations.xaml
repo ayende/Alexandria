@@ -4,21 +4,23 @@
              xmlns:c="clr-namespace:Alexandria.Client.Controls"
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
 
-    <StackPanel Orientation="Vertical">
-        <TextBlock Text="Recommendations:" />
-        <c:HorizontalItemsControl ItemsSource="{Binding Recommendations}"
-                                  HorizontalAlignment="Left">
+    <HeaderedContentControl Header="Recommendations"
+                            Style="{DynamicResource BookListContainer}">
+        <c:BookSummaryList ItemsSource="{Binding Recommendations}"
+                           HorizontalAlignment="Left">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <Image Source="{Binding Path=Image}"
-                               Stretch="None" />
+                    <DockPanel>
                         <Button Content="Add"
+                                DockPanel.Dock="Bottom"
+                                Style="{DynamicResource QueueControlButton}"
                                 pf:Message.Attach="AddToQueue($dataContext)" />
-                    </StackPanel>
+
+                        <c:BookSummary BookModel="{Binding}" />
+                    </DockPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </c:HorizontalItemsControl>
-    </StackPanel>
+        </c:BookSummaryList>
+    </HeaderedContentControl>
 
 </UserControl>

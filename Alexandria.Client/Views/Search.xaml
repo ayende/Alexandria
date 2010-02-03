@@ -16,12 +16,12 @@
 			<TextBlock Text="Search:"/>
 			<TextBox Text="search" Grid.Column="1"/>
 			
-			<Controls:HorizontalItemsControl ItemsSource="{Binding Path=SearchResults}" HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2">
+			<Controls:BookSummaryList ItemsSource="{Binding Path=SearchResults}" HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2">
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
 						<Image Source="{Binding Path=Image}" Stretch="None"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
-			</Controls:HorizontalItemsControl>
+			</Controls:BookSummaryList>
     </Grid>
 </UserControl>
