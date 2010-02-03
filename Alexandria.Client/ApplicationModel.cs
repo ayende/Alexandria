@@ -23,7 +23,7 @@ namespace Alexandria.Client
             Queue = new ObservableCollection<BookModel>();
             Recommendations = new ObservableCollection<BookModel>();
             SearchResults = new ObservableCollection<BookModel>();
-            subscriptionDetails = new SubscriptionDetails();
+            subscriptionDetails = new SubscriptionDetails(bus);
         }
 
         public SubscriptionDetails SubscriptionDetails

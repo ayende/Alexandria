@@ -1,23 +1,23 @@
-using Alexandria.Client.Infrastructure;
-using Alexandria.Messages;
-using Rhino.ServiceBus;
-
 namespace Alexandria.Client.Consumers
 {
+    using Infrastructure;
+    using Messages;
+    using Rhino.ServiceBus;
+
     public class MyBooksResponseConsumer : ConsumerOf<MyBooksResponse>
-	{
-		private readonly ApplicationModel applicationModel;
+    {
+        private readonly ApplicationModel applicationModel;
 
-		public MyBooksResponseConsumer(ApplicationModel applicationModel)
-		{
-			this.applicationModel = applicationModel;
-		}
+        public MyBooksResponseConsumer(ApplicationModel applicationModel)
+        {
+            this.applicationModel = applicationModel;
+        }
 
-		public void Consume(MyBooksResponse message)
-		{
-			applicationModel.UpdateInUIThread(
-				()=>applicationModel.MyBooks.UpdateFrom(message.Books)
-				);
-		}
-	}
+        public void Consume(MyBooksResponse message)
+        {
+            applicationModel.UpdateInUIThread(
+                () => applicationModel.MyBooks.UpdateFrom(message.Books)
+                );
+        }
+    }
 }

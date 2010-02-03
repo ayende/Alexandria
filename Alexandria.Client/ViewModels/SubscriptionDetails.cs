@@ -1,8 +1,9 @@
-using System.ComponentModel;
-using Alexandria.Messages;
-
 namespace Alexandria.Client.ViewModels
 {
+    using System.ComponentModel;
+    using Messages;
+    using Rhino.ServiceBus;
+
     public enum EditState
     {
         Retrieving,
@@ -13,11 +14,8 @@ namespace Alexandria.Client.ViewModels
 
     public class SubscriptionDetails : INotifyPropertyChanged
     {
-        public SubscriptionDetails()
-        {
-            EditState = EditState.Retrieving;
-        }
-
+        private readonly IServiceBus bus;
+        private EditState _editState;
         private string city;
         private string country;
         private string creditCard;
@@ -29,7 +27,12 @@ namespace Alexandria.Client.ViewModels
         private string street;
         private string zipCode;
 
-        private EditState _editState;
+        public SubscriptionDetails(IServiceBus bus)
+        {
+            this.bus = bus;
+            EditState = EditState.Retrieving;
+        }
+
         public EditState EditState
         {
             get { return _editState; }
@@ -135,6 +138,12 @@ namespace Alexandria.Client.ViewModels
         public void Edit()
         {
             EditState = EditState.ChangesPending;
+
+            bus.Send(new UpdateCreditCardRequest
+                         {
+                             UserId = 1,
+                             CreditCard = CreditCard
+                         });
         }
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)

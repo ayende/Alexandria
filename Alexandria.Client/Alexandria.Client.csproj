@@ -144,6 +144,7 @@
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
+    <Compile Include="Consumers\UpdateCreditCardConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\Cache.cs" />
