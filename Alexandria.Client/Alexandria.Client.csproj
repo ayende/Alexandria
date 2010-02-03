@@ -207,6 +207,10 @@
     <Resource Include="Resources\Icons\pencil.png" />
     <Resource Include="Resources\Icons\famfamfam_icons.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\arrow_left.png" />
+    <Resource Include="Resources\Icons\arrow_right.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

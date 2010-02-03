@@ -26,6 +26,19 @@
                                 DockPanel.Dock="Bottom"
                                 pf:Message.Attach="RemoveFromQueue($dataContext)"
                                 Style="{DynamicResource QueueControlButton}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    DockPanel.Dock="Bottom">
+                            <Button pf:Message.Attach="MoveForwardInQueue($dataContext)">
+                                <Image Source="../Resources/Icons/arrow_left.png"
+                                       Stretch="None" />
+                            </Button>
+                            <Button pf:Message.Attach="MoveBackInQueue($dataContext)">
+                                <Image Source="../Resources/Icons/arrow_right.png"
+                                       Stretch="None" />
+                            </Button>
+                        </StackPanel>
+
                         <c:BookSummary BookModel="{Binding}" />
                     </DockPanel>
                 </DataTemplate>
