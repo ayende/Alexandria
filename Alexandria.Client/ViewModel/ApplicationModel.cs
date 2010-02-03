@@ -25,7 +25,7 @@ namespace Alexandria.Client.ViewModel
 
 		public void Init()
 		{
-			this.bus.Send(
+			bus.Send(
 				new MyBooksRequest
 				{
 					UserId = 1

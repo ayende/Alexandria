@@ -1,5 +1,8 @@
-﻿namespace Alexandria.Messages
+﻿using System;
+
+namespace Alexandria.Messages
 {
+	[Serializable]
 	public class BookDTO
 	{
 		public long Id { get; set; }

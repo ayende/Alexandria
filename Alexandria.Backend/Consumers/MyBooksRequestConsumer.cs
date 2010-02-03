@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Alexandria.Backend.Model;
 using Alexandria.Messages;
@@ -22,7 +23,7 @@ namespace Alexandria.Backend.Consumers
 		{
 			var books =
 				session.CreateQuery(
-				                   	@"select b from Book b join fetch b.Authors 
+									@"select b from Book b join fetch b.Authors 
 						where b.Id in (select r from User u join u.CurrentlyReading r where u.Id = :id)")
 					.SetParameter("id", message.UserId)
 					.SetResultTransformer(Transformers.DistinctRootEntity)
@@ -30,6 +31,8 @@ namespace Alexandria.Backend.Consumers
 
 			bus.Reply(new MyBooksResponse
 			{
+				UserId = message.UserId,
+				Timestamp = DateTime.Now,
 				Books = books.Select(book => new BookDTO
 				{
 					Id = book.Id,

@@ -2,6 +2,7 @@
 
 namespace Alexandria.Messages
 {
+	[Serializable]
 	public class MyQueueResponse : ICachableResponse
 	{
 		public BookDTO[] Queue { get; set; }

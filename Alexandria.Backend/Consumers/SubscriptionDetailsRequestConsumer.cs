@@ -29,6 +29,8 @@ namespace Alexandria.Backend.Consumers
 
 			bus.Reply(new SubscriptionDetailsResponse
 			{
+				UserId = message.UserId,
+				Timestamp = DateTime.Now,
 				SubscriptionDetails = new SubscriptionDetailsDTO
 				{
 					City = subscription.User.Address.City,

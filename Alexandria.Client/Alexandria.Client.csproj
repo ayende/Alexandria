@@ -123,8 +123,9 @@
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
     <Compile Include="Controls\HorizontalItemsControl.cs" />
-    <Compile Include="Infrastructure\Cache.cs" />
+    <Compile Include="Infrastructure\PersistentCache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
+    <Compile Include="Infrastructure\CachingMessageModule.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />

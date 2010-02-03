@@ -1,5 +1,6 @@
 using System;
 using NHibernate;
+using Rhino.ServiceBus;
 using Rhino.ServiceBus.Impl;
 using Rhino.ServiceBus.Internal;
 using Rhino.ServiceBus.MessageModules;
@@ -22,7 +23,7 @@ namespace Alexandria.Backend.Modules
 			this.sessionFactory = sessionFactory;
 		}
 
-		public void Init(ITransport transport)
+		public void Init(ITransport transport, IServiceBus serviceBus)
 		{
 			transport.MessageArrived += TransportOnMessageArrived;
 			transport.MessageProcessingCompleted += TransportOnMessageProcessingCompleted;
@@ -42,7 +43,7 @@ namespace Alexandria.Backend.Modules
 			return false;
 		}
 
-		public void Stop(ITransport transport)
+		public void Stop(ITransport transport, IServiceBus serviceBus)
 		{
 			transport.MessageArrived -= TransportOnMessageArrived;
 			transport.MessageProcessingCompleted -= TransportOnMessageProcessingCompleted;

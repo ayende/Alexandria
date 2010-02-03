@@ -1,3 +1,4 @@
+using Alexandria.Backend.Model;
 using Alexandria.Backend.Modules;
 using Castle.Core;
 using Castle.Facilities.FactorySupport;

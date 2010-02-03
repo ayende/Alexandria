@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Alexandria.Backend.Model;
 using Alexandria.Messages;
@@ -29,6 +30,8 @@ namespace Alexandria.Backend.Consumers
 
 			bus.Reply(new MyQueueResponse
 			{
+				UserId = message.UserId,
+				Timestamp = DateTime.Now,
 				Queue = books.Select(book => new BookDTO
 				{
 					Id = book.Id,
