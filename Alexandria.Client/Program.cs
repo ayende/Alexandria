@@ -16,7 +16,9 @@ using Rhino.ServiceBus.Internal;
 
 namespace Alexandria.Client
 {
-	public class Program
+    using Infrastructure;
+
+    public class Program
 	{
 		public static WindsorContainer Container { get; private set; }
 
@@ -46,7 +48,6 @@ namespace Alexandria.Client
 			var app = new App();
 			app.InitializeComponent();
 			app.Run();
-
 		}
 	}
 }

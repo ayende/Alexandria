@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="Alexandria.Client.Views.Recommendations"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Controls="clr-namespace:Alexandria.Client.Controls">
+             xmlns:Controls="clr-namespace:Alexandria.Client.Controls"
+             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure">
 
     <StackPanel Orientation="Vertical">
         <TextBlock Text="Recommendations:" />
@@ -9,15 +10,14 @@
                                          HorizontalAlignment="Left">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Path=Image}"
-                           Stretch="None" />
+                    <StackPanel>
+                        <Image Source="{Binding Path=Image}"
+                               Stretch="None" />
+                        <Button i:Method.Bind="AddToQueue"
+                                Content="Add" />
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-            <ItemsControl.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Add to queue" />
-                </ContextMenu>
-            </ItemsControl.ContextMenu>
         </Controls:HorizontalItemsControl>
     </StackPanel>
 

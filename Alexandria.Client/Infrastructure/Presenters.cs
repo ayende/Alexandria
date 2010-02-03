@@ -7,6 +7,79 @@ namespace Alexandria.Client.Infrastructure
     using System.Windows;
     using System.Windows.Controls;
 
+    public class Method : DependencyObject
+    {
+        public static readonly DependencyProperty BindProperty = DependencyProperty.RegisterAttached(
+            "Bind",
+            typeof (string),
+            typeof (Method),
+            new PropertyMetadata(null, WhenMethodBound )
+            );
+
+        private static void WhenMethodBound(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var action = (Action)Delegate.CreateDelegate(typeof(Action),
+                                                              presenter, matching.method);
+            Fact fact = null;
+            if (matching.fact != null)
+                fact = (Fact)matching.fact.GetValue(presenter, null);
+            matching.button.Command = new DelegatingCommand(action, fact);
+        }
+
+        public static void SetBind(UIElement element, string value)
+        {
+            element.SetValue(BindProperty, value);
+        }
+
+        public static string GetBind(UIElement element)
+        {
+            return (string) element.GetValue(BindProperty);
+        }
+    }
+
+    public static class ViewExtensions
+    {
+        public static void WireTo(this DependencyObject view, object viewModel)
+        {
+            var viewModelType = viewModel.GetType();
+
+            var actions = GetParameterlessActionMethods(viewModelType);
+
+            var methodsAndButtons =
+                from method in actions
+                let elementName = method.Name.Substring(2)
+                let matchingControl = LogicalTreeHelper.FindLogicalNode(view, elementName) as Button
+                let fact = viewModelType.GetProperty("Can" + elementName)
+                where matchingControl != null
+                select new {method, fact, button = matchingControl};
+
+            foreach (var matching in methodsAndButtons)
+            {
+                var action = (Action) Delegate.CreateDelegate(typeof (Action), viewModel, matching.method);
+                var fact = (matching.fact != null)
+                               ? (Fact) matching.fact.GetValue(viewModel, null)
+                               : null;
+
+                matching.button.Command = new DelegatingCommand(action, fact);
+            }
+        }
+
+        private static IEnumerable<MethodInfo> GetParameterlessActionMethods(Type type)
+        {
+            return from method in GetActionMethods(type)
+                   where method.GetParameters().Length == 0
+                   select method;
+        }
+
+        private static IEnumerable<MethodInfo> GetActionMethods(Type type)
+        {
+            return
+                from method in type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+                where method.Name.StartsWith("On")
+                select method;
+        }
+    }
+
     public class Presenters
     {
         public static void Show(string name, params object[] args)
@@ -27,9 +100,9 @@ namespace Alexandria.Client.Infrastructure
 
         private static IPresenter CreateInstance(string name, object[] args)
         {
-            var type = Assembly.GetExecutingAssembly().GetType("Effectus.Features." + name + ".Presenter");
+            var type = Assembly.GetExecutingAssembly().GetType("Alexandria.Client.ViewModel." + name);
             if (type == null)
-                throw new InvalidOperationException("Could not find presenter: " + name);
+                throw new InvalidOperationException("Could not find view model: " + name);
 
             var instance = (IPresenter) Activator.CreateInstance(type);
 

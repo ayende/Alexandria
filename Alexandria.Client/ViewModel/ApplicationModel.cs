@@ -68,17 +68,17 @@ namespace Alexandria.Client.ViewModel
 
 		public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-		public void ReorderQueue()
+        public void OnReorderQueue()
 		{
 			
 		}
 
-		public void AddToQueue(BookModel book)
+        public void OnAddToQueue(BookModel book)
 		{
 
 		}
 
-		public void RemoveFromQueue()
+		public void OnRemoveFromQueue()
 		{
 
 		}
