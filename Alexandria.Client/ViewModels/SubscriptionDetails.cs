@@ -132,6 +132,11 @@ namespace Alexandria.Client.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
+        public void Edit()
+        {
+            EditState = EditState.ChangesPending;
+        }
+
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
         {
             EditState = EditState.Confirmed;

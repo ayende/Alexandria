@@ -10,21 +10,9 @@
 
     <Border Padding="10"
             CornerRadius="4"
+            Background="{DynamicResource SubscriptionBackground}"
             BorderBrush="#FF707070"
             BorderThickness="1">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                <GradientStop Color="#FFFEE7B1"
-                              Offset="0.025" />
-                <GradientStop Color="#FFFFFDF4"
-                              Offset="0.237" />
-                <GradientStop Color="#FFFFFCF0"
-                              Offset="0.709" />
-                <GradientStop Color="#FFFFE6B5"
-                              Offset="0.965" />
-            </LinearGradientBrush>
-        </Border.Background>
 
         <DockPanel>
             <TextBlock Text="Subscription Details"
