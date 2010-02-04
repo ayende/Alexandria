@@ -43,21 +43,30 @@
     </LinearGradientBrush>
 
     <Style x:Key="SubscriptionDetailsContainer"
-           TargetType="Border">
-        <Setter Property="Width"
-                Value="260" />
-        <Setter Property="Padding"
-                Value="10" />
-        <Setter Property="SnapsToDevicePixels"
-                Value="True" />
-        <Setter Property="CornerRadius"
-                Value="4" />
-        <Setter Property="Background"
-                Value="{DynamicResource SubscriptionBackground}" />
-        <Setter Property="BorderBrush"
-                Value="#FF707070" />
-        <Setter Property="BorderThickness"
-                Value="1" />
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <DockPanel Width="260">
+
+                        <TextBlock Text="Subscription Details"
+                                   FontWeight="Bold"
+                                   DockPanel.Dock="Top"
+                                   FontSize="13.333" />
+
+                        <Border Background="{DynamicResource SubscriptionBackground}"
+                                SnapsToDevicePixels="True"
+                                CornerRadius="4"
+                                Padding="10"
+                                BorderBrush="#FF707070"
+                                BorderThickness="1">
+                            <ContentPresenter />
+                        </Border>
+
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="QueueControlButton"

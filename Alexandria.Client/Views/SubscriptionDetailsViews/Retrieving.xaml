@@ -7,21 +7,12 @@
              d:DesignWidth="260"
              d:DesignHeight="200">
 
-    <DockPanel>
-
-        <TextBlock Text="Subscription Details"
-                   FontWeight="Bold"
-                   DockPanel.Dock="Top"
-                   FontSize="13.333" />
-
-        <Border Style="{DynamicResource SubscriptionDetailsContainer}">
-            <Grid>
-                <TextBlock Text="Loading ..."
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center" />
-            </Grid>
-        </Border>
-
-    </DockPanel>
+    <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
+        <Grid>
+            <TextBlock Text="Loading ..."
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+        </Grid>
+    </ContentControl>
 
 </UserControl>

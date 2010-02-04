@@ -8,108 +8,99 @@
              d:DesignWidth="260"
              d:DesignHeight="193">
 
-    <DockPanel>
+    <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
+        <DockPanel VerticalAlignment="Top">
 
-        <TextBlock Text="Subscription Details"
-                   FontWeight="Bold"
-                   DockPanel.Dock="Top"
-                   FontSize="13.333" />
+            <StackPanel DockPanel.Dock="Bottom"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0 4 0 0">
 
-        <Border Style="{DynamicResource SubscriptionDetailsContainer}">
+                <Button pf:Message.Attach="Save"
+                        ToolTip="Save your information."
+                        Margin="0 0 4 0">
+                    <Image Source="../../Resources/Icons/disk.png"
+                           Stretch="None" />
+                </Button>
 
-            <DockPanel VerticalAlignment="Top">
+                <Button pf:Message.Attach="CancelEdit"
+                        ToolTip="Cancel the changes"
+                        VerticalAlignment="Top"
+                        DockPanel.Dock="Left">
+                    <Image Source="../../Resources/Icons/cancel.png"
+                           Stretch="None" />
+                </Button>
+            </StackPanel>
 
-                <StackPanel DockPanel.Dock="Bottom"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Right"
-                            Margin="0 4 0 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="4" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-                    <Button pf:Message.Attach="Save"
-                            ToolTip="Save your information."
-                            Margin="0 0 4 0">
-                        <Image Source="../../Resources/Icons/disk.png"
-                               Stretch="None" />
-                    </Button>
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Content="Name" />
 
-                    <Button pf:Message.Attach="CancelEdit"
-                            ToolTip="Cancel the changes"
-                            VerticalAlignment="Top"
-                            DockPanel.Dock="Left">
-                        <Image Source="../../Resources/Icons/cancel.png"
-                               Stretch="None" />
-                    </Button>
-                </StackPanel>
+                <TextBox Grid.Column="2"
+                         Grid.Row="0"
+                         Text="{Binding Editable.Name}" />
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="4" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="4" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="4" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="4" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="4" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       Content="Number, Street" />
+                <DockPanel Grid.Column="2"
+                           Grid.Row="2">
+                    <TextBox Text="{Binding Editable.HouseNumber}"
+                             DockPanel.Dock="Left"
+                             Margin="0 0 4 0"
+                             Width="60" />
+                    <TextBox Text="{Binding Editable.Street}" />
+                </DockPanel>
 
-                    <Label Grid.Column="0"
-                           Grid.Row="0"
-                           Content="Name" />
+                <Label Grid.Column="0"
+                       Grid.Row="4"
+                       Content="City, Zip" />
+                <DockPanel Grid.Column="2"
+                           Grid.Row="4">
+                    <TextBox Text="{Binding Editable.ZipCode}"
+                             DockPanel.Dock="Right"
+                             Width="60" />
+                    <TextBox Text="{Binding Editable.City}"
+                             Margin="0 0 4 0" />
+                </DockPanel>
 
-                    <TextBox Grid.Column="2"
-                             Grid.Row="0"
-                             Text="{Binding Editable.Name}" />
+                <Label Grid.Column="0"
+                       Grid.Row="6"
+                       Content="County" />
 
-                    <Label Grid.Column="0"
-                           Grid.Row="2"
-                           Content="Number, Street" />
-                    <DockPanel Grid.Column="2"
-                               Grid.Row="2">
-                        <TextBox Text="{Binding Editable.HouseNumber}"
-                                 DockPanel.Dock="Left"
-                                 Margin="0 0 4 0"
-                                 Width="60" />
-                        <TextBox Text="{Binding Editable.Street}" />
-                    </DockPanel>
+                <TextBox Grid.Column="2"
+                         Grid.Row="6"
+                         Text="{Binding Editable.Country}" />
 
-                    <Label Grid.Column="0"
-                           Grid.Row="4"
-                           Content="City, Zip" />
-                    <DockPanel Grid.Column="2"
-                               Grid.Row="4">
-                        <TextBox Text="{Binding Editable.ZipCode}"
-                                 DockPanel.Dock="Right"
-                                 Width="60" />
-                        <TextBox Text="{Binding Editable.City}"
-                                 Margin="0 0 4 0" />
-                    </DockPanel>
+                <Label Grid.Column="0"
+                       Grid.Row="8"
+                       Content="Credit Card" />
 
-                    <Label Grid.Column="0"
-                           Grid.Row="6"
-                           Content="County" />
+                <TextBox Grid.Column="2"
+                         Grid.Row="8"
+                         Text="{Binding Editable.CreditCard}" />
+            </Grid>
 
-                    <TextBox Grid.Column="2"
-                             Grid.Row="6"
-                             Text="{Binding Editable.Country}" />
-
-                    <Label Grid.Column="0"
-                           Grid.Row="8"
-                           Content="Credit Card" />
-
-                    <TextBox Grid.Column="2"
-                             Grid.Row="8"
-                             Text="{Binding Editable.CreditCard}" />
-                </Grid>
-
-            </DockPanel>
-        </Border>
-    </DockPanel>
+        </DockPanel>
+    </ContentControl>
 
 </UserControl>
