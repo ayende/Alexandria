@@ -8,7 +8,16 @@
              d:DesignWidth="260"
              d:DesignHeight="150">
 
-    <DockPanel>
+    <DockPanel TextBlock.FontSize="14.667">
+
+        <Button pf:Message.Attach="BeginEdit"
+                ToolTip="Edit your information."
+                DockPanel.Dock="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0 4 0 0">
+            <Image Source="../Resources/Icons/pencil.png"
+                   Stretch="None" />
+        </Button>
 
         <Grid DockPanel.Dock="Top"
               Margin="0,4,0,0">
@@ -20,18 +29,8 @@
             <DockPanel Grid.Column="0"
                        VerticalAlignment="Top">
 
-                <Button pf:Message.Attach="BeginEdit"
-                        ToolTip="Edit your information."
-                        VerticalAlignment="Top"
-                        DockPanel.Dock="Left"
-                        Margin="0 0 4 0">
-                    <Image Source="../Resources/Icons/pencil.png"
-                           Stretch="None" />
-                </Button>
-
                 <StackPanel DockPanel.Dock="Top">
                     <TextBlock Text="{Binding Details.Name}"
-                               FontSize="13.333"
                                DockPanel.Dock="Top"
                                FontWeight="Bold" />
                     <StackPanel Orientation="Horizontal">
@@ -57,6 +56,7 @@
 
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
                     Margin="0 4 0 0">
 
             <Button pf:Message.Attach="BeginEdit"
