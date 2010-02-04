@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-             x:Class="Alexandria.Client.Views.SubscriptionDetails_Editing"
+             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Editing"
              mc:Ignorable="d"
              d:DesignWidth="260"
              d:DesignHeight="193">
@@ -18,7 +18,7 @@
             <Button pf:Message.Attach="Save"
                     ToolTip="Save your information."
                     Margin="0 0 4 0">
-                <Image Source="../Resources/Icons/disk.png"
+                <Image Source="../../Resources/Icons/disk.png"
                        Stretch="None" />
             </Button>
 
@@ -26,7 +26,7 @@
                     ToolTip="Cancel the changes"
                     VerticalAlignment="Top"
                     DockPanel.Dock="Left">
-                <Image Source="../Resources/Icons/cancel.png"
+                <Image Source="../../Resources/Icons/cancel.png"
                        Stretch="None" />
             </Button>
         </StackPanel>

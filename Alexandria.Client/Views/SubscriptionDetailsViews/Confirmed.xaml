@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-             x:Class="Alexandria.Client.Views.SubscriptionDetails_Loaded"
+             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Confirmed"
              mc:Ignorable="d"
              d:DesignWidth="260"
              d:DesignHeight="150">

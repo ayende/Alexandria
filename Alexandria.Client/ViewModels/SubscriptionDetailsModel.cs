@@ -5,41 +5,41 @@ namespace Alexandria.Client.ViewModels
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SubscriptionDetails : PropertyChangedBase, ISupportsViewMode
+    public class SubscriptionDetailsModel : PropertyChangedBase
     {
         private readonly IServiceBus bus;
-        private PersonalDetails details;
-        private PersonalDetails editable;
+        private PersonalDetailsModel details;
+        private PersonalDetailsModel editable;
         private decimal monthlyCost;
         private int numberOfPossibleBooksOut;
         private ViewMode viewMode;
 
-        public SubscriptionDetails(IServiceBus bus)
+        public SubscriptionDetailsModel(IServiceBus bus)
         {
             this.bus = bus;
 
             ViewMode = ViewMode.Retrieving;
-            Details = new PersonalDetails();
-            Editable = new PersonalDetails();
+            Details = new PersonalDetailsModel();
+            Editable = new PersonalDetailsModel();
         }
 
-        public PersonalDetails Details
+        public PersonalDetailsModel Details
         {
             get { return details; }
             set
             {
                 details = value;
-                NotifyOfPropertyChange("Details");
+                NotifyOfPropertyChange( ()=> Details );
             }
         }
 
-        public PersonalDetails Editable
+        public PersonalDetailsModel Editable
         {
             get { return editable; }
             set
             {
                 editable = value;
-                NotifyOfPropertyChange("Editable");
+                NotifyOfPropertyChange( ()=> Editable);
             }
         }
 
@@ -49,7 +49,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 viewMode = value;
-                NotifyOfPropertyChange("ViewMode");
+                NotifyOfPropertyChange(() => ViewMode);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 numberOfPossibleBooksOut = value;
-                NotifyOfPropertyChange("NumberOfPossibleBooksOut");
+                NotifyOfPropertyChange(()=>NumberOfPossibleBooksOut);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 monthlyCost = value;
-                NotifyOfPropertyChange("MonthlyCost");
+                NotifyOfPropertyChange( ()=> MonthlyCost );
             }
         }
 
@@ -89,7 +89,7 @@ namespace Alexandria.Client.ViewModels
         public void CancelEdit()
         {
             ViewMode = ViewMode.Confirmed;
-            Editable = new PersonalDetails();
+            Editable = new PersonalDetailsModel();
         }
 
         public void Save()

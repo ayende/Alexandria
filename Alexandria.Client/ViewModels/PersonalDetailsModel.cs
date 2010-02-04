@@ -2,7 +2,7 @@ namespace Alexandria.Client.ViewModels
 {
     using Caliburn.Core;
 
-    public class PersonalDetails : PropertyChangedBase
+    public class PersonalDetailsModel : PropertyChangedBase
     {
         private string city;
         private string country;
@@ -18,7 +18,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 name = value;
-                NotifyOfPropertyChange("Name");
+                NotifyOfPropertyChange(() => Name);
             }
         }
 
@@ -28,7 +28,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 street = value;
-                NotifyOfPropertyChange("Street");
+                NotifyOfPropertyChange(() => Street);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 houseNumber = value;
-                NotifyOfPropertyChange("HouseNumber");
+                NotifyOfPropertyChange(() => HouseNumber);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 city = value;
-                NotifyOfPropertyChange("City");
+                NotifyOfPropertyChange(() => City);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 zipCode = value;
-                NotifyOfPropertyChange("ZipCode");
+                NotifyOfPropertyChange(() => ZipCode);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 country = value;
-                NotifyOfPropertyChange("Country");
+                NotifyOfPropertyChange(() => Country);
             }
         }
 
@@ -78,7 +78,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 creditCard = value;
-                NotifyOfPropertyChange("CreditCard");
+                NotifyOfPropertyChange(() => CreditCard);
             }
         }
     }

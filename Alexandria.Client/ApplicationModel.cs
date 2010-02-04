@@ -3,7 +3,6 @@ namespace Alexandria.Client
     using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-    using System.Linq;
     using System.Windows.Threading;
     using Messages;
     using Rhino.ServiceBus;
@@ -14,7 +13,7 @@ namespace Alexandria.Client
         private readonly IServiceBus bus;
         private readonly Dispatcher dispatcher;
 
-        private SubscriptionDetails subscriptionDetails;
+        private SubscriptionDetailsModel subscriptionDetails;
 
         public ApplicationModel(Dispatcher dispatcher, IServiceBus bus)
         {
@@ -24,10 +23,10 @@ namespace Alexandria.Client
             Queue = new ObservableCollection<BookModel>();
             Recommendations = new ObservableCollection<BookModel>();
             SearchResults = new ObservableCollection<BookModel>();
-            subscriptionDetails = new SubscriptionDetails(bus);
+            subscriptionDetails = new SubscriptionDetailsModel(bus);
         }
 
-        public SubscriptionDetails SubscriptionDetails
+        public SubscriptionDetailsModel SubscriptionDetails
         {
             get { return subscriptionDetails; }
             set

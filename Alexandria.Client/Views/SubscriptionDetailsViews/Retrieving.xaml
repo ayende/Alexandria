@@ -3,7 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:Views="clr-namespace:Alexandria.Client.Views"
-             x:Class="Alexandria.Client.Views.SubscriptionDetails"
+             xmlns:SubscriptionDetailsViews="clr-namespace:Alexandria.Client.Views.SubscriptionDetailsViews"
+             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Retrieving"
              mc:Ignorable="d"
              d:DesignWidth="260"
              d:DesignHeight="200">
@@ -53,7 +54,7 @@
                         </Style>
                     </Border.Style>
 
-                    <Views:SubscriptionDetails_Loaded />
+                    <SubscriptionDetailsViews:Confirmed />
                 </Border>
 
                 <Border x:Name="EditingsState">
@@ -71,7 +72,7 @@
                         </Style>
                     </Border.Style>
 
-                    <Views:SubscriptionDetails_Editing />
+                    <SubscriptionDetailsViews:Editing />
                 </Border>
 
             </Grid>
