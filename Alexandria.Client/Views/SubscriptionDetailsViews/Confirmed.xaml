@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
              x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Confirmed"
              mc:Ignorable="d"
              d:DesignWidth="260"
@@ -11,7 +10,7 @@
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel TextBlock.FontSize="14.667">
 
-            <Button pf:Message.Attach="BeginEdit"
+            <Button x:Name="BeginEdit"
                     ToolTip="Edit your information."
                     DockPanel.Dock="Bottom"
                     HorizontalAlignment="Right"
@@ -60,11 +59,10 @@
                         HorizontalAlignment="Center"
                         Margin="0 4 0 0">
 
-                <Button pf:Message.Attach="BeginEdit"
-                        Visibility="Hidden"
+                <Button Visibility="Hidden"
                         HorizontalAlignment="Right"
                         Margin="0 0 4 0">
-                    <Image Source="../Resources/Icons/pencil.png"
+                    <Image Source="../../Resources/Icons/pencil.png"
                            Stretch="None" />
                 </Button>
 

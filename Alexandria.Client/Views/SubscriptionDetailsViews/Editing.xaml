@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
              x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Editing"
              mc:Ignorable="d"
              d:DesignWidth="260"
@@ -16,14 +15,14 @@
                         HorizontalAlignment="Right"
                         Margin="0 4 0 0">
 
-                <Button pf:Message.Attach="Save"
+                <Button x:Name="Save"
                         ToolTip="Save your information."
                         Margin="0 0 4 0">
                     <Image Source="../../Resources/Icons/disk.png"
                            Stretch="None" />
                 </Button>
 
-                <Button pf:Message.Attach="CancelEdit"
+                <Button x:Name="CancelEdit"
                         ToolTip="Cancel the changes"
                         VerticalAlignment="Top"
                         DockPanel.Dock="Left">

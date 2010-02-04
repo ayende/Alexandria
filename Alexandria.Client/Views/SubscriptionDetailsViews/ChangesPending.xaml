@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
              x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.ChangesPending"
              mc:Ignorable="d"
              d:DesignWidth="260"
@@ -13,7 +12,7 @@
 
             <TextBlock Text="Changes Pending"
                        DockPanel.Dock="Bottom"
-                       HorizontalAlignment="Right" />
+                       HorizontalAlignment="Center" />
 
             <Grid DockPanel.Dock="Top"
                   Margin="0,4,0,0">
@@ -26,19 +25,19 @@
                            VerticalAlignment="Top">
 
                     <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="{Binding Details.Name}"
+                        <TextBlock Text="{Binding Editable.Name}"
                                    DockPanel.Dock="Top"
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.Street}" />
-                            <TextBlock Text="{Binding Details.HouseNumber}" />
+                            <TextBlock Text="{Binding Editable.Street}" />
+                            <TextBlock Text="{Binding Editable.HouseNumber}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.City}" />
+                            <TextBlock Text="{Binding Editable.City}" />
                             <TextBlock Text=", " />
-                            <TextBlock Text="{Binding Details.ZipCode}" />
+                            <TextBlock Text="{Binding Editable.ZipCode}" />
                         </StackPanel>
-                        <TextBlock Text="{Binding Details.Country}" />
+                        <TextBlock Text="{Binding Editable.Country}" />
                     </StackPanel>
                 </DockPanel>
 
@@ -54,17 +53,8 @@
                         VerticalAlignment="Top"
                         HorizontalAlignment="Center"
                         Margin="0 4 0 0">
-
-                <Button pf:Message.Attach="BeginEdit"
-                        Visibility="Hidden"
-                        HorizontalAlignment="Right"
-                        Margin="0 0 4 0">
-                    <Image Source="../Resources/Icons/pencil.png"
-                           Stretch="None" />
-                </Button>
-
                 <TextBlock Text="Credit Card: " />
-                <TextBlock Text="{Binding Details.CreditCard}" />
+                <TextBlock Text="{Binding Editable.CreditCard}" />
             </StackPanel>
         </DockPanel>
     </ContentControl>

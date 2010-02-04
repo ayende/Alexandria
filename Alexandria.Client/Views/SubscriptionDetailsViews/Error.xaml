@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Error"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel VerticalAlignment="Top">
@@ -11,14 +10,14 @@
                         HorizontalAlignment="Right"
                         Margin="0 4 0 0">
 
-                <Button pf:Message.Attach="Save"
+                <Button x:Name="Save"
                         ToolTip="Save your information."
                         Margin="0 0 4 0">
                     <Image Source="../../Resources/Icons/disk.png"
                            Stretch="None" />
                 </Button>
 
-                <Button pf:Message.Attach="CancelEdit"
+                <Button x:Name="CancelEdit"
                         ToolTip="Cancel the changes"
                         VerticalAlignment="Top"
                         DockPanel.Dock="Left">
