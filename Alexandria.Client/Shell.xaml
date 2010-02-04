@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="Alexandria.Client.Shell"
         mc:Ignorable="d"
-        Width="800"
-        Height="600"
+        Width="960"
+        Height="720"
         WindowStartupLocation="CenterScreen"
         Background="White"
         Title="Alexandria">

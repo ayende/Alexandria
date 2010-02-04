@@ -5,30 +5,33 @@
              xmlns:Views="clr-namespace:Alexandria.Client.Views"
              x:Class="Alexandria.Client.Views.SubscriptionDetails"
              mc:Ignorable="d"
-             d:DesignWidth="300"
+             d:DesignWidth="260"
              d:DesignHeight="200">
 
-    <Border Padding="10"
-            CornerRadius="4"
-            Background="{DynamicResource SubscriptionBackground}"
-            BorderBrush="#FF707070"
-            BorderThickness="1">
+    <DockPanel Width="260">
 
-        <DockPanel>
-            <TextBlock Text="Subscription Details"
-                       FontWeight="Bold"
-                       DockPanel.Dock="Top"
-                       FontSize="13.333" />
+        <TextBlock Text="Subscription Details"
+                   FontWeight="Bold"
+                   DockPanel.Dock="Top"
+                   FontSize="13.333" />
+
+        <Border Padding="10"
+                CornerRadius="4"
+                Background="{DynamicResource SubscriptionBackground}"
+                BorderBrush="#FF707070"
+                BorderThickness="1">
             <Grid>
 
                 <Border x:Name="RetrievingState">
                     <Border.Style>
                         <Style TargetType="Border">
+                            <Setter Property="Visibility"
+                                    Value="Hidden" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding EditState}"
-                                             Value="Confirmed">
+                                <DataTrigger Binding="{Binding ViewMode}"
+                                             Value="Retrieving">
                                     <Setter Property="Visibility"
-                                            Value="Hidden" />
+                                            Value="Visible" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -44,7 +47,7 @@
                             <Setter Property="Visibility"
                                     Value="Hidden" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding EditState}"
+                                <DataTrigger Binding="{Binding ViewMode}"
                                              Value="Confirmed">
                                     <Setter Property="Visibility"
                                             Value="Visible" />
@@ -55,9 +58,28 @@
 
                     <Views:SubscriptionDetails_Loaded />
                 </Border>
+                
+                <Border x:Name="EditingsState">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility"
+                                    Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ViewMode}"
+                                             Value="Editing">
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
+                    <Views:SubscriptionDetails_Editing />
+                </Border>
 
             </Grid>
-        </DockPanel>
-    </Border>
+        </Border>
+
+    </DockPanel>
 
 </UserControl>

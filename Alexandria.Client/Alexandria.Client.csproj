@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
+    <Compile Include="ViewModels\EditSubscriptionDetails.cs" />
     <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\SubscriptionDetails_Editing.xaml.cs">
       <DependentUpon>SubscriptionDetails_Editing.xaml</DependentUpon>
@@ -218,6 +219,9 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\arrow_left.png" />
     <Resource Include="Resources\Icons\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\disk.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

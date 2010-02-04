@@ -15,10 +15,10 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(UpdateCreditCardResponse message)
         {
-            applicationModel.SubscriptionDetails.EditState =
+            applicationModel.SubscriptionDetails.ViewMode =
                 message.Success
-                    ? EditState.Confirmed
-                    : EditState.Error;
+                    ? ViewMode.Confirmed
+                    : ViewMode.Error;
         }
     }
 }

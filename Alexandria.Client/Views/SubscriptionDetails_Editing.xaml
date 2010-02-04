@@ -9,67 +9,67 @@
              d:DesignHeight="150">
 
     <DockPanel>
-        <!-- NOTE: Caliburn x:Name convention is not working here. Is this becaues of the nested user control? -->
-        <Button pf:Message.Attach="Edit"
-                HorizontalAlignment="Right"
-                DockPanel.Dock="Top">
-            <Image Source="../Resources/Icons/pencil.png"
-                   Stretch="None" />
-        </Button>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <Grid DockPanel.Dock="Top"
+              Margin="0,4,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <DockPanel Grid.Column="0"
+                       VerticalAlignment="Top">
 
+                <Button pf:Message.Attach="Save"
+                        ToolTip="Save your information."
+                        VerticalAlignment="Top"
+                        DockPanel.Dock="Left"
+                        Margin="0 0 4 0">
+                    <Image Source="../Resources/Icons/disk.png"
+                           Stretch="None" />
+                </Button>
 
-            <TextBlock Text="{Binding Name}"
-                       Grid.Row="0"
-                       Grid.Column="0" />
+                <StackPanel DockPanel.Dock="Top">
+                    <TextBox Text="{Binding Name}"
+                             FontSize="13.333"
+                             DockPanel.Dock="Top"
+                             FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding Street}" />
+                        <TextBox Text="{Binding HouseNumber}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding City}" />
+                        <TextBlock Text=", " />
+                        <TextBox Text="{Binding ZipCode}" />
+                    </StackPanel>
+                    <TextBox Text="{Binding Country}" />
+                </StackPanel>
+            </DockPanel>
 
-            <StackPanel Grid.Row="1"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-                <TextBlock Text="{Binding Street}" />
-                <TextBlock Text="{Binding HouseNumber}" />
+            <StackPanel Grid.Column="1"
+                        TextBlock.Foreground="#666"
+                        VerticalAlignment="Top">
+                <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}" />
+                <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\} a month}" />
             </StackPanel>
-
-            <StackPanel Grid.Row="2"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-                <TextBlock Text="{Binding City}" />
-                <TextBlock Text=", " />
-                <TextBlock Text="{Binding ZipCode}" />
-            </StackPanel>
-            <TextBlock Text="{Binding Country}"
-                       Grid.Row="3"
-                       Grid.Column="0" />
-
-            <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}"
-                       Grid.Row="0"
-                       Grid.Column="1" />
-
-            <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\}$ a month}"
-                       Grid.Row="1"
-                       Grid.Column="1" />
-
-            <TextBlock Text="Credit Card:"
-                       Grid.Row="2"
-                       Grid.Column="1" />
-
-            <TextBlock Text="{Binding CreditCard}"
-                       Grid.Row="3"
-                       Grid.Column="1" />
         </Grid>
 
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    Margin="0 4 0 0">
+
+            <Button pf:Message.Attach="BeginEdit"
+                    Visibility="Hidden"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 4 0">
+                <Image Source="../Resources/Icons/pencil.png"
+                       Stretch="None" />
+            </Button>
+
+            <TextBlock Text="Credit Card: " />
+            <TextBox Text="{Binding CreditCard}" />
+        </StackPanel>
     </DockPanel>
 
 </UserControl>

@@ -1,12 +1,15 @@
 namespace Alexandria.Client.ViewModels
 {
+    using System.Collections.Generic;
     using System.ComponentModel;
+    using Caliburn.PresentationFramework;
     using Messages;
     using Rhino.ServiceBus;
 
-    public enum EditState
+    public enum ViewMode
     {
         Retrieving,
+        Editing,
         ChangesPending,
         Confirmed,
         Error
@@ -15,7 +18,7 @@ namespace Alexandria.Client.ViewModels
     public class SubscriptionDetails : INotifyPropertyChanged
     {
         private readonly IServiceBus bus;
-        private EditState _editState;
+        private ViewMode _viewMode;
         private string city;
         private string country;
         private string creditCard;
@@ -30,16 +33,16 @@ namespace Alexandria.Client.ViewModels
         public SubscriptionDetails(IServiceBus bus)
         {
             this.bus = bus;
-            EditState = EditState.Retrieving;
+            ViewMode = ViewMode.Retrieving;
         }
 
-        public EditState EditState
+        public ViewMode ViewMode
         {
-            get { return _editState; }
+            get { return _viewMode; }
             set
             {
-                _editState = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("EditState"));
+                _viewMode = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("ViewMode"));
             }
         }
 
@@ -137,18 +140,12 @@ namespace Alexandria.Client.ViewModels
 
         public void BeginEdit()
         {
-            EditState = EditState.ChangesPending;
-
-            bus.Send(new UpdateCreditCardRequest
-                         {
-                             UserId = 1,
-                             CreditCard = CreditCard
-                         });
+            ViewMode = ViewMode.Editing;
         }
 
         public void Save()
         {
-            EditState = EditState.ChangesPending;
+            ViewMode = ViewMode.ChangesPending;
 
             bus.Send(new UpdateCreditCardRequest
             {
@@ -159,7 +156,7 @@ namespace Alexandria.Client.ViewModels
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
         {
-            EditState = EditState.Confirmed;
+            ViewMode = ViewMode.Confirmed;
 
             Name = subscriptionDetails.Name;
             Street = subscriptionDetails.Street;

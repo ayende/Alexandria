@@ -147,8 +147,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ItemsControl">
-                    <Border BorderBrush="Black"
-                            MinHeight="120"
+                    <Border MinHeight="120"
                             MinWidth="100"
                             Padding="8">
                         <ItemsPresenter />
