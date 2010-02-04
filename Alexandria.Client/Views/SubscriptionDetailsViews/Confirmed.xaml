@@ -8,68 +8,79 @@
              d:DesignWidth="260"
              d:DesignHeight="150">
 
-    <DockPanel TextBlock.FontSize="14.667">
+    <DockPanel Width="260">
 
-        <Button pf:Message.Attach="BeginEdit"
-                ToolTip="Edit your information."
-                DockPanel.Dock="Bottom"
-                HorizontalAlignment="Right"
-                Margin="0 4 0 0">
-            <Image Source="../Resources/Icons/pencil.png"
-                   Stretch="None" />
-        </Button>
+        <TextBlock Text="Subscription Details"
+                   FontWeight="Bold"
+                   DockPanel.Dock="Top"
+                   FontSize="13.333" />
 
-        <Grid DockPanel.Dock="Top"
-              Margin="0,4,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Border Style="{DynamicResource SubscriptionDetailsContainer}">
+            <DockPanel TextBlock.FontSize="14.667">
 
-            <DockPanel Grid.Column="0"
-                       VerticalAlignment="Top">
+                <Button pf:Message.Attach="BeginEdit"
+                        ToolTip="Edit your information."
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Right"
+                        Margin="0 4 0 0">
+                    <Image Source="../../Resources/Icons/pencil.png"
+                           Stretch="None" />
+                </Button>
 
-                <StackPanel DockPanel.Dock="Top">
-                    <TextBlock Text="{Binding Details.Name}"
-                               DockPanel.Dock="Top"
-                               FontWeight="Bold" />
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Details.Street}" />
-                        <TextBlock Text="{Binding Details.HouseNumber}" />
+                <Grid DockPanel.Dock="Top"
+                      Margin="0,4,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Column="0"
+                               VerticalAlignment="Top">
+
+                        <StackPanel DockPanel.Dock="Top">
+                            <TextBlock Text="{Binding Details.Name}"
+                                       DockPanel.Dock="Top"
+                                       FontWeight="Bold" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Details.Street}" />
+                                <TextBlock Text="{Binding Details.HouseNumber}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Details.City}" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Details.ZipCode}" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding Details.Country}" />
+                        </StackPanel>
+                    </DockPanel>
+
+                    <StackPanel Grid.Column="1"
+                                TextBlock.Foreground="#666"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}" />
+                        <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\} a month}" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Details.City}" />
-                        <TextBlock Text=", " />
-                        <TextBlock Text="{Binding Details.ZipCode}" />
-                    </StackPanel>
-                    <TextBlock Text="{Binding Details.Country}" />
+                </Grid>
+
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0 4 0 0">
+
+                    <Button pf:Message.Attach="BeginEdit"
+                            Visibility="Hidden"
+                            HorizontalAlignment="Right"
+                            Margin="0 0 4 0">
+                        <Image Source="../Resources/Icons/pencil.png"
+                               Stretch="None" />
+                    </Button>
+
+                    <TextBlock Text="Credit Card: " />
+                    <TextBlock Text="{Binding Details.CreditCard}" />
                 </StackPanel>
             </DockPanel>
+        </Border>
 
-            <StackPanel Grid.Column="1"
-                        TextBlock.Foreground="#666"
-                        VerticalAlignment="Top">
-                <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}" />
-                <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\} a month}" />
-            </StackPanel>
-        </Grid>
-
-        <StackPanel Orientation="Horizontal"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Margin="0 4 0 0">
-
-            <Button pf:Message.Attach="BeginEdit"
-                    Visibility="Hidden"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 4 0">
-                <Image Source="../Resources/Icons/pencil.png"
-                       Stretch="None" />
-            </Button>
-
-            <TextBlock Text="Credit Card: " />
-            <TextBlock Text="{Binding Details.CreditCard}" />
-        </StackPanel>
     </DockPanel>
 
 </UserControl>

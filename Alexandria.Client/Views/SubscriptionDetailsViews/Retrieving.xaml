@@ -2,8 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:Views="clr-namespace:Alexandria.Client.Views"
-             xmlns:SubscriptionDetailsViews="clr-namespace:Alexandria.Client.Views.SubscriptionDetailsViews"
              x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Retrieving"
              mc:Ignorable="d"
              d:DesignWidth="260"
@@ -19,61 +17,9 @@
         <Border Style="{DynamicResource SubscriptionDetailsContainer}">
             <Grid>
 
-                <Border x:Name="RetrievingState">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Visibility"
-                                    Value="Hidden" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ViewMode}"
-                                             Value="Retrieving">
-                                    <Setter Property="Visibility"
-                                            Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    
-                    <TextBlock Text="Loading ..."
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center" />
-                </Border>
-
-                <Border x:Name="LoadedState">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Visibility"
-                                    Value="Hidden" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ViewMode}"
-                                             Value="Confirmed">
-                                    <Setter Property="Visibility"
-                                            Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-
-                    <SubscriptionDetailsViews:Confirmed />
-                </Border>
-
-                <Border x:Name="EditingsState">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Visibility"
-                                    Value="Hidden" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ViewMode}"
-                                             Value="Editing">
-                                    <Setter Property="Visibility"
-                                            Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-
-                    <SubscriptionDetailsViews:Editing />
-                </Border>
+                <TextBlock Text="Loading ..."
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
 
             </Grid>
         </Border>
