@@ -183,7 +183,7 @@
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
     <Compile Include="ViewModels\PersonalDetailsModel.cs" />
-    <Compile Include="ViewModels\SubscriptionDetailsModel.cs" />
+    <Compile Include="ViewModels\SubscriptionDetailsViewModel.cs" />
     <Compile Include="Views\SubscriptionDetailsViews\ChangesPending.xaml.cs">
       <DependentUpon>ChangesPending.xaml</DependentUpon>
     </Compile>

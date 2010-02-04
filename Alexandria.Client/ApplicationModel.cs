@@ -13,7 +13,7 @@ namespace Alexandria.Client
         private readonly IServiceBus bus;
         private readonly Dispatcher dispatcher;
 
-        private SubscriptionDetailsModel subscriptionDetails;
+        private SubscriptionDetailsViewModel subscriptionDetails;
 
         public ApplicationModel(Dispatcher dispatcher, IServiceBus bus)
         {
@@ -23,10 +23,10 @@ namespace Alexandria.Client
             Queue = new ObservableCollection<BookModel>();
             Recommendations = new ObservableCollection<BookModel>();
             SearchResults = new ObservableCollection<BookModel>();
-            subscriptionDetails = new SubscriptionDetailsModel(bus);
+            subscriptionDetails = new SubscriptionDetailsViewModel(bus);
         }
 
-        public SubscriptionDetailsModel SubscriptionDetails
+        public SubscriptionDetailsViewModel SubscriptionDetails
         {
             get { return subscriptionDetails; }
             set

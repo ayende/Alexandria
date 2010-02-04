@@ -5,7 +5,7 @@ namespace Alexandria.Client.ViewModels
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SubscriptionDetailsModel : PropertyChangedBase
+    public class SubscriptionDetailsViewModel : PropertyChangedBase
     {
         private readonly IServiceBus bus;
         private PersonalDetailsModel details;
@@ -14,7 +14,7 @@ namespace Alexandria.Client.ViewModels
         private int numberOfPossibleBooksOut;
         private ViewMode viewMode;
 
-        public SubscriptionDetailsModel(IServiceBus bus)
+        public SubscriptionDetailsViewModel(IServiceBus bus)
         {
             this.bus = bus;
 
