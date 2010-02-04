@@ -154,6 +154,7 @@
     <Compile Include="Infrastructure\Cache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Infrastructure\RevealOn.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
     <Compile Include="Program.cs" />

@@ -4,6 +4,7 @@
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure"
              mc:Ignorable="d"
              x:Class="Alexandria.Client.Views.Queue"
              d:DesignWidth="500"
@@ -20,12 +21,16 @@
                            HorizontalAlignment="Left">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel d:DesignWidth="120"
+                    <DockPanel Background="Transparent"
+                               d:DesignWidth="120"
                                d:DesignHeight="160">
+
                         <Button Content="Remove"
+                                i:RevealOn.HoverOverParent="True"
                                 DockPanel.Dock="Bottom"
                                 pf:Message.Attach="RemoveFromQueue($dataContext)"
                                 Style="{DynamicResource QueueControlButton}" />
+
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     DockPanel.Dock="Bottom">
