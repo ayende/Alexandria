@@ -15,7 +15,9 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(MyBooksResponse message)
         {
-            applicationModel.MyBooks.UpdateFrom(message.Books);
+            applicationModel.UpdateInUIThread(
+                () => applicationModel.MyBooks.UpdateFrom(message.Books)
+                );
         }
     }
 }

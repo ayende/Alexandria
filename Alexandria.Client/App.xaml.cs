@@ -13,7 +13,9 @@
 
         protected override object CreateRootModel()
         {
-            return Container.GetInstance<ApplicationModel>();
+            var model = Container.GetInstance<ApplicationModel>();
+            model.Init();
+            return model;
         }
     }
 }
