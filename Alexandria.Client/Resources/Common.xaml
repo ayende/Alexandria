@@ -44,6 +44,8 @@
 
     <Style x:Key="SubscriptionDetailsContainer"
            TargetType="Border">
+        <Setter Property="Width"
+                Value="260" />
         <Setter Property="Padding"
                 Value="10" />
         <Setter Property="SnapsToDevicePixels"

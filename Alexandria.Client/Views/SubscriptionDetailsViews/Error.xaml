@@ -1,13 +1,8 @@
-﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Error"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Editing"
-             mc:Ignorable="d"
-             d:DesignWidth="260"
-             d:DesignHeight="193">
-
+             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
+    
     <DockPanel>
 
         <TextBlock Text="Subscription Details"
@@ -111,5 +106,4 @@
             </DockPanel>
         </Border>
     </DockPanel>
-
 </UserControl>

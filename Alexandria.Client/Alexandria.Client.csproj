@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SubscriptionDetailsViews\ChangesPending.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SubscriptionDetailsViews\Editing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Search.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubscriptionDetailsViews\Error.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +184,9 @@
     <Compile Include="ViewModels\BookModel.cs" />
     <Compile Include="ViewModels\PersonalDetailsModel.cs" />
     <Compile Include="ViewModels\SubscriptionDetailsModel.cs" />
+    <Compile Include="Views\SubscriptionDetailsViews\ChangesPending.xaml.cs">
+      <DependentUpon>ChangesPending.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SubscriptionDetailsViews\Editing.xaml.cs">
       <DependentUpon>Editing.xaml</DependentUpon>
     </Compile>
@@ -190,6 +201,9 @@
     </Compile>
     <Compile Include="Views\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubscriptionDetailsViews\Error.xaml.cs">
+      <DependentUpon>Error.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubscriptionDetailsViews\Retrieving.xaml.cs">
       <DependentUpon>Retrieving.xaml</DependentUpon>

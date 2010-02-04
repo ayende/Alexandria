@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Confirmed"
+             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.ChangesPending"
              mc:Ignorable="d"
              d:DesignWidth="260"
              d:DesignHeight="150">
@@ -18,14 +18,9 @@
         <Border Style="{DynamicResource SubscriptionDetailsContainer}">
             <DockPanel TextBlock.FontSize="14.667">
 
-                <Button pf:Message.Attach="BeginEdit"
-                        ToolTip="Edit your information."
-                        DockPanel.Dock="Bottom"
-                        HorizontalAlignment="Right"
-                        Margin="0 4 0 0">
-                    <Image Source="../../Resources/Icons/pencil.png"
-                           Stretch="None" />
-                </Button>
+                <TextBlock Text="Changes Pending"
+                           DockPanel.Dock="Bottom"
+                           HorizontalAlignment="Right" />
 
                 <Grid DockPanel.Dock="Top"
                       Margin="0,4,0,0">

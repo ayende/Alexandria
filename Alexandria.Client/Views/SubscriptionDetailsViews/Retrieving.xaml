@@ -7,7 +7,7 @@
              d:DesignWidth="260"
              d:DesignHeight="200">
 
-    <DockPanel Width="260">
+    <DockPanel>
 
         <TextBlock Text="Subscription Details"
                    FontWeight="Bold"
@@ -16,11 +16,9 @@
 
         <Border Style="{DynamicResource SubscriptionDetailsContainer}">
             <Grid>
-
                 <TextBlock Text="Loading ..."
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
-
             </Grid>
         </Border>
 
