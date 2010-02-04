@@ -28,30 +28,39 @@
                     <Image Source="../Resources/Icons/disk.png"
                            Stretch="None" />
                 </Button>
+                
+                <Button pf:Message.Attach="CancelEdit"
+                        ToolTip="Cancel the changes"
+                        VerticalAlignment="Top"
+                        DockPanel.Dock="Left"
+                        Margin="0 0 4 0">
+                    <Image Source="../Resources/Icons/cancel.png"
+                           Stretch="None" />
+                </Button>
 
                 <StackPanel DockPanel.Dock="Top">
-                    <TextBox Text="{Binding Name}"
+                    <TextBox Text="{Binding Editable.Name}"
                              FontSize="13.333"
                              DockPanel.Dock="Top"
                              FontWeight="Bold" />
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Street}" />
-                        <TextBox Text="{Binding HouseNumber}" />
+                        <TextBox Text="{Binding Editable.Street}" />
+                        <TextBox Text="{Binding Editable.HouseNumber}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding City}" />
+                        <TextBox Text="{Binding Editable.City}" />
                         <TextBlock Text=", " />
-                        <TextBox Text="{Binding ZipCode}" />
+                        <TextBox Text="{Binding Editable.ZipCode}" />
                     </StackPanel>
-                    <TextBox Text="{Binding Country}" />
+                    <TextBox Text="{Binding Editable.Country}" />
                 </StackPanel>
             </DockPanel>
 
             <StackPanel Grid.Column="1"
                         TextBlock.Foreground="#666"
                         VerticalAlignment="Top">
-                <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}" />
-                <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\} a month}" />
+                <TextBlock Text="{Binding Details.NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}" />
+                <TextBlock Text="{Binding Details.MonthlyCost, StringFormat=\{0:0.#\} a month}" />
             </StackPanel>
         </Grid>
 
@@ -68,7 +77,7 @@
             </Button>
 
             <TextBlock Text="Credit Card: " />
-            <TextBox Text="{Binding CreditCard}" />
+            <TextBox Text="{Binding Editable.CreditCard}" />
         </StackPanel>
     </DockPanel>
 

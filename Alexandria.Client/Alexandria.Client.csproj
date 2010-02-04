@@ -148,7 +148,7 @@
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
-    <Compile Include="Consumers\UpdateCreditCardConsumer.cs" />
+    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\Cache.cs" />
@@ -172,7 +172,7 @@
     </Compile>
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
-    <Compile Include="ViewModels\EditSubscriptionDetails.cs" />
+    <Compile Include="ViewModels\PersonalDetails.cs" />
     <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\SubscriptionDetails_Editing.xaml.cs">
       <DependentUpon>SubscriptionDetails_Editing.xaml</DependentUpon>
@@ -222,6 +222,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

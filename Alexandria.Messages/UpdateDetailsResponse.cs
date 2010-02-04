@@ -1,12 +1,12 @@
 namespace Alexandria.Messages
 {
-    public class UpdateCreditCardResponse
+    public class UpdateDetailsResponse
     {
         public bool Success { get; set; }
 
         public string Key
         {
-            get { return "UpdateCreditCard [UserId #" + UserId + "]"; }
+            get { return "UpdateDetails [UserId #" + UserId + "]"; }
         }
 
         public long UserId { get; set; }

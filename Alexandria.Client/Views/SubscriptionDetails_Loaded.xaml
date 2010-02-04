@@ -30,20 +30,20 @@
                 </Button>
 
                 <StackPanel DockPanel.Dock="Top">
-                    <TextBlock Text="{Binding Name}"
+                    <TextBlock Text="{Binding Details.Name}"
                                FontSize="13.333"
                                DockPanel.Dock="Top"
                                FontWeight="Bold" />
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Street}" />
-                        <TextBlock Text="{Binding HouseNumber}" />
+                        <TextBlock Text="{Binding Details.Street}" />
+                        <TextBlock Text="{Binding Details.HouseNumber}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding City}" />
+                        <TextBlock Text="{Binding Details.City}" />
                         <TextBlock Text=", " />
-                        <TextBlock Text="{Binding ZipCode}" />
+                        <TextBlock Text="{Binding Details.ZipCode}" />
                     </StackPanel>
-                    <TextBlock Text="{Binding Country}" />
+                    <TextBlock Text="{Binding Details.Country}" />
                 </StackPanel>
             </DockPanel>
 
@@ -68,7 +68,7 @@
             </Button>
 
             <TextBlock Text="Credit Card: " />
-            <TextBlock Text="{Binding CreditCard}" />
+            <TextBlock Text="{Binding Details.CreditCard}" />
         </StackPanel>
     </DockPanel>
 

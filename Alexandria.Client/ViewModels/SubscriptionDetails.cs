@@ -1,8 +1,6 @@
 namespace Alexandria.Client.ViewModels
 {
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Caliburn.PresentationFramework;
+    using Caliburn.Core;
     using Messages;
     using Rhino.ServiceBus;
 
@@ -15,94 +13,51 @@ namespace Alexandria.Client.ViewModels
         Error
     }
 
-    public class SubscriptionDetails : INotifyPropertyChanged
+    public class SubscriptionDetails : PropertyChangedBase
     {
         private readonly IServiceBus bus;
-        private ViewMode _viewMode;
-        private string city;
-        private string country;
-        private string creditCard;
-        private string houseNumber;
+        private PersonalDetails details;
+        private PersonalDetails editable;
         private decimal monthlyCost;
-        private string name;
         private int numberOfPossibleBooksOut;
-
-        private string street;
-        private string zipCode;
+        private ViewMode viewMode;
 
         public SubscriptionDetails(IServiceBus bus)
         {
             this.bus = bus;
+
             ViewMode = ViewMode.Retrieving;
+            Details = new PersonalDetails();
+            Editable = new PersonalDetails();
+        }
+
+        public PersonalDetails Details
+        {
+            get { return details; }
+            set
+            {
+                details = value;
+                NotifyOfPropertyChange("Details");
+            }
+        }
+
+        public PersonalDetails Editable
+        {
+            get { return editable; }
+            set
+            {
+                editable = value;
+                NotifyOfPropertyChange("Editable");
+            }
         }
 
         public ViewMode ViewMode
         {
-            get { return _viewMode; }
+            get { return viewMode; }
             set
             {
-                _viewMode = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("ViewMode"));
-            }
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-            }
-        }
-
-        public string Street
-        {
-            get { return street; }
-            set
-            {
-                street = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Street"));
-            }
-        }
-
-        public string HouseNumber
-        {
-            get { return houseNumber; }
-            set
-            {
-                houseNumber = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("HouseNumber"));
-            }
-        }
-
-        public string City
-        {
-            get { return city; }
-            set
-            {
-                city = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("City"));
-            }
-        }
-
-        public string ZipCode
-        {
-            get { return zipCode; }
-            set
-            {
-                zipCode = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("ZipCode"));
-            }
-        }
-
-        public string Country
-        {
-            get { return country; }
-            set
-            {
-                country = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Country"));
+                viewMode = value;
+                NotifyOfPropertyChange("ViewMode");
             }
         }
 
@@ -112,7 +67,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 numberOfPossibleBooksOut = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("NumberOfPossibleBooksOut"));
+                NotifyOfPropertyChange("NumberOfPossibleBooksOut");
             }
         }
 
@@ -122,51 +77,64 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 monthlyCost = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("MonthlyCost"));
+                NotifyOfPropertyChange("MonthlyCost");
             }
         }
-
-        public string CreditCard
-        {
-            get { return creditCard; }
-            set
-            {
-                creditCard = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("CreditCard"));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void BeginEdit()
         {
             ViewMode = ViewMode.Editing;
+
+            Editable.Name = Details.Name;
+            Editable.Street = Details.Street;
+            Editable.HouseNumber = Details.HouseNumber;
+            Editable.City = Details.City;
+            Editable.ZipCode = Details.ZipCode;
+            Editable.Country = Details.Country;
+            //Editable.CreditCard = Details.CreditCard;
+        }
+
+        public void CancelEdit()
+        {
+            ViewMode = ViewMode.Confirmed;
+            Editable = new PersonalDetails();
         }
 
         public void Save()
         {
             ViewMode = ViewMode.ChangesPending;
 
-            bus.Send(new UpdateCreditCardRequest
-            {
-                UserId = 1,
-                CreditCard = CreditCard
-            });
+            bus.Send(new UpdateDetailsRequest
+                         {
+                             UserId = 1,
+                             Details = new SubscriptionDetailsDTO
+                                           {
+                                               Name = Editable.Name,
+                                               Street = Editable.Street,
+                                               HouseNumber = Editable.HouseNumber,
+                                               City = Editable.City,
+                                               ZipCode = Editable.ZipCode,
+                                               Country = Editable.Country,
+                                               CreditCard = Editable.CreditCard
+                                           }
+                         });
         }
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
         {
             ViewMode = ViewMode.Confirmed;
 
-            Name = subscriptionDetails.Name;
-            Street = subscriptionDetails.Street;
-            HouseNumber = subscriptionDetails.HouseNumber;
-            City = subscriptionDetails.City;
-            ZipCode = subscriptionDetails.ZipCode;
-            Country = subscriptionDetails.Country;
+            Details.Name = subscriptionDetails.Name;
+            Details.Street = subscriptionDetails.Street;
+            Details.HouseNumber = subscriptionDetails.HouseNumber;
+            Details.City = subscriptionDetails.City;
+            Details.ZipCode = subscriptionDetails.ZipCode;
+            Details.Country = subscriptionDetails.Country;
+
             NumberOfPossibleBooksOut = subscriptionDetails.NumberOfPossibleBooksOut;
             MonthlyCost = subscriptionDetails.MonthlyCost;
-            CreditCard = subscriptionDetails.CreditCard;
+
+            Details.CreditCard = subscriptionDetails.CreditCard;
         }
     }
 }

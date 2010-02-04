@@ -3,18 +3,18 @@ namespace Alexandria.Backend.Consumers
     using Messages;
     using Rhino.ServiceBus;
 
-    public class UpdateCreditCardConsumer : ConsumerOf<UpdateCreditCardRequest>
+    public class UpdateDetailsConsumer : ConsumerOf<UpdateDetailsRequest>
     {
         private readonly IServiceBus bus;
 
-        public UpdateCreditCardConsumer(IServiceBus bus)
+        public UpdateDetailsConsumer(IServiceBus bus)
         {
             this.bus = bus;
         }
 
-        public void Consume(UpdateCreditCardRequest message)
+        public void Consume(UpdateDetailsRequest message)
         {
-            bus.Reply(new UpdateCreditCardResponse
+            bus.Reply(new UpdateDetailsResponse
                           {
                               Success = true
                           });
