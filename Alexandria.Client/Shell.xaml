@@ -8,13 +8,13 @@
         Width="960"
         Height="720"
         WindowStartupLocation="CenterScreen"
-        Background="White"
+        Background="{DynamicResource WindowBackground}"
         Title="Alexandria">
 
     <DockPanel Margin="12,0">
 
         <DockPanel x:Name="Header"
-                   Margin="0 10 0 8"
+                   Margin="0 10 0 0"
                    DockPanel.Dock="Top">
 
             <ContentControl x:Name="SubscriptionDetails"
@@ -24,7 +24,8 @@
             <Views:MyBooks />
         </DockPanel>
 
-        <Views:Queue DockPanel.Dock="Top" />
+        <Views:Queue DockPanel.Dock="Top"
+                     Margin="0 8 0 8" />
 
         <Views:Recommendations DockPanel.Dock="Top" />
 

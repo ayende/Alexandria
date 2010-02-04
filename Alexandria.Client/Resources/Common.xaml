@@ -5,6 +5,15 @@
 
     <Converters:TimeSpanToHumanReadableStringConverter x:Key="TimespanConverter" />
 
+    <LinearGradientBrush x:Key="WindowBackground"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#FFEFEEED"
+                      Offset="0" />
+        <GradientStop Color="#FF999999"
+                      Offset="1" />
+    </LinearGradientBrush>
+
     <LinearGradientBrush x:Key="MouseOverButton"
                          EndPoint="0,1"
                          StartPoint="0,0">
@@ -115,22 +124,29 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="HeaderedContentControl">
-                    <DockPanel SnapsToDevicePixels="True"
-                               VerticalAlignment="Top">
-                        <Border Background="#EFEEED"
-                                Padding="0 2"
-                                DockPanel.Dock="Top"
-                                Margin="0"
-                                BorderThickness="0 1"
-                                BorderBrush="#807E7D">
-                            <TextBlock Text="{TemplateBinding Header}"
-                                       FontSize="16"
-                                       FontWeight="Bold"
-                                       Margin="4 0 0 0" />
-                        </Border>
+                    <Border SnapsToDevicePixels="True"
+                            VerticalAlignment="Top"
+                            CornerRadius="5,5,4,4"
+                            Background="White"
+                            BorderBrush="#FF807E7D"
+                            BorderThickness="1,0,1,1">
+                        <DockPanel VerticalAlignment="Top">
+                            <Border DockPanel.Dock="Top"
+                                    Background="#EFEEED"
+                                    Padding="0 2"
+                                    Margin="0"
+                                    BorderThickness="0 1"
+                                    BorderBrush="#807E7D"
+                                    CornerRadius="4,4,0,0">
+                                <TextBlock Text="{TemplateBinding Header}"
+                                           FontSize="16"
+                                           FontWeight="Bold"
+                                           Margin="4 0 0 0" />
+                            </Border>
 
-                        <ContentPresenter />
-                    </DockPanel>
+                            <ContentPresenter />
+                        </DockPanel>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -147,7 +163,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ItemsControl">
-                    <Border MinHeight="120"
+                    <Border MinHeight="130"
                             MinWidth="100"
                             Padding="8">
                         <ItemsPresenter />
