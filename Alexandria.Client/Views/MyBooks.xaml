@@ -14,15 +14,21 @@
                    FontSize="13.333"
                    FontWeight="Bold"
                    Text="My Books" />
+        
+        <Border Background="White"
+                CornerRadius="4"
+                BorderThickness="1"
+                BorderBrush="#FF707070"
+                SnapsToDevicePixels="True">
 
-        <c:BookSummaryList ItemsSource="{Binding MyBooks}"
-                           HorizontalAlignment="Left">
-            <c:BookSummaryList.ItemTemplate>
-                <DataTemplate>
-                    <c:BookSummary BookModel="{Binding}" />
-                </DataTemplate>
-            </c:BookSummaryList.ItemTemplate>
-        </c:BookSummaryList>
+            <c:BookSummaryList ItemsSource="{Binding MyBooks}">
+                <c:BookSummaryList.ItemTemplate>
+                    <DataTemplate>
+                        <c:BookSummary BookModel="{Binding}" />
+                    </DataTemplate>
+                </c:BookSummaryList.ItemTemplate>
+            </c:BookSummaryList>
+        </Border>
     </DockPanel>
 
 </UserControl>
