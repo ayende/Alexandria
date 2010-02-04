@@ -20,7 +20,7 @@ namespace Alexandria.Client.Consumers
             if(message.Success)
             {
                 applicationModel.SubscriptionDetails.Details = applicationModel.SubscriptionDetails.Editable;
-                applicationModel.SubscriptionDetails.Editable = new PersonalDetailsModel();
+                applicationModel.SubscriptionDetails.Editable = new ContactInfo();
             }
 
             applicationModel.SubscriptionDetails.ViewMode =

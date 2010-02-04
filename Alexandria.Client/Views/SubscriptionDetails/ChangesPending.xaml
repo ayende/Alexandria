@@ -2,22 +2,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.Confirmed"
+             x:Class="Alexandria.Client.Views.SubscriptionDetails.ChangesPending"
              mc:Ignorable="d"
              d:DesignWidth="260"
-             d:DesignHeight="191">
+             d:DesignHeight="194">
 
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel TextBlock.FontSize="14.667">
 
-            <Button x:Name="BeginEdit"
-                    ToolTip="Edit your information."
-                    DockPanel.Dock="Bottom"
-                    HorizontalAlignment="Right"
-                    Margin="0 4 0 0">
-                <Image Source="../../Resources/Icons/pencil.png"
-                       Stretch="None" />
-            </Button>
+            <TextBlock Text="Changes Pending"
+                       DockPanel.Dock="Bottom"
+                       HorizontalAlignment="Center" />
 
             <Grid DockPanel.Dock="Top"
                   Margin="0,4,0,0">
@@ -30,19 +25,19 @@
                            VerticalAlignment="Top">
 
                     <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="{Binding Details.Name}"
+                        <TextBlock Text="{Binding Editable.Name}"
                                    DockPanel.Dock="Top"
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.Street}" />
-                            <TextBlock Text="{Binding Details.HouseNumber}" />
+                            <TextBlock Text="{Binding Editable.Street}" />
+                            <TextBlock Text="{Binding Editable.HouseNumber}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.City}" />
+                            <TextBlock Text="{Binding Editable.City}" />
                             <TextBlock Text=", " />
-                            <TextBlock Text="{Binding Details.ZipCode}" />
+                            <TextBlock Text="{Binding Editable.ZipCode}" />
                         </StackPanel>
-                        <TextBlock Text="{Binding Details.Country}" />
+                        <TextBlock Text="{Binding Editable.Country}" />
                     </StackPanel>
                 </DockPanel>
 
@@ -54,7 +49,7 @@
                 </StackPanel>
             </Grid>
 
-            <StackPanel Orientation="Horizontal"
+             <StackPanel Orientation="Horizontal"
                         Margin="0 4 0 0">
 
                 <Button Visibility="Hidden"

@@ -106,11 +106,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SubscriptionDetailsViews\ChangesPending.xaml">
+    <Page Include="Views\SubscriptionDetails\ChangesPending.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SubscriptionDetailsViews\Editing.xaml">
+    <Page Include="Views\SubscriptionDetails\Editing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -130,15 +130,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SubscriptionDetailsViews\Error.xaml">
+    <Page Include="Views\SubscriptionDetails\Error.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SubscriptionDetailsViews\Retrieving.xaml">
+    <Page Include="Views\SubscriptionDetails\Retrieving.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SubscriptionDetailsViews\Confirmed.xaml">
+    <Page Include="Views\SubscriptionDetails\Confirmed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,12 +182,12 @@
     </Compile>
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
-    <Compile Include="ViewModels\PersonalDetailsModel.cs" />
-    <Compile Include="ViewModels\SubscriptionDetailsViewModel.cs" />
-    <Compile Include="Views\SubscriptionDetailsViews\ChangesPending.xaml.cs">
+    <Compile Include="ViewModels\ContactInfo.cs" />
+    <Compile Include="ViewModels\SubscriptionDetails.cs" />
+    <Compile Include="Views\SubscriptionDetails\ChangesPending.xaml.cs">
       <DependentUpon>ChangesPending.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubscriptionDetailsViews\Editing.xaml.cs">
+    <Compile Include="Views\SubscriptionDetails\Editing.xaml.cs">
       <DependentUpon>Editing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MyBooks.xaml.cs">
@@ -202,13 +202,13 @@
     <Compile Include="Views\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubscriptionDetailsViews\Error.xaml.cs">
+    <Compile Include="Views\SubscriptionDetails\Error.xaml.cs">
       <DependentUpon>Error.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubscriptionDetailsViews\Retrieving.xaml.cs">
+    <Compile Include="Views\SubscriptionDetails\Retrieving.xaml.cs">
       <DependentUpon>Retrieving.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubscriptionDetailsViews\Confirmed.xaml.cs">
+    <Compile Include="Views\SubscriptionDetails\Confirmed.xaml.cs">
       <DependentUpon>Confirmed.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -5,25 +5,25 @@ namespace Alexandria.Client.ViewModels
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SubscriptionDetailsViewModel : PropertyChangedBase
+    public class SubscriptionDetails : PropertyChangedBase
     {
         private readonly IServiceBus bus;
-        private PersonalDetailsModel details;
-        private PersonalDetailsModel editable;
+        private ContactInfo details;
+        private ContactInfo editable;
         private decimal monthlyCost;
         private int numberOfPossibleBooksOut;
         private ViewMode viewMode;
 
-        public SubscriptionDetailsViewModel(IServiceBus bus)
+        public SubscriptionDetails(IServiceBus bus)
         {
             this.bus = bus;
 
             ViewMode = ViewMode.Retrieving;
-            Details = new PersonalDetailsModel();
-            Editable = new PersonalDetailsModel();
+            Details = new ContactInfo();
+            Editable = new ContactInfo();
         }
 
-        public PersonalDetailsModel Details
+        public ContactInfo Details
         {
             get { return details; }
             set
@@ -33,7 +33,7 @@ namespace Alexandria.Client.ViewModels
             }
         }
 
-        public PersonalDetailsModel Editable
+        public ContactInfo Editable
         {
             get { return editable; }
             set
@@ -89,7 +89,7 @@ namespace Alexandria.Client.ViewModels
         public void CancelEdit()
         {
             ViewMode = ViewMode.Confirmed;
-            Editable = new PersonalDetailsModel();
+            Editable = new ContactInfo();
         }
 
         public void Save()

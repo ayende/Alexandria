@@ -2,7 +2,7 @@ namespace Alexandria.Client.ViewModels
 {
     using Caliburn.Core;
 
-    public class PersonalDetailsModel : PropertyChangedBase
+    public class ContactInfo : PropertyChangedBase
     {
         private string city;
         private string country;

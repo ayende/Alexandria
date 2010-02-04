@@ -1,4 +1,4 @@
-﻿namespace Alexandria.Client.Views.SubscriptionDetailsViews
+﻿namespace Alexandria.Client.Views.SubscriptionDetails
 {
     using System.Windows.Controls;
 
