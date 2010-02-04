@@ -15,12 +15,7 @@
                    DockPanel.Dock="Top"
                    FontSize="13.333" />
 
-        <Border Padding="10"
-                SnapsToDevicePixels="True"
-                CornerRadius="4"
-                Background="{DynamicResource SubscriptionBackground}"
-                BorderBrush="#FF707070"
-                BorderThickness="1">
+        <Border Style="{DynamicResource SubscriptionDetailsContainer}">
             <Grid>
 
                 <Border x:Name="RetrievingState">
