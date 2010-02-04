@@ -1,28 +1,25 @@
 namespace Alexandria.Client
 {
-    using System;
-    using System.Collections.ObjectModel;
     using System.ComponentModel;
-    using System.Windows.Threading;
+    using Caliburn.PresentationFramework;
+    using Caliburn.PresentationFramework.Screens;
     using Messages;
     using Rhino.ServiceBus;
     using ViewModels;
 
-    public class ApplicationModel : INotifyPropertyChanged
+    public class ApplicationModel : Screen
     {
         private readonly IServiceBus bus;
-        private readonly Dispatcher dispatcher;
-
         private SubscriptionDetails subscriptionDetails;
 
-        public ApplicationModel(Dispatcher dispatcher, IServiceBus bus)
+        public ApplicationModel(IServiceBus bus)
         {
-            this.dispatcher = dispatcher;
             this.bus = bus;
-            MyBooks = new ObservableCollection<BookModel>();
-            Queue = new ObservableCollection<BookModel>();
-            Recommendations = new ObservableCollection<BookModel>();
-            SearchResults = new ObservableCollection<BookModel>();
+
+            MyBooks = new BindableCollection<BookModel>();
+            Queue = new BindableCollection<BookModel>();
+            Recommendations = new BindableCollection<BookModel>();
+            SearchResults = new BindableCollection<BookModel>();
             subscriptionDetails = new SubscriptionDetails(bus);
         }
 
@@ -32,41 +29,34 @@ namespace Alexandria.Client
             set
             {
                 subscriptionDetails = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("SubscriptionDetails"));
+                NotifyOfPropertyChange(() => SubscriptionDetails);
             }
         }
 
-        public ObservableCollection<BookModel> Queue { get; set; }
-        public ObservableCollection<BookModel> Recommendations { get; set; }
-        public ObservableCollection<BookModel> MyBooks { get; set; }
-        public ObservableCollection<BookModel> SearchResults { get; set; }
+        public BindableCollection<BookModel> Queue { get; set; }
+        public BindableCollection<BookModel> Recommendations { get; set; }
+        public BindableCollection<BookModel> MyBooks { get; set; }
+        public BindableCollection<BookModel> SearchResults { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        public void Init()
+        protected override void OnInitialize()
         {
-            this.bus.Send(
+            bus.Send(
                 new MyBooksRequest
-                    {
-                        UserId = 1
-                    },
+                {
+                    UserId = 1
+                },
                 new MyQueueRequest
-                    {
-                        UserId = 1
-                    },
+                {
+                    UserId = 1
+                },
                 new MyRecommendationsRequest
-                    {
-                        UserId = 1
-                    },
+                {
+                    UserId = 1
+                },
                 new SubscriptionDetailsRequest
-                    {
-                        UserId = 1
-                    });
-        }
-
-        public void UpdateInUIThread(Action action)
-        {
-            dispatcher.BeginInvoke(action);
+                {
+                    UserId = 1
+                });
         }
 
         public void MoveForwardInQueue(BookModel book)

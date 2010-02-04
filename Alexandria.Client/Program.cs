@@ -35,7 +35,7 @@ namespace Alexandria.Client
 			var serviceBus = Container.Resolve<IStartableServiceBus>();
 			serviceBus.Start();
 
-            var applicationModel = new ApplicationModel(Dispatcher.CurrentDispatcher, serviceBus);
+            var applicationModel = new ApplicationModel(serviceBus);
             Container.Register(Component.For<ApplicationModel>().Instance(applicationModel));
 
 			var app = new App();
