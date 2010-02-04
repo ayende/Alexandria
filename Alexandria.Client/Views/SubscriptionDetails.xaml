@@ -32,6 +32,7 @@
                             </Style.Triggers>
                         </Style>
                     </Border.Style>
+                    
                     <TextBlock Text="Loading ..."
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center" />

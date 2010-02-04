@@ -1,5 +1,6 @@
 namespace Alexandria.Client.Consumers
 {
+    using Infrastructure;
     using Messages;
     using Rhino.ServiceBus;
     using ViewModels;

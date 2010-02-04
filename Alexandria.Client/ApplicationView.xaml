@@ -3,7 +3,7 @@
         xmlns:Views="clr-namespace:Alexandria.Client.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        x:Class="Alexandria.Client.Shell"
+        x:Class="Alexandria.Client.ApplicationView"
         mc:Ignorable="d"
         Width="960"
         Height="720"

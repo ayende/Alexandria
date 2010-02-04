@@ -13,7 +13,7 @@
                 <DataTemplate>
                     <DockPanel Background="Transparent">
                         <Button Content="Add"
-                                i:RevealOn.HoverOverParent="True"
+                                i:RevealWhen.HoverOverParent="True"
                                 DockPanel.Dock="Bottom"
                                 Style="{DynamicResource QueueControlButton}"
                                 pf:Message.Attach="AddToQueue($dataContext)" />

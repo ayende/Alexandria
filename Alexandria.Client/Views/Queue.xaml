@@ -10,11 +10,6 @@
              d:DesignWidth="500"
              d:DesignHeight="200">
 
-    <UserControl.Resources>
-
-
-    </UserControl.Resources>
-
     <HeaderedContentControl Header="Queue"
                             Style="{DynamicResource BookListContainer}">
         <c:BookSummaryList ItemsSource="{Binding Queue}"
@@ -26,7 +21,7 @@
                                d:DesignHeight="160">
 
                         <Button Content="Remove"
-                                i:RevealOn.HoverOverParent="True"
+                                i:RevealWhen.HoverOverParent="True"
                                 DockPanel.Dock="Bottom"
                                 pf:Message.Attach="RemoveFromQueue($dataContext)"
                                 Style="{DynamicResource QueueControlButton}" />

@@ -1,19 +1,11 @@
 namespace Alexandria.Client.ViewModels
 {
     using Caliburn.Core;
+    using Infrastructure;
     using Messages;
     using Rhino.ServiceBus;
 
-    public enum ViewMode
-    {
-        Retrieving,
-        Editing,
-        ChangesPending,
-        Confirmed,
-        Error
-    }
-
-    public class SubscriptionDetails : PropertyChangedBase
+    public class SubscriptionDetails : PropertyChangedBase, ISupportsViewMode
     {
         private readonly IServiceBus bus;
         private PersonalDetails details;

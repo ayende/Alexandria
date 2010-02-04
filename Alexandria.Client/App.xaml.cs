@@ -24,12 +24,12 @@
             model.Init();
             return model;
         }
-        protected override void ConfigurePresentationFramework(PresentationFrameworkConfiguration module)
-        {
-            // using a custom view locator is not usually necessary if you accept Caliburn's default conventions
-            module.Using(x => x.ViewLocator<CustomViewLocator>());
-            base.ConfigurePresentationFramework(module);
-        }
+        //protected override void ConfigurePresentationFramework(PresentationFrameworkConfiguration module)
+        //{
+        //    // using a custom view locator is not usually necessary if you accept Caliburn's default conventions
+        //    module.Using(x => x.ViewLocator<CustomViewLocator>());
+        //    base.ConfigurePresentationFramework(module);
+        //}
 
         public class CustomViewLocator : IViewLocator
         {
@@ -43,7 +43,7 @@
             public DependencyObject Locate(Type modelType, DependencyObject displayLocation, object context)
             {
                 if (modelType == typeof (ApplicationModel))
-                    return _serviceLocator.GetInstance<Shell>();
+                    return _serviceLocator.GetInstance<ApplicationView>();
 
                 if (modelType == typeof(ViewModels.SubscriptionDetails))
                     return _serviceLocator.GetInstance<SubscriptionDetails>();

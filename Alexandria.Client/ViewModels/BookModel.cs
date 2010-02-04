@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows.Media;
-
-namespace Alexandria.Client.ViewModels
+﻿namespace Alexandria.Client.ViewModels
 {
-    public class BookModel
+    using System.Windows.Media;
+    using Caliburn.Core;
+
+    public class BookModel : PropertyChangedBase
     {
         public string[] Authors { get; set; }
         public ImageSource Image { get; set; }

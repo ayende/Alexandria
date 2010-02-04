@@ -98,7 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Shell.xaml">
+    <Page Include="ApplicationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -138,8 +138,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shell.xaml.cs">
-      <DependentUpon>Shell.xaml</DependentUpon>
+    <Compile Include="ApplicationView.xaml.cs">
+      <DependentUpon>ApplicationView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -154,7 +154,8 @@
     <Compile Include="Infrastructure\Cache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
-    <Compile Include="Infrastructure\RevealOn.cs" />
+    <Compile Include="Infrastructure\ISupportsViewMode.cs" />
+    <Compile Include="Infrastructure\RevealWhen.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
     <Compile Include="Program.cs" />
