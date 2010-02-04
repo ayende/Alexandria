@@ -115,27 +115,22 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="HeaderedContentControl">
-                    <Border SnapsToDevicePixels="True"
-                            Background="#EFEEED"
-                            VerticalAlignment="Top"
-                            BorderThickness="0 1 0 0"
-                            BorderBrush="#807E7D">
-                        <DockPanel>
-                            <Border Background="White"
-                                    Padding="0 2"
-                                    DockPanel.Dock="Top"
-                                    Margin="0"
-                                    BorderThickness="0 1"
-                                    BorderBrush="#FFD2D2D2">
-                                <TextBlock Text="{TemplateBinding Header}"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Margin="4 0 0 0" />
-                            </Border>
+                    <DockPanel SnapsToDevicePixels="True"
+                               VerticalAlignment="Top">
+                        <Border Background="#EFEEED"
+                                Padding="0 2"
+                                DockPanel.Dock="Top"
+                                Margin="0"
+                                BorderThickness="0 1"
+                                BorderBrush="#807E7D">
+                            <TextBlock Text="{TemplateBinding Header}"
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       Margin="4 0 0 0" />
+                        </Border>
 
-                            <ContentPresenter />
-                        </DockPanel>
-                    </Border>
+                        <ContentPresenter />
+                    </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -180,16 +175,9 @@
                             </Border>
                         </Border.ToolTip>
 
-                        <DockPanel Width="100">
-                            <TextBlock Text="{Binding Name}"
-                                       HorizontalAlignment="Center"
-                                       TextTrimming="WordEllipsis"
-                                       Margin="4 2"
-                                       DockPanel.Dock="Top" />
-
-                            <Image Source="{Binding Path=Image}"
-                                   Stretch="Uniform" />
-                        </DockPanel>
+                        <Image Source="{Binding Path=Image}"
+                               Width="100"
+                               Stretch="Uniform" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

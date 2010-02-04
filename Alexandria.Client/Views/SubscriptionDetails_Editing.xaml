@@ -1,0 +1,75 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
+             x:Class="Alexandria.Client.Views.SubscriptionDetails_Editing"
+             mc:Ignorable="d"
+             d:DesignWidth="260"
+             d:DesignHeight="150">
+
+    <DockPanel>
+        <!-- NOTE: Caliburn x:Name convention is not working here. Is this becaues of the nested user control? -->
+        <Button pf:Message.Attach="Edit"
+                HorizontalAlignment="Right"
+                DockPanel.Dock="Top">
+            <Image Source="../Resources/Icons/pencil.png"
+                   Stretch="None" />
+        </Button>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+
+            <TextBlock Text="{Binding Name}"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                <TextBlock Text="{Binding Street}" />
+                <TextBlock Text="{Binding HouseNumber}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                <TextBlock Text="{Binding City}" />
+                <TextBlock Text=", " />
+                <TextBlock Text="{Binding ZipCode}" />
+            </StackPanel>
+            <TextBlock Text="{Binding Country}"
+                       Grid.Row="3"
+                       Grid.Column="0" />
+
+            <TextBlock Text="{Binding NumberOfPossibleBooksOut, StringFormat=\{0\} books at a time}"
+                       Grid.Row="0"
+                       Grid.Column="1" />
+
+            <TextBlock Text="{Binding MonthlyCost, StringFormat=\{0:0.#\}$ a month}"
+                       Grid.Row="1"
+                       Grid.Column="1" />
+
+            <TextBlock Text="Credit Card:"
+                       Grid.Row="2"
+                       Grid.Column="1" />
+
+            <TextBlock Text="{Binding CreditCard}"
+                       Grid.Row="3"
+                       Grid.Column="1" />
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

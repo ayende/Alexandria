@@ -135,7 +135,7 @@ namespace Alexandria.Client.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        public void Edit()
+        public void BeginEdit()
         {
             EditState = EditState.ChangesPending;
 
@@ -144,6 +144,17 @@ namespace Alexandria.Client.ViewModels
                              UserId = 1,
                              CreditCard = CreditCard
                          });
+        }
+
+        public void Save()
+        {
+            EditState = EditState.ChangesPending;
+
+            bus.Send(new UpdateCreditCardRequest
+            {
+                UserId = 1,
+                CreditCard = CreditCard
+            });
         }
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
