@@ -5,7 +5,7 @@
              x:Class="Alexandria.Client.Views.SubscriptionDetailsViews.ChangesPending"
              mc:Ignorable="d"
              d:DesignWidth="260"
-             d:DesignHeight="150">
+             d:DesignHeight="194">
 
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel TextBlock.FontSize="14.667">
@@ -49,12 +49,18 @@
                 </StackPanel>
             </Grid>
 
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Center"
+             <StackPanel Orientation="Horizontal"
                         Margin="0 4 0 0">
+
+                <Button Visibility="Hidden"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 4 0">
+                    <Image Source="../../Resources/Icons/pencil.png"
+                           Stretch="None" />
+                </Button>
+
                 <TextBlock Text="Credit Card: " />
-                <TextBlock Text="{Binding Editable.CreditCard}" />
+                <TextBlock Text="{Binding Details.CreditCard}" />
             </StackPanel>
         </DockPanel>
     </ContentControl>
