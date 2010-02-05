@@ -82,6 +82,7 @@
     <Compile Include="Consumers\MyQueueRequestConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsRequestConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsRequestConsumer.cs" />
+    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />

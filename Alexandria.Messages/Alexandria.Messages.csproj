@@ -58,6 +58,8 @@
     <Compile Include="SubscriptionDetailsDTO.cs" />
     <Compile Include="SubscriptionDetailsRequest.cs" />
     <Compile Include="SubscriptionDetailsResponse.cs" />
+    <Compile Include="UpdateDetailsRequest.cs" />
+    <Compile Include="UpdateDetailsResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

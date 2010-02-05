@@ -6,7 +6,12 @@ namespace Alexandria.Messages
 
 		public string Key
 		{
-			get { return "SubscriptionDetails [UserId #" + UserId + "]"; }
+			get { return "SubscriptionDetails (UserId #" + UserId + ")"; }
+		}
+
+		public override string ToString()
+		{
+			return Key;
 		}
 	}
 }

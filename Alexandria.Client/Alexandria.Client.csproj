@@ -14,7 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <StartupObject>Alexandria.Client.Program</StartupObject>
+    <StartupObject>Alexandria.Client.App</StartupObject>
+    <ExpressionBlendVersion>3.0.1927.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Core, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Windsor, Version=2.0.0.39444, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Caliburn.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Rhino Service Bus\Castle.Core.dll</HintPath>
@@ -46,6 +59,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Rhino Service Bus\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="Rhino.ServiceBus, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Rhino Service Bus\Rhino.ServiceBus.dll</HintPath>
@@ -80,13 +98,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Shell.xaml">
+    <Page Include="ApplicationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\Common.xaml">
+    <Page Include="Resources\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubscriptionDetails\ChangesPending.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SubscriptionDetails\Editing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MyBooks.xaml">
       <SubType>Designer</SubType>
@@ -104,7 +130,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Subscription.xaml">
+    <Page Include="Views\SubscriptionDetails\Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubscriptionDetails\Retrieving.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubscriptionDetails\Confirmed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,8 +146,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shell.xaml.cs">
-      <DependentUpon>Shell.xaml</DependentUpon>
+    <Compile Include="ApplicationView.xaml.cs">
+      <DependentUpon>ApplicationView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -122,14 +156,17 @@
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
-    <Compile Include="Controls\HorizontalItemsControl.cs" />
+    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
+    <Compile Include="Controls\BookSummary.cs" />
+    <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\PersistentCache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CachingMessageModule.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Infrastructure\RevealWhen.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Infrastructure\ViewMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -143,9 +180,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModel\ApplicationModel.cs" />
-    <Compile Include="ViewModel\BookModel.cs" />
-    <Compile Include="ViewModel\SubscriptionDetails.cs" />
+    <Compile Include="ApplicationModel.cs" />
+    <Compile Include="ViewModels\BookModel.cs" />
+    <Compile Include="ViewModels\ContactInfo.cs" />
+    <Compile Include="ViewModels\SubscriptionDetails.cs" />
+    <Compile Include="Views\SubscriptionDetails\ChangesPending.xaml.cs">
+      <DependentUpon>ChangesPending.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubscriptionDetails\Editing.xaml.cs">
+      <DependentUpon>Editing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>
@@ -158,8 +202,14 @@
     <Compile Include="Views\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Subscription.xaml.cs">
-      <DependentUpon>Subscription.xaml</DependentUpon>
+    <Compile Include="Views\SubscriptionDetails\Error.xaml.cs">
+      <DependentUpon>Error.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubscriptionDetails\Retrieving.xaml.cs">
+      <DependentUpon>Retrieving.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubscriptionDetails\Confirmed.xaml.cs">
+      <DependentUpon>Confirmed.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,6 +227,20 @@
       <Project>{E50323E8-1CCA-46B3-A56E-71B24CD5F0E7}</Project>
       <Name>Alexandria.Messages</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\pencil.png" />
+    <Resource Include="Resources\Icons\famfamfam_icons.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\arrow_left.png" />
+    <Resource Include="Resources\Icons\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

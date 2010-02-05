@@ -1,15 +1,34 @@
-﻿<UserControl x:Class="Alexandria.Client.Views.MyBooks"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controls="clr-namespace:Alexandria.Client.Controls">
-	<StackPanel Orientation="Vertical">
-		<TextBlock Text="My books:"/>
-		<Controls:HorizontalItemsControl ItemsSource="{Binding MyBooks}"
-																		 HorizontalAlignment="Left" >
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-						<Image Source="{Binding Path=Image}" Stretch="None" />
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</Controls:HorizontalItemsControl>
-	</StackPanel>
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Alexandria.Client.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="Alexandria.Client.Views.MyBooks"
+             mc:Ignorable="d"
+             d:DesignWidth="300"
+             d:DesignHeight="200">
+
+    <DockPanel>
+
+        <TextBlock DockPanel.Dock="Top"
+                   FontSize="13.333"
+                   FontWeight="Bold"
+                   Text="My Books" />
+        
+        <Border Background="White"
+                CornerRadius="4"
+                BorderThickness="1"
+                BorderBrush="#FF707070"
+                SnapsToDevicePixels="True">
+
+            <c:BookSummaryList ItemsSource="{Binding MyBooks}">
+                <c:BookSummaryList.ItemTemplate>
+                    <DataTemplate>
+                        <c:BookSummary BookModel="{Binding}" />
+                    </DataTemplate>
+                </c:BookSummaryList.ItemTemplate>
+            </c:BookSummaryList>
+        </Border>
+    </DockPanel>
+
 </UserControl>

@@ -1,25 +1,20 @@
-using System;
-using Alexandria.Client.ViewModel;
-using Alexandria.Messages;
-using Rhino.ServiceBus;
-
 namespace Alexandria.Client.Consumers
 {
-	public class SubscriptionDetailsResponseConsumer : ConsumerOf<SubscriptionDetailsResponse>
-	{
-		private readonly ApplicationModel applicationModel;
+    using Messages;
+    using Rhino.ServiceBus;
 
-		public SubscriptionDetailsResponseConsumer(ApplicationModel applicationModel)
-		{
-			this.applicationModel = applicationModel;
-		}
+    public class SubscriptionDetailsResponseConsumer : ConsumerOf<SubscriptionDetailsResponse>
+    {
+        private readonly ApplicationModel applicationModel;
 
-		public void Consume(SubscriptionDetailsResponse message)
-		{
-			applicationModel.UpdateInUIThread(() =>
-			{
-				applicationModel.SubscriptionDetails.UpdateFrom(message.SubscriptionDetails);
-			});
-		}
-	}
+        public SubscriptionDetailsResponseConsumer(ApplicationModel applicationModel)
+        {
+            this.applicationModel = applicationModel;
+        }
+
+        public void Consume(SubscriptionDetailsResponse message)
+        {
+            applicationModel.SubscriptionDetails.UpdateFrom(message.SubscriptionDetails);
+        }
+    }
 }

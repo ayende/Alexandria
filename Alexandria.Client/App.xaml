@@ -1,12 +1,14 @@
-﻿<Application x:Class="Alexandria.Client.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-						 StartupUri="Shell.xaml">
+﻿<am:CaliburnApplication x:Class="Alexandria.Client.App"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:am="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework">
+
     <Application.Resources>
-			<ResourceDictionary>
-				<ResourceDictionary.MergedDictionaries>
-					<ResourceDictionary Source="Styles/Common.xaml" />
-				</ResourceDictionary.MergedDictionaries>
-			</ResourceDictionary>
-		</Application.Resources>
-</Application>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Common.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</am:CaliburnApplication>

@@ -11,9 +11,11 @@ namespace Alexandria.Messages
 
 		public string Key
 		{
-			get { return "MyQueue [UserId #" + UserId + "]"; }
+			get { return "MyQueue (UserId #" + UserId + ")"; }
 		}
 
 		public DateTime Timestamp { get; set; }
+
+		
 	}
 }
