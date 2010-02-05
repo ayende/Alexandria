@@ -13,8 +13,8 @@
         <TextBlock DockPanel.Dock="Top"
                    FontSize="13.333"
                    FontWeight="Bold"
-                   Text="My Books" />
-        
+                   Text="At Home" />
+
         <Border Background="White"
                 CornerRadius="4"
                 BorderThickness="1"
