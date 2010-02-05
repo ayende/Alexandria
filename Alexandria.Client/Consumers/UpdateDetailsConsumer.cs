@@ -16,7 +16,6 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(UpdateDetailsResponse message)
         {
-
             if(message.Success)
             {
                 applicationModel.SubscriptionDetails.Details = applicationModel.SubscriptionDetails.Editable;
