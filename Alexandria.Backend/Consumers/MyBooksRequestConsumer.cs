@@ -36,7 +36,7 @@ namespace Alexandria.Backend.Consumers
 				Books = books.Select(book => new BookDTO
 				{
 					Id = book.Id,
-					ImageUrl = book.ImageUrl,
+					Image = book.Image,
 					Name = book.Name,
 					Authors = book.Authors.Select(x => x.Name).ToArray()
 				}).ToArray()

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Alexandria.Messages;
 using System.Linq;
@@ -40,7 +42,17 @@ namespace Alexandria.Client.Infrastructure
         {
             bookModel.Authors = bookDTO.Authors;
             bookModel.Name = bookDTO.Name;
-            bookModel.Image = new BitmapImage(new Uri(bookDTO.ImageUrl));
+
+        	bookModel.Image = GetImageSource(bookDTO.Image);
         }
+
+    	private static BitmapImage GetImageSource(byte[] image)
+    	{
+    		var bi = new BitmapImage();
+    		bi.BeginInit();
+    		bi.StreamSource = new MemoryStream(image);
+    		bi.EndInit();
+    		return bi;
+    	}
 	}
 }

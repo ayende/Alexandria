@@ -1,3 +1,5 @@
+using System;
+using System.Net;
 using Alexandria.Backend.Model;
 using Alexandria.Backend.Modules;
 using Castle.Core;
@@ -29,7 +31,6 @@ namespace Alexandria.Backend
 		}
 		protected override void ConfigureContainer()
 		{
-
 			container.Kernel.AddFacility("factory", new FactorySupportFacility());
 
 			var cfg = new Configuration()
@@ -45,6 +46,20 @@ namespace Alexandria.Backend
 			container.Register(Component.For<ISession>()
 				.UsingFactoryMethod(() => NHibernateMessageModule.CurrentSession)
 				.LifeStyle.Is(LifestyleType.Transient));
+
+			using(var s = sessionFactory.OpenSession())
+			{
+				s.BeginTransaction();
+
+				foreach (var book in s.CreateQuery("from Book").List<Book>())
+				{
+					Console.WriteLine("downloading " + book.Name);
+					book.Image = new WebClient().DownloadData(book.ImageUrl);
+					Console.WriteLine(book.Image.Length);
+				}
+
+				s.Transaction.Commit();
+			}
 
 			base.ConfigureContainer();
 		}

@@ -9,6 +9,7 @@
 		</id>
 		<property name="Name" not-null="true"/>
 		<property name="ImageUrl" not-null="true"/>
+		<property name="Image" not-null="true" length="131072"/>
 
 		<set name="Authors" table="BooksAuthors">
 			<key column="Book"/>
