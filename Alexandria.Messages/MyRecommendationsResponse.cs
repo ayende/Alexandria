@@ -8,7 +8,7 @@ namespace Alexandria.Messages
 
 		public string Key
 		{
-			get { return "Recommendations [UserId #" + UserId + "]"; }
+			get { return "Recommendations (UserId #" + UserId + ")"; }
 		}
 
 		public long UserId { get; set; }

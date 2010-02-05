@@ -8,7 +8,12 @@ namespace Alexandria.Messages
 
         public string Key
         {
-            get { return "UpdateDetails [UserId #" + UserId + "]"; }
+            get { return "UpdateDetails (UserId #" + UserId + ")"; }
         }
+
+		public override string ToString()
+		{
+			return Key;
+		}
     }
 }
