@@ -155,6 +155,7 @@
     <Compile Include="Consumers\MyBooksResponseConsumer.cs" />
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
+    <Compile Include="Consumers\SearchResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
     <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />

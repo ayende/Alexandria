@@ -102,24 +102,53 @@ namespace Alexandria.Client
 
 		public void AddToQueue(BookModel book)
 		{
-			if (Recommendations.Contains(book))
-				Recommendations.Remove(book);
-
+			Recommendations.Remove(book);
 			Queue.Add(book);
 
-			//TODO: send add msg
+			bus.Send(
+			        	new AddBookToQueue
+			        	{
+			        		UserId = userId,
+			        		BookId = book.Id
+			        	},
+			        	new MyQueueRequest
+			        	{
+			        		UserId = userId
+			        	},
+			        	new MyRecommendationsRequest
+			        	{
+			        		UserId = userId
+			        	});
 		}
 
 		public void Search(string search)
 		{
-			// TODO: send search msg
+			bus.Send(
+			        	new SearchRequest
+			        	{
+			        		Search = search,
+			        		UserId = userId
+			        	});
 		}
 
 		public void RemoveFromQueue(BookModel book)
 		{
 			Queue.Remove(book);
 
-			//TODO: send remove msg
+			bus.Send(
+			        	new RemoveBookFromQueue
+			        	{
+			        		UserId = userId,
+			        		BookId = book.Id
+			        	},
+			        	new MyQueueRequest
+			        	{
+			        		UserId = userId
+			        	},
+			        	new MyRecommendationsRequest
+			        	{
+			        		UserId = userId
+			        	});
 		}
 	}
 }
