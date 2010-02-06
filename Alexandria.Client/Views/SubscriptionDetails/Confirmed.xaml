@@ -35,6 +35,7 @@
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Details.Street}" />
+													<TextBlock Text=" " />
                             <TextBlock Text="{Binding Details.HouseNumber}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
