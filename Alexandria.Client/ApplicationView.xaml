@@ -9,7 +9,6 @@
         Width="960"
         Height="720"
         WindowStartupLocation="CenterScreen"
-        Background="{DynamicResource WindowBackground}"
         Title="Alexandria">
 
     <DockPanel Margin="12,0">
