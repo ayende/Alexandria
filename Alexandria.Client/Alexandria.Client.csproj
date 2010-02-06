@@ -157,7 +157,7 @@
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SearchResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
-    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
+    <Compile Include="Consumers\UpdateDetailsResponseConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\PersistentCache.cs" />

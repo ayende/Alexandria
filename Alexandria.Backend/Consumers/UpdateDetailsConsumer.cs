@@ -3,7 +3,7 @@ namespace Alexandria.Backend.Consumers
     using Messages;
     using Rhino.ServiceBus;
 
-    public class UpdateDetailsConsumer : ConsumerOf<UpdateDetailsRequest>
+    public class UpdateDetailsConsumer : ConsumerOf<UpdateDetails>
     {
         private readonly IServiceBus bus;
 
@@ -12,12 +12,13 @@ namespace Alexandria.Backend.Consumers
             this.bus = bus;
         }
 
-        public void Consume(UpdateDetailsRequest message)
+        public void Consume(UpdateDetails message)
         {
-            bus.Reply(new UpdateDetailsResponse
-                          {
-                              Success = true
-                          });
+        	bus.Reply(new UpdateDetailsResult
+        	{
+        		Success = false,
+        		UserId = message.UserId
+        	});
         }
     }
 }

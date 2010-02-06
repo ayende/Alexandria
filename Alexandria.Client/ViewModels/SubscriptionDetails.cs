@@ -96,7 +96,7 @@ namespace Alexandria.Client.ViewModels
         {
             ViewMode = ViewMode.ChangesPending;
 
-            bus.Send(new UpdateDetailsRequest
+            bus.Send(new UpdateDetails
                          {
                              UserId = 1,
                              Details = new SubscriptionDetailsDTO
