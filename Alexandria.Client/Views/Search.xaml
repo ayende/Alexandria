@@ -21,8 +21,7 @@
 											pf:Message.Attach="Search(search.Text)" />
 			</StackPanel>
 			<c:BookSummaryList ItemsSource="{Binding SearchResults}"
-												 HorizontalAlignment="Left" 
-												>
+												 HorizontalAlignment="Left">
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
 						<DockPanel Background="Transparent">
