@@ -36,8 +36,6 @@ namespace Alexandria.Backend
 			var cfg = new Configuration()
 				.Configure("nhibernate.config");
 
-			new SchemaUpdate(cfg).Execute(true, true);
-
 			var sessionFactory = cfg.BuildSessionFactory();
 			container.Register(Component.For<ISessionFactory>().Instance(sessionFactory));
 
