@@ -17,6 +17,7 @@ namespace Alexandria.Backend.Consumers
         	bus.Reply(new UpdateDetailsResult
         	{
         		Success = false,
+				ErrorMessage = "you don't live in a place we like",
         		UserId = message.UserId
         	});
         }

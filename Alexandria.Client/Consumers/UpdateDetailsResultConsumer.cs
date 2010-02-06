@@ -18,14 +18,12 @@ namespace Alexandria.Client.Consumers
         {
             if(message.Success)
             {
-                applicationModel.SubscriptionDetails.Details = applicationModel.SubscriptionDetails.Editable;
-                applicationModel.SubscriptionDetails.Editable = new ContactInfo();
+            	applicationModel.SubscriptionDetails.CompleteEdit();
             }
-
-            applicationModel.SubscriptionDetails.ViewMode =
-                message.Success
-                    ? ViewMode.Confirmed
-                    : ViewMode.Error;
+			else
+            {
+            	applicationModel.SubscriptionDetails.ErrorEdit(message.ErrorMessage);
+            }
         }
     }
 }
