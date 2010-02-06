@@ -30,6 +30,8 @@
 
         <Views:Recommendations DockPanel.Dock="Top" />
 
+		<Views:Search DockPanel.Dock="Top" />
+
     </DockPanel>
 
 </Window>

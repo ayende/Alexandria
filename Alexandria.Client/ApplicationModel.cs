@@ -98,6 +98,11 @@ namespace Alexandria.Client
             //TODO: send add msg
         }
 
+		public void Search(string search)
+		{
+			// TODO: send search msg
+		}
+
         public void RemoveFromQueue(BookModel book)
         {
             Queue.Remove(book);
