@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Alexandria.Backend.Model;
+using Alexandria.Backend.Util;
 using Alexandria.Messages;
 using NHibernate;
 using NHibernate.Transform;
@@ -31,13 +32,7 @@ namespace Alexandria.Backend.Consumers
 			{
 				UserId = message.UserId,
 				Timestamp = DateTime.Now,
-				Queue = user.Queue.Select(book => new BookDTO
-				{
-					Id = book.Id,
-					Image = book.Image,
-					Name = book.Name,
-					Author = book.Author
-				}).ToArray()
+				Queue = user.Queue.ToBookDtoArray()
 			});
 		}
 	}
