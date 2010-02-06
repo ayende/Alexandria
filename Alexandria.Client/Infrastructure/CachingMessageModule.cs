@@ -48,6 +48,21 @@ namespace Alexandria.Client.Infrastructure
 
 		private void TransportOnMessageSent(CurrentMessageInformation currentMessageInformation)
 		{
+			var containsNonCachableMessages = currentMessageInformation.AllMessages.Any(x=>x is ICachableRequest == false);
+
+			if(containsNonCachableMessages) 
+			{
+				// since we are making a non cachable request, the 
+				// _cachable_ requests part of this batch are likely to be
+				// affected by this message, so we go ahead and expire them
+				// to avoid showing incorrect data
+				foreach (var cachableRequestToExpire in currentMessageInformation.AllMessages.OfType<ICachableRequest>())
+				{
+					cache.Remove(cachableRequestToExpire.Key);
+				}
+				return;
+			}
+
 			var responses =
 				from msg in currentMessageInformation.AllMessages.OfType<ICachableRequest>()
 				let response = cache.Get(msg.Key)
