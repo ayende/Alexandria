@@ -22,11 +22,10 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(MyBooksRequest message)
 		{
-			var user =
-				session.CreateQuery(@"from User u join fetch u.CurrentlyReading where u.Id = :id")
-					.SetParameter("id", message.UserId)
-					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.UniqueResult<User>();
+			var user = session.Get<User>(message.UserId);
+			
+			Console.WriteLine("{0}'s has {1} books at home", 
+				user.Name, user.CurrentlyReading.Count);
 
 			bus.Reply(new MyBooksResponse
 			{

@@ -17,12 +17,11 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(ChangeBookPositionInQueue message)
 		{
-			var user = session
-				.CreateQuery("from User u join fetch u.Queue where u.Id = :id")
-				.SetParameter("id", message.UserId)
-				.UniqueResult<User>();
+			var user = session.Get<User>(message.UserId);
+			var book = session.Get<Book>(message.BookId);
 
-			var book = session.Load<Book>(message.BookId);
+			Console.WriteLine("Changing {0}'s position in {1}'s queue to {2}",
+				book.Name, user.Name, message.NewPosition);
 
 			user.ChangePositionInQueue(book, message.NewPosition);
 		}

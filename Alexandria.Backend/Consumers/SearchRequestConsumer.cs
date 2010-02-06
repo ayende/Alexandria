@@ -29,6 +29,9 @@ namespace Alexandria.Backend.Consumers
 				.SetParameter("search", "%" + message.Search +"%")
 				.List<Book>();
 
+			Console.WriteLine("User {0} searched for '{1}' and got {2} results",
+				message.UserId, message.Search, books.Count);
+
 			// TODO: add search query to user's history, so we can run analysis on things the user likes
 
 			bus.Reply(

@@ -18,7 +18,10 @@ namespace Alexandria.Backend.Consumers
 		public void Consume(RemoveBookFromQueue message)
 		{
 			var user = session.Get<User>(message.UserId);
-			var book = session.Load<Book>(message.BookId);
+			var book = session.Get<Book>(message.BookId);
+
+			Console.WriteLine("Removing {0} from {1}'s queue",
+				book.Name, user.Name);
 
 			user.RemoveFromQueue(book);
 		}

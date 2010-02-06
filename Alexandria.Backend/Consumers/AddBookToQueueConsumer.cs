@@ -1,3 +1,4 @@
+using System;
 using Alexandria.Backend.Model;
 using Alexandria.Messages;
 using NHibernate;
@@ -17,7 +18,10 @@ namespace Alexandria.Backend.Consumers
 		public void Consume(AddBookToQueue message)
 		{
 			var user = session.Get<User>(message.UserId);
-			var book = session.Load<Book>(message.BookId);
+			var book = session.Get<Book>(message.BookId);
+
+			Console.WriteLine("Adding {0} to {1}'s queue",
+				book.Name, user.Name);
 
 			user.AddToQueue(book);
 		}

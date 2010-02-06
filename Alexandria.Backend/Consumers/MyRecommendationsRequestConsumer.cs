@@ -21,11 +21,10 @@ namespace Alexandria.Backend.Consumers
 		}
 		public void Consume(MyRecommendationsRequest message)
 		{
-			var user =
-				session.CreateQuery(@"from User u join fetch u.Recommendations where u.Id = :id")
-					.SetParameter("id", message.UserId)
-					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.UniqueResult<User>();
+			var user = session.Get<User>(message.UserId);
+
+			Console.WriteLine("{0}'s has {1} book recommendations",
+				user.Name, user.Recommendations.Count);
 
 			bus.Reply(new MyRecommendationsResponse
 			{

@@ -22,11 +22,10 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(MyQueueRequest message)
 		{
-			var user =
-				session.CreateQuery(@"from User u join fetch u.Queue where u.Id = :id")
-					.SetParameter("id", message.UserId)
-					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.UniqueResult<User>();
+			var user = session.Get<User>(message.UserId);
+
+			Console.WriteLine("{0}'s has {1} books queued for reading",
+				user.Name, user.Queue.Count);
 
 			bus.Reply(new MyQueueResponse
 			{
