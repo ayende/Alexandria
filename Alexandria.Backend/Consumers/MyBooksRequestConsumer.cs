@@ -21,24 +21,22 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(MyBooksRequest message)
 		{
-			var books =
-				session.CreateQuery(
-									@"select b from Book b join fetch b.Authors 
-						where b.Id in (select r from User u join u.CurrentlyReading r where u.Id = :id)")
+			var user =
+				session.CreateQuery(@"from User u join fetch u.CurrentlyReading where u.Id = :id")
 					.SetParameter("id", message.UserId)
 					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.List<Book>();
+					.UniqueResult<User>();
 
 			bus.Reply(new MyBooksResponse
 			{
 				UserId = message.UserId,
 				Timestamp = DateTime.Now,
-				Books = books.Select(book => new BookDTO
+				Books = user.CurrentlyReading.Select(book => new BookDTO
 				{
 					Id = book.Id,
 					Image = book.Image,
 					Name = book.Name,
-					Authors = book.Authors.Select(x => x.Name).ToArray()
+					Author = book.Author
 				}).ToArray()
 			});
 		}

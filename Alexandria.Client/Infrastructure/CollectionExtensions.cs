@@ -40,7 +40,7 @@ namespace Alexandria.Client.Infrastructure
 
         private static void MergeValues(BookModel bookModel, BookDTO bookDTO)
         {
-            bookModel.Authors = bookDTO.Authors;
+            bookModel.Author = bookDTO.Author;
             bookModel.Name = bookDTO.Name;
 
         	bookModel.Image = GetImageSource(bookDTO.Image);

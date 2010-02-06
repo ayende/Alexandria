@@ -47,20 +47,6 @@ namespace Alexandria.Backend
 				.UsingFactoryMethod(() => NHibernateMessageModule.CurrentSession)
 				.LifeStyle.Is(LifestyleType.Transient));
 
-			using(var s = sessionFactory.OpenSession())
-			{
-				s.BeginTransaction();
-
-				foreach (var book in s.CreateQuery("from Book").List<Book>())
-				{
-					Console.WriteLine("downloading " + book.Name);
-					book.Image = new WebClient().DownloadData(book.ImageUrl);
-					Console.WriteLine(book.Image.Length);
-				}
-
-				s.Transaction.Commit();
-			}
-
 			base.ConfigureContainer();
 		}
 	}

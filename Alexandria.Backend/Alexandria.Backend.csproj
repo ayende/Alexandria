@@ -45,7 +45,7 @@
     </Reference>
     <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\NHProf\HibernatingRhinos.Profiler.Appender\bin\Debug\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+      <HintPath>..\..\NHProf\build\HibernatingRhinos.Profiler.Appender.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,13 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlexandriaBootStrapper.cs" />
+    <Compile Include="Consumers\ChangeBookPositionInQueueConsumer.cs" />
     <Compile Include="Consumers\MyBooksRequestConsumer.cs" />
     <Compile Include="Consumers\MyQueueRequestConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsRequestConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsRequestConsumer.cs" />
     <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
     <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Subscription.cs" />
     <Compile Include="Model\User.cs" />
@@ -99,12 +99,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Model\Author.hbm.xml" />
     <EmbeddedResource Include="Model\Book.hbm.xml" />
     <EmbeddedResource Include="Model\User.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="nhibernate-configuration.xsd" />
     <None Include="nhibernate-mapping.xsd" />
     <None Include="nhibernate.config">

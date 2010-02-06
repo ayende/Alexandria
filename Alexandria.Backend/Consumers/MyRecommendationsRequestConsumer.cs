@@ -20,25 +20,22 @@ namespace Alexandria.Backend.Consumers
 		}
 		public void Consume(MyRecommendationsRequest message)
 		{
-			var books =
-				session.CreateQuery(
-				                   	@"select b from Book b join fetch b.Authors 
-						where b.Id in (select r from User u join u.Recommendations r where u.Id = :id)")
+			var user =
+				session.CreateQuery(@"from User u join fetch u.Recommendations where u.Id = :id")
 					.SetParameter("id", message.UserId)
 					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.List<Book>();
-
+					.UniqueResult<User>();
 
 			bus.Reply(new MyRecommendationsResponse
 			{
 				UserId = message.UserId,
 				Timestamp = DateTime.Now,
-				Recommendations = books.Select(book => new BookDTO
+				Recommendations = user.Recommendations.Select(book => new BookDTO
 				{
 					Id = book.Id,
 					Image = book.Image,
 					Name = book.Name,
-					Authors = book.Authors.Select(x => x.Name).ToArray()
+					Author = book.Author
 				}).ToArray()
 			});
 		}
