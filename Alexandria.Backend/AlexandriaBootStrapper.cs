@@ -22,13 +22,9 @@ namespace Alexandria.Backend
 	{
 		public AlexandriaBootStrapper()
 		{
-			BasicConfigurator.Configure(new ConsoleAppender
-			{
-				Threshold = Level.Info,
-				Layout = new SimpleLayout()
-			});
 			NHibernateProfiler.Initialize();
 		}
+
 		protected override void ConfigureContainer()
 		{
 			container.Kernel.AddFacility("factory", new FactorySupportFacility());
