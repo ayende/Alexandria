@@ -24,9 +24,7 @@ namespace Alexandria.Backend.Consumers
 
 			var book = session.Load<Book>(message.BookId);
 
-			user.Queue.Remove(book);
-
-			user.Queue.Insert(message.NewPosition, book);
+			user.ChangePositionInQueue(book, message.NewPosition);
 		}
 	}
 }
