@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 
@@ -45,9 +46,19 @@ namespace Alexandria.Client.Infrastructure
 			var path = Path.Combine(basePath, EscapeKey(key));
 			if (File.Exists(path) == false)
 				return null;
-			using (var file = File.OpenRead(path))
+			try
 			{
-				return (CachedData)new BinaryFormatter().Deserialize(file);
+				using (var file = File.OpenRead(path))
+				{
+					return (CachedData)new BinaryFormatter().Deserialize(file);
+				}
+			}
+			catch (SerializationException) 
+			{
+				// this usually happen as a result of versioning issues
+				// since this is a cache, we can just delete the file and move on
+				File.Delete(path);
+				return null;
 			}
 		}
 
