@@ -16,6 +16,7 @@
     <WarningLevel>4</WarningLevel>
     <StartupObject>Alexandria.Client.App</StartupObject>
     <ExpressionBlendVersion>3.0.1927.0</ExpressionBlendVersion>
+    <ApplicationIcon>Library.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -242,6 +243,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Library.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
