@@ -12,7 +12,12 @@ namespace Alexandria.Client
 	{
 		private readonly IServiceBus bus;
 		private SubscriptionDetails subscriptionDetails;
-		private int userId = 1;
+
+		/// <summary>
+		/// Pretend that application startup is showing the user some login screen
+		/// and that we get the user id from the login process
+		/// </summary>
+		private const int userId = 1;
 
 		public ApplicationModel(IServiceBus bus)
 		{
