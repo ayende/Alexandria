@@ -17,7 +17,8 @@ namespace Alexandria.Backend.Model
 
 		public virtual void AddToQueue(Book book)
 		{
-			Queue.Add(book);
+			if (Queue.Contains(book) == false)
+				Queue.Add(book);
 			Recommendations.Remove(book);
 			// add any other business logic related to adding a book to the queue
 		}

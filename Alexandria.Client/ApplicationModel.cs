@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Alexandria.Client
 {
 	using Caliburn.PresentationFramework;
@@ -103,7 +105,8 @@ namespace Alexandria.Client
 		public void AddToQueue(BookModel book)
 		{
 			Recommendations.Remove(book);
-			Queue.Add(book);
+			if (Queue.Any(x => x.Id == book.Id) == false) // avoid adding twice
+				Queue.Add(book);
 
 			bus.Send(
 			        	new AddBookToQueue
