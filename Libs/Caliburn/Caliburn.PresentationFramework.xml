@@ -312,6 +312,28 @@
             </summary>
             <value>The convention manager.</value>
         </member>
+        <member name="T:Caliburn.PresentationFramework.Actions.ActionExtensions">
+            <summary>
+            Hosts extension methods related to actions.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Actions.ActionExtensions.HasTriggerEffects(Caliburn.PresentationFramework.Actions.IAction)">
+            <summary>
+            Determines whether the action has trigger effects.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>
+            	<c>true</c> if has trigger effects; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Actions.ActionExtensions.CreateFilterManager(Caliburn.PresentationFramework.Actions.ActionCreationContext,Caliburn.Core.Invocation.IMethod)">
+            <summary>
+            Creates the filter manager for the method based on the context.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="method">The method.</param>
+            <returns></returns>
+        </member>
         <member name="T:Caliburn.PresentationFramework.Actions.ActionLocationContext">
             <summary>
             Provides services and information for locating instances of <see cref="T:Caliburn.PresentationFramework.Actions.IAction"/>.
@@ -892,28 +914,6 @@
             <param name="methodInfo">The method info.</param>
             <returns>The action.</returns>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Actions.ExtensionMethods">
-            <summary>
-            Hosts extension methods related to actions.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.ExtensionMethods.HasTriggerEffects(Caliburn.PresentationFramework.Actions.IAction)">
-            <summary>
-            Determines whether the action has trigger effects.
-            </summary>
-            <param name="action">The action.</param>
-            <returns>
-            	<c>true</c> if has trigger effects; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.ExtensionMethods.CreateFilterManager(Caliburn.PresentationFramework.Actions.ActionCreationContext,Caliburn.Core.Invocation.IMethod)">
-            <summary>
-            Creates the filter manager for the method based on the context.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="method">The method.</param>
-            <returns></returns>
-        </member>
         <member name="T:Caliburn.PresentationFramework.Actions.IActionHost">
             <summary>
             Hosts instances of <see cref="T:Caliburn.PresentationFramework.Actions.IAction"/> and related metadata.
@@ -1059,6 +1059,69 @@
             <param name="actionMessage">The action message.</param>
             <param name="handlingNode">The node.</param>
             <param name="context">The context.</param>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions">
+            <summary>
+            Hosts extension methods for application model classes.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.Focus``2(Caliburn.PresentationFramework.ApplicationModel.IInputManager,``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Focuses the control bound to the property on the view model.
+            </summary>
+            <param name="inputManager">The input manager.</param>
+            <param name="viewModel">The view model.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.InsertOrUpdate``1(Caliburn.PresentationFramework.ApplicationModel.IStateManager,System.String,``0)">
+            <summary>
+            Inserts or updates a value in the state.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.Get``1(Caliburn.PresentationFramework.ApplicationModel.IStateManager,System.String,``0)">
+            <summary>
+            Gets the value with the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="state">The state.</param>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.Show(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object)">
+            <summary>
+            Shows the window for the model.
+            </summary>
+            <param name="manager">The manager.</param>
+            <param name="rootModel">The root model.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.ShowDialog(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object)">
+            <summary>
+            Shows the dialog for the model.
+            </summary>
+            <param name="manager">The manager.</param>
+            <param name="rootModel">The root model.</param>
+            <returns>The dialog result</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.Show(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object,System.Object)">
+            <summary>
+            Shows the windwo for the model.
+            </summary>
+            <param name="manager">The manager.</param>
+            <param name="rootModel">The root model.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ApplicationModelExtensions.ShowDialog(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object,System.Object)">
+            <summary>
+            Shows the dialog for the model.
+            </summary>
+            <param name="manager">The manager.</param>
+            <param name="rootModel">The root model.</param>
+            <param name="context">The context.</param>
+            <returns>The dialog result</returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication">
             <summary>
@@ -1284,61 +1347,6 @@
             <param name="view">The view.</param>
             <param name="handleShutdownModel">The handler for the shutdown model.</param>
             <param name="e">The <see cref="T:System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods">
-            <summary>
-            Hosts extension methods for application model classes.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.InsertOrUpdate``1(Caliburn.PresentationFramework.ApplicationModel.IStateManager,System.String,``0)">
-            <summary>
-            Inserts or updates a value in the state.
-            </summary>
-            <param name="state">The state.</param>
-            <param name="key">The key.</param>
-            <param name="value">The value.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.Get``1(Caliburn.PresentationFramework.ApplicationModel.IStateManager,System.String,``0)">
-            <summary>
-            Gets the value with the specified key.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="state">The state.</param>
-            <param name="key">The key.</param>
-            <param name="defaultValue">The default value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.Show(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object)">
-            <summary>
-            Shows the window for the model.
-            </summary>
-            <param name="manager">The manager.</param>
-            <param name="rootModel">The root model.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.ShowDialog(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object)">
-            <summary>
-            Shows the dialog for the model.
-            </summary>
-            <param name="manager">The manager.</param>
-            <param name="rootModel">The root model.</param>
-            <returns>The dialog result</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.Show(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object,System.Object)">
-            <summary>
-            Shows the windwo for the model.
-            </summary>
-            <param name="manager">The manager.</param>
-            <param name="rootModel">The root model.</param>
-            <param name="context">The context.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.ExtensionMethods.ShowDialog(Caliburn.PresentationFramework.ApplicationModel.IWindowManager,System.Object,System.Object)">
-            <summary>
-            Shows the dialog for the model.
-            </summary>
-            <param name="manager">The manager.</param>
-            <param name="rootModel">The root model.</param>
-            <param name="context">The context.</param>
-            <returns>The dialog result</returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier">
             <summary>
@@ -2097,17 +2105,6 @@
             </summary>
             <param name="child">The child.</param>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Configuration.ExtensionMethods">
-            <summary>
-            Hosts extension methods realted to configuration.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Configuration.ExtensionMethods.PresentationFramework(Caliburn.Core.Configuration.IModuleHook)">
-            <summary>
-            Adds the presentation framework module's configuration to the system.
-            </summary>
-            <param name="hook">The hook.</param>
-        </member>
         <member name="T:Caliburn.PresentationFramework.Configuration.IPresentationFrameworkServicesDescription">
             <summary>
             Desscribes the services required for the presentation framework to function.
@@ -2209,7 +2206,7 @@
             Searches the <see cref="T:Caliburn.Core.IAssemblySource"/> and registers all screens which concretely implement <see cref="T:Caliburn.PresentationFramework.Screens.IScreen`1"/> using their closed interface type.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Configuration.PresentationFrameworkConfiguration.InitializeCore(Microsoft.Practices.ServiceLocation.IServiceLocator)">
+        <member name="M:Caliburn.PresentationFramework.Configuration.PresentationFrameworkConfiguration.Initialize(Microsoft.Practices.ServiceLocation.IServiceLocator)">
             <summary>
             Initializes the core.
             </summary>
@@ -2308,6 +2305,33 @@
             Creates an item template which binds view models.
             </summary>
             <param name="control">The control.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Conventions.ConventionExtensions">
+            <summary>
+            Hosts extension methods related to conventions.
+            </summary>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Conventions.ConventionExtensions.GetNamedElementsImplementation">
+            <summary>
+            The overridable implemenation of GetNamedElements.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ConventionExtensions.DetermineConventions(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.ViewModels.IViewModelDescription,System.Windows.DependencyObject)">
+            <summary>
+            Determines the conventions for the specified view and view model description.
+            </summary>
+            <param name="conventionManager">The convention manager.</param>
+            <param name="viewModelDescription">The view model description.</param>
+            <param name="view">The view.</param>
+            <returns>The applicalble conventions.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ConventionExtensions.FindElementConventionOrFail(Caliburn.PresentationFramework.Conventions.IConventionManager,System.Object)">
+            <summary>
+            Finds the interaction defaults or fail.
+            </summary>
+            <param name="conventionManager">The convention manager.</param>
+            <param name="element">The element.</param>
             <returns></returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.DefaultActionConvention">
@@ -2741,33 +2765,6 @@
             Adds the convention to this category.
             </summary>
             <param name="convention">The convention.</param>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.Conventions.ExtensionMethods">
-            <summary>
-            Hosts extension methods related to conventions.
-            </summary>
-        </member>
-        <member name="F:Caliburn.PresentationFramework.Conventions.ExtensionMethods.GetNamedElementsImplementation">
-            <summary>
-            The overridable implemenation of GetNamedElements.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ExtensionMethods.DetermineConventions(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.ViewModels.IViewModelDescription,System.Windows.DependencyObject)">
-            <summary>
-            Determines the conventions for the specified view and view model description.
-            </summary>
-            <param name="conventionManager">The convention manager.</param>
-            <param name="viewModelDescription">The view model description.</param>
-            <param name="view">The view.</param>
-            <returns>The applicalble conventions.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ExtensionMethods.FindElementConventionOrFail(Caliburn.PresentationFramework.Conventions.IConventionManager,System.Object)">
-            <summary>
-            Finds the interaction defaults or fail.
-            </summary>
-            <param name="conventionManager">The convention manager.</param>
-            <param name="element">The element.</param>
-            <returns></returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention">
             <summary>
@@ -3277,6 +3274,12 @@
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Invocation.DispatcherImplementation"/> class.
             </summary>
         </member>
+        <member name="M:Caliburn.PresentationFramework.Invocation.DispatcherImplementation.GetDispatcher">
+            <summary>
+            Gets the dispatcher.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Caliburn.PresentationFramework.Invocation.DispatcherImplementation.ExecuteOnBackgroundThread(System.Action,System.Action{Caliburn.Core.Threading.BackgroundTaskCompletedEventArgs},System.Action{Caliburn.Core.Threading.BackgroundTaskProgressChangedEventArgs})">
             <summary>
             Executes code on the background thread.
@@ -3335,12 +3338,12 @@
             Occurs when the operation has completed.
             </summary>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Metadata.ExtensionMethods">
+        <member name="T:Caliburn.PresentationFramework.Metadata.MetadataExtensions">
             <summary>
             Extension methods realted to metadata.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Metadata.ExtensionMethods.GetView``1(Caliburn.Core.Metadata.IMetadataContainer,System.Object)">
+        <member name="M:Caliburn.PresentationFramework.Metadata.MetadataExtensions.GetView``1(Caliburn.Core.Metadata.IMetadataContainer,System.Object)">
             <summary>
             Gets the view from metadata.
             </summary>
@@ -3349,7 +3352,7 @@
             <param name="context">The context.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Metadata.ExtensionMethods.SetView(Caliburn.Core.Metadata.IMetadataContainer,System.Object,System.Object,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.Metadata.MetadataExtensions.SetView(Caliburn.Core.Metadata.IMetadataContainer,System.Object,System.Object,System.Boolean)">
             <summary>
             Stores the view in metadata.
             </summary>
@@ -5608,26 +5611,6 @@
             <param name="subject">The subject.</param>
             <returns>The screen.</returns>
         </member>
-        <member name="T:Caliburn.PresentationFramework.ViewModels.ExtensionMethods">
-            <summary>
-            Hosts extension methods related to view model functionality.
-            </summary>
-        </member>
-        <member name="F:Caliburn.PresentationFramework.ViewModels.ExtensionMethods.LocateImplementation">
-            <summary>
-            The overridable implementation of Locate.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.ExtensionMethods.Locate(Caliburn.PresentationFramework.ViewModels.IViewLocator,System.Object,System.Windows.DependencyObject,System.Object)">
-            <summary>
-            Gets the view for displaying the specified model.
-            </summary>
-            <param name="locator">The view locator.</param>
-            <param name="model">The model.</param>
-            <param name="displayLocation">The control into which the view will be injected.</param>
-            <param name="context">Some additional context used to select the proper view.</param>
-            <returns></returns>
-        </member>
         <member name="T:Caliburn.PresentationFramework.ViewModels.IViewStrategy">
             <summary>
             An <see cref="T:Caliburn.PresentationFramework.ViewModels.IViewLocator"/> as <see cref="T:Caliburn.Core.Metadata.IMetadata"/> with conditional matching.
@@ -5768,6 +5751,26 @@
             Gets or sets the context.
             </summary>
             <value>The context.</value>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.ViewModels.ViewModelExtensions">
+            <summary>
+            Hosts extension methods related to view model functionality.
+            </summary>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.ViewModels.ViewModelExtensions.LocateImplementation">
+            <summary>
+            The overridable implementation of Locate.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ViewModels.ViewModelExtensions.Locate(Caliburn.PresentationFramework.ViewModels.IViewLocator,System.Object,System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Gets the view for displaying the specified model.
+            </summary>
+            <param name="locator">The view locator.</param>
+            <param name="model">The model.</param>
+            <param name="displayLocation">The control into which the view will be injected.</param>
+            <param name="context">Some additional context used to select the proper view.</param>
+            <returns></returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.AvailabilityEffect">
             <summary>
@@ -6144,6 +6147,85 @@
             <param name="uiElement">The UI element to retrieve the parent for.</param>
             <returns></returns>
         </member>
+        <member name="T:Caliburn.PresentationFramework.ElementExtensions">
+            <summary>
+            Hosts extension methods related to FrameworkElements and FrameworkContentElements.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Caliburn.PresentationFramework.ElementExtensions.GetParent(System.Windows.DependencyObject)" -->
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.SetDataContext(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Sets the data context of the dependency object.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="dataContext">The data context value.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.GetDataContext(System.Windows.DependencyObject)">
+            <summary>
+            Gets the data context of the depdendency object.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <returns>The data context value.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.OnLoad(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Wires the delegate to the Loaded event of the element.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.Binding)">
+            <summary>
+            Sets the binding on the dependency object.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="dependencyProperty">The dependency property.</param>
+            <param name="binding">The binding.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.FindName(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds a child element by name.
+            </summary>
+            <param name="parent">The parent.</param>
+            <param name="name">The name.</param>
+            <returns>The found element.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.FindNameExhaustive``1(System.Windows.DependencyObject,System.String,System.Boolean)">
+            <summary>
+            Finds an element by name or fails.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="element">The element.</param>
+            <param name="name">The name.</param>
+            <param name="shouldFail">Indicates whether an exception should be throw if the named item is not found.</param>
+            <returns>The found element.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.GetName(System.Windows.DependencyObject)">
+            <summary>
+            Gets the value of the Name property of this instance.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <returns>The name.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.GetResource``1(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Gets the resource by searching the hierarchy of of elements.
+            </summary>
+            <typeparam name="T">The type of resource.</typeparam>
+            <param name="element">The element.</param>
+            <param name="key">The key.</param>
+            <returns>The resource.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ElementExtensions.Bind(Caliburn.PresentationFramework.Parameter,System.Windows.DependencyObject,System.String,System.String)">
+            <summary>
+            Binds the specified parameter to an element's property without using databinding.
+            Rather, event name conventions are used to wire to property changes and push updates to the parameter value.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="element">The element.</param>
+            <param name="elementName">Name of the element.</param>
+            <param name="path">The path.</param>
+        </member>
         <member name="T:Caliburn.PresentationFramework.EnumerableResults">
             <summary>
             Hosts extension methods and method overrides for execution of <see cref="T:Caliburn.PresentationFramework.IResult"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
@@ -6210,110 +6292,6 @@
             <param name="results">The results.</param>
             <param name="model">The model.</param>
             <param name="context">The context.</param>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ExtensionMethods">
-            <summary>
-            Extension methods related to the PresentationFramework classes.
-            </summary>
-        </member>
-        <member name="F:Caliburn.PresentationFramework.ExtensionMethods.GetModelTypeImplementation">
-            <summary>
-            The overridable implemenation of GetModelType.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.SafeToString(System.Object)">
-            <summary>
-            Safely converts an object to a string.
-            </summary>
-            <param name="value">The value to convert.</param>
-            <returns>The converted string or null, if the value was null.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetModelType(System.Object)">
-            <summary>
-            Gets the type of the model.
-            </summary>
-            <param name="model">The model.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetParent(System.Windows.DependencyObject)">
-            <summary>
-            Gets the parent of the dependency object.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <returns>The parent element.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.SetDataContext(System.Windows.DependencyObject,System.Object)">
-            <summary>
-            Sets the data context of the dependency object.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <param name="dataContext">The data context value.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetDataContext(System.Windows.DependencyObject)">
-            <summary>
-            Gets the data context of the depdendency object.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <returns>The data context value.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.OnLoad(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
-            <summary>
-            Wires the delegate to the Loaded event of the element.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <param name="callback">The callback.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.Binding)">
-            <summary>
-            Sets the binding on the dependency object.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <param name="dependencyProperty">The dependency property.</param>
-            <param name="binding">The binding.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindName(System.Windows.DependencyObject,System.String)">
-            <summary>
-            Finds a child element by name.
-            </summary>
-            <param name="parent">The parent.</param>
-            <param name="name">The name.</param>
-            <returns>The found element.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindNameExhaustive``1(System.Windows.DependencyObject,System.String,System.Boolean)">
-            <summary>
-            Finds an element by name or fails.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="element">The element.</param>
-            <param name="name">The name.</param>
-            <param name="shouldFail">Indicates whether an exception should be throw if the named item is not found.</param>
-            <returns>The found element.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetName(System.Windows.DependencyObject)">
-            <summary>
-            Gets the value of the Name property of this instance.
-            </summary>
-            <param name="dependencyObject">The dependency object.</param>
-            <returns>The name.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetResource``1(System.Windows.DependencyObject,System.Object)">
-            <summary>
-            Gets the resource by searching the hierarchy of of elements.
-            </summary>
-            <typeparam name="T">The type of resource.</typeparam>
-            <param name="element">The element.</param>
-            <param name="key">The key.</param>
-            <returns>The resource.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.Bind(Caliburn.PresentationFramework.Parameter,System.Windows.DependencyObject,System.String,System.String)">
-            <summary>
-            Binds the specified parameter to an element's property without using databinding.
-            Rather, event name conventions are used to wire to property changes and push updates to the parameter value.
-            </summary>
-            <param name="parameter">The parameter.</param>
-            <param name="element">The element.</param>
-            <param name="elementName">Name of the element.</param>
-            <param name="path">The path.</param>
         </member>
         <member name="T:Caliburn.PresentationFramework.IInteractionNode">
             <summary>
@@ -6589,6 +6567,36 @@
             <summary>
             Occurs when [value changed].
             </summary>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.PresentationFrameworkExtensions">
+            <summary>
+            Extension methods related to the PresentationFramework classes.
+            </summary>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.PresentationFrameworkExtensions.GetModelTypeImplementation">
+            <summary>
+            The overridable implemenation of GetModelType.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.PresentationFrameworkExtensions.GetModelType(System.Object)">
+            <summary>
+            Gets the type of the model.
+            </summary>
+            <param name="model">The model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.PresentationFrameworkExtensions.PresentationFramework(Caliburn.Core.Configuration.IModuleHook)">
+            <summary>
+            Adds the presentation framework module's configuration to the system.
+            </summary>
+            <param name="hook">The hook.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.PresentationFrameworkExtensions.SafeToString(System.Object)">
+            <summary>
+            Safely converts an object to a string.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <returns>The converted string or null, if the value was null.</returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.RequiredParameter">
             <summary>

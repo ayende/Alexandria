@@ -1,11 +1,10 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
-using MS.Win32;
 
 namespace Alexandria.Client.Infrastructure
 {
-	public class TimeSpanToHumanReadableStringConverter : IValueConverter
+    public class TimeSpanToHumanReadableStringConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{

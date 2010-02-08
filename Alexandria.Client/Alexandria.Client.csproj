@@ -119,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Queue.xaml">
+    <Page Include="Views\QueueManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,18 +153,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddToQueue.cs" />
     <Compile Include="Consumers\MyBooksResponseConsumer.cs" />
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SearchResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
     <Compile Include="Consumers\UpdateDetailsResultConsumer.cs" />
+    <Compile Include="Consumers\UpdateDetailsResponseConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\PersistentCache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CachingMessageModule.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Infrastructure\NotConverter.cs" />
     <Compile Include="Infrastructure\RevealWhen.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />
@@ -183,8 +186,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ApplicationModel.cs" />
+    <Compile Include="ViewModels\QueueManager.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
     <Compile Include="ViewModels\ContactInfo.cs" />
+    <Compile Include="ViewModels\Recommendations.cs" />
+    <Compile Include="ViewModels\Search.cs" />
     <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\SubscriptionDetails\ChangesPending.xaml.cs">
       <DependentUpon>ChangesPending.xaml</DependentUpon>
@@ -195,8 +201,8 @@
     <Compile Include="Views\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Queue.xaml.cs">
-      <DependentUpon>Queue.xaml</DependentUpon>
+    <Compile Include="Views\QueueManager.xaml.cs">
+      <DependentUpon>QueueManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Recommendations.xaml.cs">
       <DependentUpon>Recommendations.xaml</DependentUpon>
@@ -247,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Library.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\zoom.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

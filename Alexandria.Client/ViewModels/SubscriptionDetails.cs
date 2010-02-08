@@ -2,12 +2,12 @@ using System;
 
 namespace Alexandria.Client.ViewModels
 {
-    using Caliburn.Core;
+    using Caliburn.PresentationFramework.Screens;
     using Infrastructure;
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SubscriptionDetails : PropertyChangedBase
+    public class SubscriptionDetails : Screen
     {
         private readonly IServiceBus bus;
         private ContactInfo details;

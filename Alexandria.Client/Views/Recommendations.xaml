@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:c="clr-namespace:Alexandria.Client.Controls"
              xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure">
+             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure"
+             xmlns:Commands="clr-namespace:Alexandria.Client.Commands">
 
     <HeaderedContentControl Header="Recommendations"
                             Style="{DynamicResource BookListContainer}">
-        <c:BookSummaryList ItemsSource="{Binding Recommendations}"
+        <c:BookSummaryList ItemsSource="{Binding List}"
                            HorizontalAlignment="Left">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -16,7 +17,8 @@
                                 i:RevealWhen.HoverOverParent="True"
                                 DockPanel.Dock="Bottom"
                                 Style="{DynamicResource QueueControlButton}"
-                                pf:Message.Attach="AddToQueue($dataContext)" />
+                                Command="{pf:Resolve {x:Type Commands:AddToQueue}}"
+                                CommandParameter="{Binding}" />
 
                         <c:BookSummary BookModel="{Binding}" />
                     </DockPanel>
