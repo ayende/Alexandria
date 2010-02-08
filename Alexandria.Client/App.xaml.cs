@@ -36,7 +36,7 @@ namespace Alexandria.Client
                 AllTypes.FromAssemblyContaining<MyBooksResponseConsumer>()
                     .Where(x => typeof(IMessageConsumer).IsAssignableFrom(x))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
-                AllTypes.FromAssemblyContaining<AddToQueue>()
+                AllTypes.FromAssemblyContaining<AddToQueueCommand>()
                     .Where(x => x.Namespace.StartsWith("Alexandria.Client.Commands"))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
                 Component.For<ApplicationModel>()

@@ -39,8 +39,7 @@
                                 i:RevealWhen.HoverOverParent="True"
                                 DockPanel.Dock="Bottom"
                                 Style="{DynamicResource QueueControlButton}"
-                                Command="{pf:Resolve {x:Type Commands:AddToQueue}}"
-                                CommandParameter="{Binding}" />
+                                pf:Message.Attach="AddToQueue($dataContext)" />
 
                         <c:BookSummary BookModel="{Binding}" />
                     </DockPanel>

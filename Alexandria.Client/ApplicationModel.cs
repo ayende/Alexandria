@@ -3,6 +3,7 @@ namespace Alexandria.Client
     using System.ComponentModel;
     using Caliburn.PresentationFramework;
     using Caliburn.PresentationFramework.Screens;
+    using Commands;
     using Messages;
     using Rhino.ServiceBus;
     using ViewModels;
@@ -18,10 +19,13 @@ namespace Alexandria.Client
 
             MyBooks = new BindableCollection<BookModel>();
 
-            Search = new Search(bus);
             MyQueue = new QueueManager(bus);
             SubscriptionDetails = new SubscriptionDetails(bus);
-            Recommendations = new Recommendations();
+
+            var addToQueue = new AddToQueueCommand(bus, MyQueue);
+
+            Recommendations = new Recommendations(addToQueue);
+            Search = new Search(bus, addToQueue);
 
             PotentialBooks = Recommendations;
         }
