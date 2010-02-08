@@ -2,7 +2,7 @@ namespace Alexandria.Messages
 {
     using System;
 
-    public class SearchResponse : ICachableResponse
+    public class SearchResponse : ICacheableResponse
     {
         public BookDTO[] Books { get; set; }
 
@@ -10,8 +10,10 @@ namespace Alexandria.Messages
 
         public string Key
         {
-            get { return "Search (UserId #" + UserId + ")"; }
+            get { return "Search (" + Query+ ")"; }
         }
+
+        public string Query { get; set; }
 
         public DateTime Timestamp { get; set; }
     }

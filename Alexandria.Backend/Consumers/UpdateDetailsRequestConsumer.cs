@@ -7,7 +7,7 @@ namespace Alexandria.Backend.Consumers
     {
         private readonly IServiceBus bus;
 
-        public UpdateDetailsRequestConsumer(IServiceBus bus)
+        public UpdateDetailsConsumer(IServiceBus bus)
         {
             this.bus = bus;
         }

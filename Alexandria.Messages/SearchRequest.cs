@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-    public class SearchRequest : ICachableRequest
+    public class SearchRequest : ICacheableRequest
     {
         public long UserId { get; set; }
 
@@ -8,7 +8,7 @@ namespace Alexandria.Messages
 
         public string Key
         {
-            get { return "Search (UserId #" + UserId + ")"; }
+            get { return "Search (" + Query + ")"; }
         }
 
         public override string ToString()
