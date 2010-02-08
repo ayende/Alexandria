@@ -4,11 +4,11 @@ namespace Alexandria.Client.Consumers
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SearchConsumer : ConsumerOf<SearchResponse>
+    public class SearchResponseConsumer : ConsumerOf<SearchResponse>
     {
         private readonly ApplicationModel applicationModel;
 
-        public SearchConsumer(ApplicationModel applicationModel)
+        public SearchResponseConsumer(ApplicationModel applicationModel)
         {
             this.applicationModel = applicationModel;
         }
@@ -16,6 +16,7 @@ namespace Alexandria.Client.Consumers
         public void Consume(SearchResponse message)
         {
             applicationModel.Search.Results.UpdateFrom(message.Books);
+            applicationModel.Search.IsSearching = false;
             applicationModel.PotentialBooks = applicationModel.Search;
         }
     }

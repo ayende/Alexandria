@@ -7,13 +7,13 @@ namespace Alexandria.Backend.Consumers
     using NHibernate.Transform;
     using Rhino.ServiceBus;
 
-    public class SearchConsumer : ConsumerOf<SearchRequest>
+    public class SearchRequestConsumer : ConsumerOf<SearchRequest>
     {
         private readonly IServiceBus bus;
 
         private readonly ISession session;
 
-        public SearchConsumer(ISession session, IServiceBus bus)
+        public SearchRequestConsumer(ISession session, IServiceBus bus)
         {
             this.session = session;
             this.bus = bus;

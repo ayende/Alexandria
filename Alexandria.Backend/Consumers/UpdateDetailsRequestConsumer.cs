@@ -3,11 +3,11 @@ namespace Alexandria.Backend.Consumers
     using Messages;
     using Rhino.ServiceBus;
 
-    public class UpdateDetailsConsumer : ConsumerOf<UpdateDetailsRequest>
+    public class UpdateDetailsRequestConsumer : ConsumerOf<UpdateDetailsRequest>
     {
         private readonly IServiceBus bus;
 
-        public UpdateDetailsConsumer(IServiceBus bus)
+        public UpdateDetailsRequestConsumer(IServiceBus bus)
         {
             this.bus = bus;
         }

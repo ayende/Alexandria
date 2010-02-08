@@ -5,11 +5,11 @@ namespace Alexandria.Client.Consumers
     using Rhino.ServiceBus;
     using ViewModels;
 
-    public class UpdateDetailsConsumer : ConsumerOf<UpdateDetailsResponse>
+    public class UpdateDetailsResponseConsumer : ConsumerOf<UpdateDetailsResponse>
     {
         private readonly ApplicationModel applicationModel;
 
-        public UpdateDetailsConsumer(ApplicationModel applicationModel)
+        public UpdateDetailsResponseConsumer(ApplicationModel applicationModel)
         {
             this.applicationModel = applicationModel;
         }
