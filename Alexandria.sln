@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alexandria.Backend", "Alexandria.Backend\Alexandria.Backend.csproj", "{0CDEE1D1-01D7-4E7A-B8D1-70D640559F4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{541709B2-9B97-4F3D-800B-089377D6AB96}"
-	ProjectSection(SolutionItems) = preProject
-		script.sql = script.sql
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
