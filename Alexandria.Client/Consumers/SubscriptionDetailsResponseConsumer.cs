@@ -1,3 +1,5 @@
+using Caliburn.Core.Invocation;
+
 namespace Alexandria.Client.Consumers
 {
     using Messages;
@@ -14,7 +16,7 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(SubscriptionDetailsResponse message)
         {
-            applicationModel.SubscriptionDetails.UpdateFrom(message.SubscriptionDetails);
+        	Execute.OnUIThreadAsync(() => applicationModel.SubscriptionDetails.UpdateFrom(message.SubscriptionDetails));
         }
     }
 }

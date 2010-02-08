@@ -11,6 +11,12 @@ namespace Alexandria.Client
         private readonly IServiceBus bus;
         private Screen potentialBooks;
 
+        /// <summary>
+        /// Pretend that application startup is showing the user some login screen
+        /// and that we get the user id from the login process
+        /// </summary>
+        private const int userId = 1;
+
         public ApplicationModel(IServiceBus bus)
         {
             this.bus = bus;
@@ -52,19 +58,19 @@ namespace Alexandria.Client
             bus.Send(
                 new MyBooksRequest
                     {
-                        UserId = 1
+                        UserId = userId
                     },
                 new MyQueueRequest
                     {
-                        UserId = 1
+                        UserId = userId
                     },
                 new MyRecommendationsRequest
                     {
-                        UserId = 1
+                        UserId = userId
                     },
                 new SubscriptionDetailsRequest
                     {
-                        UserId = 1
+                        UserId = userId
                     });
         }
     }

@@ -1,3 +1,5 @@
+using Caliburn.Core.Invocation;
+
 namespace Alexandria.Client.Consumers
 {
     using Infrastructure;
@@ -16,14 +18,17 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(UpdateDetailsResult message)
         {
-            if(message.Success)
-            {
-            	applicationModel.SubscriptionDetails.CompleteEdit();
-            }
-			else
-            {
-            	applicationModel.SubscriptionDetails.ErrorEdit(message.ErrorMessage);
-            }
+        	Execute.OnUIThreadAsync(() =>
+        	{
+        		if (message.Success)
+        		{
+        			applicationModel.SubscriptionDetails.CompleteEdit();
+        		}
+        		else
+        		{
+        			applicationModel.SubscriptionDetails.ErrorEdit(message.ErrorMessage);
+        		}
+        	});
         }
     }
 }
