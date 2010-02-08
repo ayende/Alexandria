@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="clr-namespace:Alexandria.Client.Infrastructure"
              mc:Ignorable="d"
-             x:Class="Alexandria.Client.Views.Queue"
+             x:Class="Alexandria.Client.Views.QueueManager"
              d:DesignWidth="500"
              d:DesignHeight="200">
 

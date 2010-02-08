@@ -45,10 +45,14 @@
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Views:Queue Grid.Column="0"
-                         d:LayoutOverrides="Width" />
-            <Views:Recommendations Grid.Column="2"
-                                   d:LayoutOverrides="Width" />
+
+            <ContentControl x:Name="MyQueue"
+                            Grid.Column="0"
+                            d:LayoutOverrides="Width" />
+
+            <ContentControl x:Name="PotentialBooks"
+                            Grid.Column="2"
+                            d:LayoutOverrides="Width" />
         </Grid>
 
     </DockPanel>

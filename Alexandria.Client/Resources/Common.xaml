@@ -148,6 +148,16 @@
 
     <Style x:Key="BookListContainer"
            TargetType="HeaderedContentControl">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="4 0 0 0" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="HeaderedContentControl">
@@ -165,10 +175,8 @@
                                     BorderThickness="0 1"
                                     BorderBrush="#807E7D"
                                     CornerRadius="4,4,0,0">
-                                <TextBlock Text="{TemplateBinding Header}"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Margin="4 0 0 0" />
+                                <ContentControl Content="{TemplateBinding Header}"
+                                                ContentTemplate="{TemplateBinding HeaderTemplate}" />
                             </Border>
 
                             <ContentPresenter />

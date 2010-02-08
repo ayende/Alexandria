@@ -9,34 +9,35 @@ namespace Alexandria.Client
     public class ApplicationModel : Screen
     {
         private readonly IServiceBus bus;
-        private SubscriptionDetails subscriptionDetails;
+        private Screen potentialBooks;
 
         public ApplicationModel(IServiceBus bus)
         {
             this.bus = bus;
 
             Search = new Search(bus);
+            MyQueue = new QueueManager(bus);
+            SubscriptionDetails = new SubscriptionDetails(bus);
+
+            PotentialBooks = new Recommendations();
 
             MyBooks = new BindableCollection<BookModel>();
-            Queue = new BindableCollection<BookModel>();
-            Recommendations = new BindableCollection<BookModel>();
-            subscriptionDetails = new SubscriptionDetails(bus);
         }
 
-        public SubscriptionDetails SubscriptionDetails
+        public SubscriptionDetails SubscriptionDetails { get; set; }
+        public QueueManager MyQueue { get; set; }
+        public Search Search { get; set; }
+
+        public Screen PotentialBooks
         {
-            get { return subscriptionDetails; }
+            get { return potentialBooks; }
             set
             {
-                subscriptionDetails = value;
-                NotifyOfPropertyChange(() => SubscriptionDetails);
+                potentialBooks = value;
+                NotifyOfPropertyChange(() => PotentialBooks);
             }
         }
 
-        public Search Search { get; set; }
-
-        public BindableCollection<BookModel> Queue { get; set; }
-        public BindableCollection<BookModel> Recommendations { get; set; }
         public BindableCollection<BookModel> MyBooks { get; set; }
 
         protected override void OnInitialize()
@@ -58,53 +59,6 @@ namespace Alexandria.Client
                     {
                         UserId = 1
                     });
-        }
-
-        public void MoveForwardInQueue(BookModel book)
-        {
-            var currentIndex = Queue.IndexOf(book);
-            ExecuteQueueReorder(currentIndex, currentIndex - 1);
-        }
-
-        public void MoveBackInQueue(BookModel book)
-        {
-            var currentIndex = Queue.IndexOf(book);
-            ExecuteQueueReorder(currentIndex, currentIndex + 1);
-        }
-
-        private void ExecuteQueueReorder(int oldIndex, int newIndex)
-        {
-            Queue.Move(oldIndex, newIndex);
-
-            //TODO: //TODO: send reorder msg
-        }
-
-        public bool CanMoveForwardInQueue(BookModel book)
-        {
-            return Queue.IndexOf(book) > 0;
-        }
-
-        public bool CanMoveBackInQueue(BookModel book)
-        {
-            var lastIndex = Queue.Count - 1;
-            return Queue.IndexOf(book) < lastIndex;
-        }
-
-        public void AddToQueue(BookModel book)
-        {
-            if (Recommendations.Contains(book))
-                Recommendations.Remove(book);
-
-            Queue.Add(book);
-
-            //TODO: send add msg
-        }
-
-        public void RemoveFromQueue(BookModel book)
-        {
-            Queue.Remove(book);
-
-            //TODO: send remove msg
         }
     }
 }

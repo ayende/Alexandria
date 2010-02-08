@@ -118,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Queue.xaml">
+    <Page Include="Views\QueueManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,8 +181,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ApplicationModel.cs" />
+    <Compile Include="ViewModels\QueueManager.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
     <Compile Include="ViewModels\ContactInfo.cs" />
+    <Compile Include="ViewModels\Recommendations.cs" />
     <Compile Include="ViewModels\Search.cs" />
     <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\SubscriptionDetails\ChangesPending.xaml.cs">
@@ -194,8 +196,8 @@
     <Compile Include="Views\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Queue.xaml.cs">
-      <DependentUpon>Queue.xaml</DependentUpon>
+    <Compile Include="Views\QueueManager.xaml.cs">
+      <DependentUpon>QueueManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Recommendations.xaml.cs">
       <DependentUpon>Recommendations.xaml</DependentUpon>

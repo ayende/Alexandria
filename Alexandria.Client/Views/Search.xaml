@@ -1,27 +1,42 @@
 ﻿<UserControl x:Class="Alexandria.Client.Views.Search"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controls="clr-namespace:Alexandria.Client.Controls">
-    <Grid>
-			
-			<Grid.RowDefinitions>
-				<RowDefinition />
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-			
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Alexandria.Client.Controls"
+             xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
+             xmlns:i="clr-namespace:Alexandria.Client.Infrastructure">
 
-			<TextBlock Text="Search:"/>
-			<TextBox Text="search" Grid.Column="1"/>
-			
-			<Controls:BookSummaryList ItemsSource="{Binding Path=SearchResults}" HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2">
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Image Source="{Binding Path=Image}" Stretch="None"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</Controls:BookSummaryList>
-    </Grid>
+    <HeaderedContentControl Style="{DynamicResource BookListContainer}">
+        <HeaderedContentControl.HeaderTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <TextBlock Text="Search Results"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="4 0 0 0"
+                               DockPanel.Dock="Left" />
+
+                    <Button Content="x"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right" />
+                </DockPanel>
+            </DataTemplate>
+        </HeaderedContentControl.HeaderTemplate>
+        <c:BookSummaryList ItemsSource="{Binding Results}"
+                           HorizontalAlignment="Left">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Background="Transparent">
+                        <Button Content="Add"
+                                i:RevealWhen.HoverOverParent="True"
+                                DockPanel.Dock="Bottom"
+                                Style="{DynamicResource QueueControlButton}"
+                                pf:Message.Attach="AddToQueue($dataContext)" />
+
+                        <c:BookSummary BookModel="{Binding}" />
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </c:BookSummaryList>
+    </HeaderedContentControl>
+
 </UserControl>

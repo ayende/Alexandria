@@ -16,6 +16,7 @@ namespace Alexandria.Client.Consumers
         public void Consume(SearchResponse message)
         {
             applicationModel.Search.Results.UpdateFrom(message.Books);
+            applicationModel.PotentialBooks = applicationModel.Search;
         }
     }
 }
