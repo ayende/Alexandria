@@ -62,6 +62,10 @@ namespace Alexandria.Client
                 new MyQueueRequest
                     {
                         UserId = Context.CurrentUserId
+                    },
+                new MyRecommendationsRequest
+                    {
+                        UserId = Context.CurrentUserId
                     });
         }
     }
