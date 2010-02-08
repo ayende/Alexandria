@@ -1,11 +1,11 @@
 namespace Alexandria.Client.ViewModels
 {
+    using Caliburn.Core;
     using Caliburn.PresentationFramework;
-    using Caliburn.PresentationFramework.Screens;
     using Messages;
     using Rhino.ServiceBus;
 
-    public class Search : Screen
+    public class Search : PropertyChangedBase
     {
         private readonly IServiceBus bus;
         private bool isSearching;

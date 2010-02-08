@@ -1,9 +1,9 @@
 namespace Alexandria.Client.ViewModels
 {
+    using Caliburn.Core;
     using Caliburn.PresentationFramework;
-    using Caliburn.PresentationFramework.Screens;
 
-    public class Recommendations : Screen
+    public class Recommendations : PropertyChangedBase
     {
         public Recommendations()
         {

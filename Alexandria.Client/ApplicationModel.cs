@@ -1,5 +1,6 @@
 namespace Alexandria.Client
 {
+    using System.ComponentModel;
     using Caliburn.PresentationFramework;
     using Caliburn.PresentationFramework.Screens;
     using Messages;
@@ -9,11 +10,13 @@ namespace Alexandria.Client
     public class ApplicationModel : Screen
     {
         private readonly IServiceBus bus;
-        private Screen potentialBooks;
+        private INotifyPropertyChanged potentialBooks;
 
         public ApplicationModel(IServiceBus bus)
         {
             this.bus = bus;
+
+            MyBooks = new BindableCollection<BookModel>();
 
             Search = new Search(bus);
             MyQueue = new QueueManager(bus);
@@ -28,7 +31,7 @@ namespace Alexandria.Client
         public Search Search { get; set; }
         public Recommendations Recommendations { get; set; }
 
-        public Screen PotentialBooks
+        public INotifyPropertyChanged PotentialBooks
         {
             get { return potentialBooks; }
             set
@@ -48,6 +51,10 @@ namespace Alexandria.Client
         protected override void OnInitialize()
         {
             bus.Send(
+                new SubscriptionDetailsRequest
+                    {
+                        UserId = Context.CurrentUserId
+                    },
                 new MyBooksRequest
                     {
                         UserId = Context.CurrentUserId
