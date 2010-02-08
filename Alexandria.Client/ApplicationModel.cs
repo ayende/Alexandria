@@ -30,11 +30,6 @@ namespace Alexandria.Client
         public Search Search { get; set; }
         public Recommendations Recommendations { get; set; }
 
-        public void CloseSearchResults()
-        {
-            PotentialBooks = Recommendations;
-        }
-
         public Screen PotentialBooks
         {
             get { return potentialBooks; }
@@ -46,6 +41,11 @@ namespace Alexandria.Client
         }
 
         public BindableCollection<BookModel> MyBooks { get; set; }
+
+        public void CloseSearchResults()
+        {
+            PotentialBooks = Recommendations;
+        }
 
         protected override void OnInitialize()
         {

@@ -3,6 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
+        xmlns:ViewModels="clr-namespace:Caliburn.PresentationFramework.ViewModels;assembly=Caliburn.PresentationFramework"
+        xmlns:Views="clr-namespace:Alexandria.Client.Views"
         x:Class="Alexandria.Client.ApplicationView"
         mc:Ignorable="d"
         Width="960"
@@ -15,12 +17,16 @@
         <DockPanel x:Name="Header"
                    DockPanel.Dock="Top"
                    Margin="0 10 0 0">
-            
+
             <StackPanel DockPanel.Dock="Right"
                         MinWidth="200">
-                <TextBlock><Hyperlink><InlineUIContainer>
+                <TextBlock Margin="0 2">
+                    <Hyperlink>
+                        <InlineUIContainer>
                     		<TextBlock Text="{Binding SubscriptionDetails.Details.Name}" />
-                    	</InlineUIContainer></Hyperlink></TextBlock>
+                    	</InlineUIContainer>
+                    </Hyperlink>
+                </TextBlock>
 
                 <DockPanel DataContext="{Binding Search}"
                            IsEnabled="{Binding IsSearching, Converter={StaticResource NotConverter}}">
@@ -32,30 +38,42 @@
                     </Button>
                     <TextBox x:Name="Query" />
                 </DockPanel>
-                
+
             </StackPanel>
             <Border>
                 <TextBlock Text="Alexandria"
                            FontSize="18.667"
                            FontWeight="Bold" />
             </Border>
-            
+
         </DockPanel>
 
-        <Grid Margin="0 8 0 0">
+        <Grid Margin="0 8">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <StackPanel Grid.Column="0">
+                <ContentControl x:Name="SubscriptionDetails"
+                                MinHeight="230"
+                                Margin="0 0 0 4"
+                                ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}" />
+
+                <Views:MyBooks />
+            </StackPanel>
+
             <ContentControl x:Name="MyQueue"
-                            Grid.Column="0"
+                            Grid.Column="2"
                             d:LayoutOverrides="Width" />
 
             <ContentControl x:Name="PotentialBooks"
-                            Grid.Column="2"
+                            Grid.Column="4"
                             d:LayoutOverrides="Width" />
+
         </Grid>
 
     </DockPanel>

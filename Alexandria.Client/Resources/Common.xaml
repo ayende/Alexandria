@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:Converters="clr-namespace:Alexandria.Client.Infrastructure"
-                    xmlns:c="clr-namespace:Alexandria.Client.Controls">
+                    xmlns:c="clr-namespace:Alexandria.Client.Controls"
+                    xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
 
     <Converters:NotConverter x:Key="NotConverter" />
     <Converters:TimeSpanToHumanReadableStringConverter x:Key="TimespanConverter" />
@@ -48,12 +49,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <DockPanel Width="260">
+                    <DockPanel>
 
-                        <TextBlock Text="Subscription Details"
+                        <TextBlock DockPanel.Dock="Top"
+                                   Text="Subscription Details"
                                    FontWeight="Bold"
-                                   DockPanel.Dock="Top"
-                                   FontSize="13.333" />
+                                   FontSize="13.333"
+                                   Margin="4 0" />
 
                         <Border Background="{DynamicResource SubscriptionBackground}"
                                 SnapsToDevicePixels="True"
@@ -163,12 +165,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="HeaderedContentControl">
                     <Border SnapsToDevicePixels="True"
-                            VerticalAlignment="Top"
                             CornerRadius="5,5,4,4"
                             Background="White"
                             BorderBrush="#FF807E7D"
                             BorderThickness="1,0,1,1">
-                        <DockPanel VerticalAlignment="Top">
+                        <DockPanel>
                             <Border DockPanel.Dock="Top"
                                     Background="#EFEEED"
                                     Padding="0 2"
@@ -177,7 +178,9 @@
                                     BorderBrush="#807E7D"
                                     CornerRadius="4,4,0,0">
                                 <ContentControl Content="{TemplateBinding Header}"
-                                                ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                HorizontalAlignment="Stretch"
+                                                HorizontalContentAlignment="Stretch" />
                             </Border>
 
                             <ContentPresenter />
@@ -192,7 +195,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
+                    <StackPanel Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
@@ -201,8 +204,12 @@
                 <ControlTemplate TargetType="ItemsControl">
                     <Border MinHeight="130"
                             MinWidth="100"
+                            HorizontalAlignment="Stretch"
                             Padding="8">
-                        <ItemsPresenter />
+                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      HorizontalAlignment="Stretch">
+                            <ItemsPresenter />
+                        </ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -228,6 +235,7 @@
 
                         <Image Source="{Binding Path=Image}"
                                Width="100"
+                               Margin="4"
                                Stretch="Uniform" />
                     </Border>
                 </ControlTemplate>
