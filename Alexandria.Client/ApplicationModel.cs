@@ -43,19 +43,19 @@ namespace Alexandria.Client
 		protected override void OnInitialize()
 		{
 		    bus.Send(
-		                new MyBooksRequest
+		                new MyBooksQuery
 		                    {
 		                        UserId = userId
 		                    },
-		                new MyQueueRequest
+		                new MyQueueQuery
 		                    {
 		                        UserId = userId
 		                    },
-		                new MyRecommendationsRequest
+		                new MyRecommendationsQuery
 		                    {
 		                        UserId = userId
 		                    },
-		                new SubscriptionDetailsRequest
+		                new SubscriptionDetailsQuery
 		                    {
 		                        UserId = userId
 		                    });
@@ -85,7 +85,7 @@ namespace Alexandria.Client
 			        		BookId = bookModel.Id,
 			        		NewPosition = newIndex
 			        	},
-			        	new MyQueueRequest
+			        	new MyQueueQuery
 			        	{
 			        		UserId = userId
 			        	});
@@ -114,11 +114,11 @@ namespace Alexandria.Client
 			        		UserId = userId,
 			        		BookId = book.Id
 			        	},
-			        	new MyQueueRequest
+			        	new MyQueueQuery
 			        	{
 			        		UserId = userId
 			        	},
-			        	new MyRecommendationsRequest
+			        	new MyRecommendationsQuery
 			        	{
 			        		UserId = userId
 			        	});
@@ -127,7 +127,7 @@ namespace Alexandria.Client
 		public void Search(string search)
 		{
 			bus.Send(
-			        	new SearchRequest
+			        	new SearchQuery
 			        	{
 			        		Search = search,
 			        		UserId = userId
@@ -144,11 +144,11 @@ namespace Alexandria.Client
 			        		UserId = userId,
 			        		BookId = book.Id
 			        	},
-			        	new MyQueueRequest
+			        	new MyQueueQuery
 			        	{
 			        		UserId = userId
 			        	},
-			        	new MyRecommendationsRequest
+			        	new MyRecommendationsQuery
 			        	{
 			        		UserId = userId
 			        	});

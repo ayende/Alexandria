@@ -80,12 +80,12 @@
     <Compile Include="AlexandriaBootStrapper.cs" />
     <Compile Include="Consumers\AddBookToQueueConsumer.cs" />
     <Compile Include="Consumers\ChangeBookPositionInQueueConsumer.cs" />
-    <Compile Include="Consumers\MyBooksRequestConsumer.cs" />
-    <Compile Include="Consumers\MyQueueRequestConsumer.cs" />
-    <Compile Include="Consumers\MyRecommendationsRequestConsumer.cs" />
+    <Compile Include="Consumers\MyBooksQueryConsumer.cs" />
+    <Compile Include="Consumers\MyQueueQueryConsumer.cs" />
+    <Compile Include="Consumers\MyRecommendationsQueryConsumer.cs" />
     <Compile Include="Consumers\RemoveBookFromQueueConsumer.cs" />
     <Compile Include="Consumers\SearchRequestConsumer.cs" />
-    <Compile Include="Consumers\SubscriptionDetailsRequestConsumer.cs" />
+    <Compile Include="Consumers\SubscriptionDetailsQueryConsumer.cs" />
     <Compile Include="Consumers\UpdateAddressConsumer.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Book.cs" />

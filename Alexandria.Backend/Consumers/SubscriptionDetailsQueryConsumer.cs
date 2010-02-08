@@ -6,18 +6,18 @@ using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
 {
-	public class SubscriptionDetailsRequestConsumer : ConsumerOf<SubscriptionDetailsRequest>
+	public class SubscriptionDetailsQueryConsumer : ConsumerOf<SubscriptionDetailsQuery>
 	{
 		private readonly ISession session;
 		private readonly IServiceBus bus;
 
-		public SubscriptionDetailsRequestConsumer(ISession session, IServiceBus bus)
+		public SubscriptionDetailsQueryConsumer(ISession session, IServiceBus bus)
 		{
 			this.session = session;
 			this.bus = bus;
 		}
 		
-		public void Consume(SubscriptionDetailsRequest message)
+		public void Consume(SubscriptionDetailsQuery message)
 		{
 			var subscription =
 				session.CreateQuery(

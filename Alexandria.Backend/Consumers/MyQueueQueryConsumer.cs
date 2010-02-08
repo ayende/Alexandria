@@ -9,28 +9,29 @@ using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
 {
-	public class MyRecommendationsRequestConsumer : ConsumerOf<MyRecommendationsRequest>
+	public class MyQueueQueryConsumer : ConsumerOf<MyQueueQuery>
 	{
 		private readonly ISession session;
 		private readonly IServiceBus bus;
 
-		public MyRecommendationsRequestConsumer(ISession session, IServiceBus bus)
+		public MyQueueQueryConsumer(ISession session, IServiceBus bus)
 		{
 			this.session = session;
 			this.bus = bus;
 		}
-		public void Consume(MyRecommendationsRequest message)
+
+		public void Consume(MyQueueQuery message)
 		{
 			var user = session.Get<User>(message.UserId);
 
-			Console.WriteLine("{0}'s has {1} book recommendations",
-				user.Name, user.Recommendations.Count);
+			Console.WriteLine("{0}'s has {1} books queued for reading",
+				user.Name, user.Queue.Count);
 
-			bus.Reply(new MyRecommendationsResponse
+			bus.Reply(new MyQueueResponse
 			{
 				UserId = message.UserId,
 				Timestamp = DateTime.Now,
-				Recommendations = user.Recommendations.ToBookDtoArray()
+				Queue = user.Queue.ToBookDtoArray()
 			});
 		}
 	}
