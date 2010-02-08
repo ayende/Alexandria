@@ -86,7 +86,7 @@
     <Compile Include="Consumers\RemoveBookFromQueueConsumer.cs" />
     <Compile Include="Consumers\SearchRequestConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsRequestConsumer.cs" />
-    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
+    <Compile Include="Consumers\UpdateAddressConsumer.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Subscription.cs" />
@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="nhibernate-configuration.xsd" />
     <None Include="nhibernate-mapping.xsd" />
     <None Include="nhibernate.config">

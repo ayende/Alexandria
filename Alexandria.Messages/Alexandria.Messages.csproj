@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddBookToQueue.cs" />
+    <Compile Include="AddressDTO.cs" />
     <Compile Include="BookDTO.cs" />
     <Compile Include="ChangeBookPositionInQueue.cs" />
     <Compile Include="ICacheableRequest.cs" />
@@ -63,7 +64,7 @@
     <Compile Include="SubscriptionDetailsDTO.cs" />
     <Compile Include="SubscriptionDetailsRequest.cs" />
     <Compile Include="SubscriptionDetailsResponse.cs" />
-    <Compile Include="UpdateDetails.cs" />
+    <Compile Include="UpdateAddress.cs" />
     <Compile Include="UpdateDetailsResult.cs" />
   </ItemGroup>
   <ItemGroup>
