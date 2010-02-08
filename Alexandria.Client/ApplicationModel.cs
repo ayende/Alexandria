@@ -22,7 +22,7 @@ namespace Alexandria.Client
 			Queue = new BindableCollection<BookModel>();
 			Recommendations = new BindableCollection<BookModel>();
 			SearchResults = new BindableCollection<BookModel>();
-			subscriptionDetails = new SubscriptionDetails(bus);
+			subscriptionDetails = new SubscriptionDetails(bus, userId);
 		}
 
 		public SubscriptionDetails SubscriptionDetails
@@ -42,15 +42,23 @@ namespace Alexandria.Client
 
 		protected override void OnInitialize()
 		{
-			bus.Send(
-				new MyBooksRequest
-				{
-					UserId = userId
-				},
-				new MyQueueRequest
-				{
-					UserId = userId
-				});
+		    bus.Send(
+		                new MyBooksRequest
+		                    {
+		                        UserId = userId
+		                    },
+		                new MyQueueRequest
+		                    {
+		                        UserId = userId
+		                    },
+		                new MyRecommendationsRequest
+		                    {
+		                        UserId = userId
+		                    },
+		                new SubscriptionDetailsRequest
+		                    {
+		                        UserId = userId
+		                    });
 		}
 
 		public void MoveForwardInQueue(BookModel book)
