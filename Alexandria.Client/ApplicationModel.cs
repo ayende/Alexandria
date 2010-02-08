@@ -50,14 +50,6 @@ namespace Alexandria.Client
 				new MyQueueRequest
 				{
 					UserId = userId
-				},
-				new MyRecommendationsRequest
-				{
-					UserId = userId
-				},
-				new SubscriptionDetailsRequest
-				{
-					UserId = userId
 				});
 		}
 

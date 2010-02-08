@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-	public class SearchRequest : ICachableRequest
+	public class SearchRequest : ICacheableRequest
 	{
 		public long UserId { get; set; }
 		public string Search { get; set; }

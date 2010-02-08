@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-	public class MyQueueRequest : ICachableRequest
+	public class MyQueueRequest : ICacheableRequest
 	{
 		public long UserId { get; set; }
 

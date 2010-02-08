@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Alexandria.Messages;
 using Rhino.ServiceBus;
@@ -34,7 +35,7 @@ namespace Alexandria.Client.Infrastructure
 
 		private bool TransportOnMessageArrived(CurrentMessageInformation currentMessageInformation)
 		{
-			var cachableResponse = currentMessageInformation.Message as ICachableResponse;
+			var cachableResponse = currentMessageInformation.Message as ICacheableResponse;
 			if (cachableResponse == null)
 				return false;
 
@@ -48,15 +49,16 @@ namespace Alexandria.Client.Infrastructure
 
 		private void TransportOnMessageSent(CurrentMessageInformation currentMessageInformation)
 		{
-			var containsNonCachableMessages = currentMessageInformation.AllMessages.Any(x=>x is ICachableRequest == false);
+			var containsNonCachableMessages = currentMessageInformation.AllMessages.Any(x=>x is ICacheableRequest == false);
 
-			if(containsNonCachableMessages) 
+		    var cacheableRequests = currentMessageInformation.AllMessages.OfType<ICacheableRequest>();
+		    if(containsNonCachableMessages) 
 			{
 				// since we are making a non cachable request, the 
 				// _cachable_ requests part of this batch are likely to be
 				// affected by this message, so we go ahead and expire them
 				// to avoid showing incorrect data
-				foreach (var cachableRequestToExpire in currentMessageInformation.AllMessages.OfType<ICachableRequest>())
+				foreach (var cachableRequestToExpire in cacheableRequests)
 				{
 					cache.Remove(cachableRequestToExpire.Key);
 				}
@@ -64,7 +66,7 @@ namespace Alexandria.Client.Infrastructure
 			}
 
 			var responses =
-				from msg in currentMessageInformation.AllMessages.OfType<ICachableRequest>()
+				from msg in cacheableRequests
 				let response = cache.Get(msg.Key)
 				where response != null
 				select response.Value;
