@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-    public class UpdateDetailsResult
+    public class UpdateAddressResult
     {
         public bool Success { get; set; }
 		
