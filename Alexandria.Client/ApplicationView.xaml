@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Caliburn.PresentationFramework.ViewModels;assembly=Caliburn.PresentationFramework"
+        xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
         x:Class="Alexandria.Client.ApplicationView"
         mc:Ignorable="d"
         Width="960"
@@ -13,22 +14,42 @@
 
     <DockPanel Margin="12,0">
 
-        <DockPanel x:Name="Header"
-                   Margin="0 10 0 0"
-                   DockPanel.Dock="Top">
+        <DockPanel DockPanel.Dock="Top"
+                   Margin="0 10 0 0">
+            <StackPanel DockPanel.Dock="Right"
+                        MinWidth="200">
+                <TextBlock><Hyperlink><InlineUIContainer>
+                    		<TextBlock Text="{Binding SubscriptionDetails.Details.Name}" />
+                    	</InlineUIContainer></Hyperlink></TextBlock>
 
-            <ContentControl x:Name="SubscriptionDetails"
-                            vm:View.Context="{Binding SubscriptionDetails.ViewMode}"
-                            Margin="0 0 10 0"
-                            DockPanel.Dock="Left" />
-
-            <Views:MyBooks />
+                <DockPanel DataContext="{Binding Search}">
+                    <Button DockPanel.Dock="Right"
+                            pf:Message.Attach="FetchResultsFor(Query)"
+                            Margin="4 0 0 0">
+                        <Image Source="Resources/Icons/zoom.png"
+                               Stretch="None" />
+                    </Button>
+                    <TextBox x:Name="Query" />
+                </DockPanel>
+            </StackPanel>
+            <Border>
+                <TextBlock Text="Alexandria"
+                           FontSize="18.667"
+                           FontWeight="Bold" />
+            </Border>
         </DockPanel>
 
-        <Views:Queue DockPanel.Dock="Top"
-                     Margin="0 8 0 8" />
-
-        <Views:Recommendations DockPanel.Dock="Top" />
+        <Grid Margin="0 8 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Views:Queue Grid.Column="0"
+                         d:LayoutOverrides="Width" />
+            <Views:Recommendations Grid.Column="2"
+                                   d:LayoutOverrides="Width" />
+        </Grid>
 
     </DockPanel>
 

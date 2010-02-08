@@ -55,6 +55,8 @@
     <Compile Include="MyRecommendationsRequest.cs" />
     <Compile Include="MyRecommendationsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchRequest.cs" />
+    <Compile Include="SearchResponse.cs" />
     <Compile Include="SubscriptionDetailsDTO.cs" />
     <Compile Include="SubscriptionDetailsRequest.cs" />
     <Compile Include="SubscriptionDetailsResponse.cs" />
