@@ -1,46 +1,46 @@
+using System;
+using Alexandria.Backend.Model;
+using Alexandria.Backend.Util;
+using Alexandria.Messages;
+using NHibernate;
+using Rhino.ServiceBus;
+
 namespace Alexandria.Backend.Consumers
 {
-    using System.Linq;
-    using Messages;
-    using Model;
-    using NHibernate;
-    using NHibernate.Transform;
-    using Rhino.ServiceBus;
+	public class SearchRequestConsumer : ConsumerOf<SearchRequest>
+	{
+		private readonly ISession session;
+		private readonly IServiceBus bus;
 
-    public class SearchRequestConsumer : ConsumerOf<SearchRequest>
-    {
-        private readonly IServiceBus bus;
+		public SearchRequestConsumer(ISession session, IServiceBus bus)
+		{
+			this.session = session;
+			this.bus = bus;
+		}
 
-        private readonly ISession session;
+		public void Consume(SearchRequest message)
+		{
+			// note: the search implementation shown here is 
+			// just a demo and suffers from numerous performance issues
+			// a much better approach would be to use NHibernate.Search or 
+			// the database's full text indexing
 
-        public SearchRequestConsumer(ISession session, IServiceBus bus)
-        {
-            this.session = session;
-            this.bus = bus;
-        }
+			var books = session.CreateQuery("from Book b where b.Name like :search or b.Author like :search")
+				.SetParameter("search", "%" + message.Search +"%")
+				.List<Book>();
 
-        public void Consume(SearchRequest message)
-        {
-            var books =
-                session.CreateQuery(
-                    @"select b from Book b join fetch b.Authors
-						where lower(b.Name) like :query")
-                    .SetParameter("query", string.Format("%{0}%", message.Query))
-                    .SetResultTransformer(Transformers.DistinctRootEntity)
-                    .List<Book>();
+			Console.WriteLine("User {0} searched for '{1}' and got {2} results",
+				message.UserId, message.Search, books.Count);
 
-            bus.Reply(new SearchResponse
-                          {
-                              Books = books.Select(book => new BookDTO
-                                                               {
-                                                                   Id = book.Id,
-                                                                   ImageUrl = book.ImageUrl,
-                                                                   Name = book.Name,
-                                                                   Authors =
-                                                                       book.Authors.Select(x => x.Name).
-                                                                       ToArray()
-                                                               }).ToArray()
-                          });
-        }
-    }
+			// TODO: add search query to user's history, so we can run analysis on things the user likes
+
+			bus.Reply(
+			         	new SearchResponse
+			         	{
+			         		Search = message.Search,
+			         		SearchResults = books.ToBookDtoArray(),
+			         		Timestamp = DateTime.Now
+			         	});
+		}
+	}
 }

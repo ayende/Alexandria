@@ -7,6 +7,7 @@ namespace Alexandria.Backend.Model
 		public virtual long Id { get; set; }
 		public virtual string Name { get; set; }
 		public virtual string ImageUrl { get; set; }
-		public virtual ICollection<Author> Authors { get; set; }
+		public virtual byte[] Image { get; set; }
+		public virtual string Author { get; set; }
 	}
 }

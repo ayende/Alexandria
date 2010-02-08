@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-	public class SubscriptionDetailsRequest : ICachableRequest
+	public class SubscriptionDetailsRequest : ICacheableRequest
 	{
 		public long UserId { get; set; }
 

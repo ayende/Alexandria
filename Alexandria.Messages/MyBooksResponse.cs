@@ -2,7 +2,8 @@
 
 namespace Alexandria.Messages
 {
-	public class MyBooksResponse : ICachableResponse
+	[Serializable]
+	public class MyBooksResponse : ICacheableResponse
 	{
 		public BookDTO[] Books { get; set; }
 

@@ -1,18 +1,26 @@
+﻿using System;
+
 namespace Alexandria.Messages
 {
-    using System;
+	[Serializable]
+	public class SearchResponse : ICacheableResponse
+	{
+		public BookDTO[] SearchResults { get; set; }
+		public string Search { get; set; }
 
-    public class SearchResponse : ICachableResponse
-    {
-        public BookDTO[] Books { get; set; }
+		public string Key
+		{
+			get { return "Search (" + Search + ")"; }
+		}
 
-        public long UserId { get; set; }
+		public DateTime Timestamp
+		{
+			get; set;
+		}
 
-        public string Key
-        {
-            get { return "Search (UserId #" + UserId + ")"; }
-        }
-
-        public DateTime Timestamp { get; set; }
-    }
+		public override string ToString()
+		{
+			return Key;
+		}
+	}
 }

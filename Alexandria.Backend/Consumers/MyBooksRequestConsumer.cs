@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using Alexandria.Backend.Model;
+using Alexandria.Backend.Util;
 using Alexandria.Messages;
 using NHibernate;
 using NHibernate.Transform;
@@ -20,23 +22,16 @@ namespace Alexandria.Backend.Consumers
 
 		public void Consume(MyBooksRequest message)
 		{
-			var books =
-				session.CreateQuery(
-				                   	@"select b from Book b join fetch b.Authors 
-						where b.Id in (select r from User u join u.CurrentlyReading r where u.Id = :id)")
-					.SetParameter("id", message.UserId)
-					.SetResultTransformer(Transformers.DistinctRootEntity)
-					.List<Book>();
+			var user = session.Get<User>(message.UserId);
+			
+			Console.WriteLine("{0}'s has {1} books at home", 
+				user.Name, user.CurrentlyReading.Count);
 
 			bus.Reply(new MyBooksResponse
 			{
-				Books = books.Select(book => new BookDTO
-				{
-					Id = book.Id,
-					ImageUrl = book.ImageUrl,
-					Name = book.Name,
-					Authors = book.Authors.Select(x => x.Name).ToArray()
-				}).ToArray()
+				UserId = message.UserId,
+				Timestamp = DateTime.Now,
+				Books = user.CurrentlyReading.ToBookDtoArray()
 			});
 		}
 	}

@@ -2,7 +2,8 @@
 
 namespace Alexandria.Messages
 {
-	public class SubscriptionDetailsResponse : ICachableResponse
+	[Serializable]
+	public class SubscriptionDetailsResponse : ICacheableResponse
 	{
 		public SubscriptionDetailsDTO SubscriptionDetails { get; set; }
 

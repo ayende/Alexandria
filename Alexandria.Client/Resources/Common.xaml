@@ -228,7 +228,8 @@
                                     <TextBlock Text="{Binding Name}"
                                                FontWeight="Bold"
                                                DockPanel.Dock="Top" />
-                                    <ItemsControl ItemsSource="{Binding Authors}" />
+																	<TextBlock Text="{Binding Author}"
+																						 FontStyle="Italic"/>
                                 </DockPanel>
                             </Border>
                         </Border.ToolTip>

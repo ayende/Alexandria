@@ -4,8 +4,13 @@
 
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel VerticalAlignment="Top">
+					<TextBlock
+											DockPanel.Dock="Bottom"
+											FontWeight="Heavy"
+											HorizontalAlignment="Center"
+											Text="{Binding ErrorMessage}"/>
 
-            <StackPanel DockPanel.Dock="Bottom"
+					<StackPanel DockPanel.Dock="Bottom"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         Margin="0 4 0 0">
@@ -94,6 +99,7 @@
                          Text="{Binding Editable.CreditCard}" />
             </Grid>
 
+					
         </DockPanel>
     </ContentControl>
 

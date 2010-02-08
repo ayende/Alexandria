@@ -10,6 +10,7 @@ namespace Alexandria.Client.ViewModels
         private readonly IServiceBus bus;
         private ContactInfo details;
         private ContactInfo editable;
+		private string errorMessage;
         private decimal monthlyCost;
         private int numberOfPossibleBooksOut;
         private ViewMode viewMode;
@@ -43,7 +44,17 @@ namespace Alexandria.Client.ViewModels
             }
         }
 
-        public ViewMode ViewMode
+    	public string ErrorMessage
+    	{
+    		get { return errorMessage; }
+    		set
+    		{
+    			errorMessage = value;
+				NotifyOfPropertyChange(() => ErrorMessage);
+    		}
+    	}
+
+    	public ViewMode ViewMode
         {
             get { return viewMode; }
             set
@@ -75,7 +86,7 @@ namespace Alexandria.Client.ViewModels
 
         public void BeginEdit()
         {
-            ViewMode = ViewMode.Editing;
+			ViewMode = ViewMode.Editing;
 
             Editable.Name = Details.Name;
             Editable.Street = Details.Street;
@@ -84,21 +95,23 @@ namespace Alexandria.Client.ViewModels
             Editable.ZipCode = Details.ZipCode;
             Editable.Country = Details.Country;
             //Editable.CreditCard = Details.CreditCard;
-        }
+			ErrorMessage = null;
+		}
 
         public void CancelEdit()
         {
             ViewMode = ViewMode.Confirmed;
             Editable = new ContactInfo();
+        	ErrorMessage = null;
         }
 
         public void Save()
         {
             ViewMode = ViewMode.ChangesPending;
 
-            bus.Send(new UpdateDetailsRequest
+            bus.Send(new UpdateDetails
                          {
-                             UserId = 1,
+                             UserId = Context.CurrentUserId,
                              Details = new SubscriptionDetailsDTO
                                            {
                                                Name = Editable.Name,
@@ -128,5 +141,20 @@ namespace Alexandria.Client.ViewModels
 
             Details.CreditCard = subscriptionDetails.CreditCard;
         }
+
+    	public void CompleteEdit()
+    	{
+			Details = Editable;
+			Editable = new ContactInfo();
+			ErrorMessage = null;
+			ViewMode = ViewMode.Confirmed;
+    	}
+
+    	public void ErrorEdit(string theErrorMessage)
+    	{
+    		ViewMode = ViewMode.Error;
+			ErrorMessage = theErrorMessage;
+    	}
+
     }
 }

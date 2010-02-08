@@ -21,8 +21,6 @@ namespace Alexandria.Client
             Recommendations = new Recommendations();
 
             PotentialBooks = Recommendations;
-
-            MyBooks = new BindableCollection<BookModel>();
         }
 
         public SubscriptionDetails SubscriptionDetails { get; set; }
@@ -52,19 +50,11 @@ namespace Alexandria.Client
             bus.Send(
                 new MyBooksRequest
                     {
-                        UserId = 1
+                        UserId = Context.CurrentUserId
                     },
                 new MyQueueRequest
                     {
-                        UserId = 1
-                    },
-                new MyRecommendationsRequest
-                    {
-                        UserId = 1
-                    },
-                new SubscriptionDetailsRequest
-                    {
-                        UserId = 1
+                        UserId = Context.CurrentUserId
                     });
         }
     }

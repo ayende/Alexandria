@@ -1,6 +1,6 @@
 ﻿namespace Alexandria.Messages
 {
-	public interface ICachableRequest
+	public interface ICacheableRequest
 	{
 		string Key { get; }
 	}

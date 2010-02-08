@@ -1,4 +1,9 @@
-﻿namespace Alexandria.Client
+﻿using System;
+using System.IO;
+using Alexandria.Client.Infrastructure;
+using Rhino.ServiceBus.MessageModules;
+
+namespace Alexandria.Client
 {
     using System.Linq;
     using System.Windows.Input;
@@ -22,27 +27,25 @@
         {
             var windsor = new WindsorContainer(new XmlInterpreter());
 
-            windsor.Kernel.ComponentModelBuilder.RemoveContributor(
-                windsor.Kernel.ComponentModelBuilder.Contributors
-                .OfType<PropertiesDependenciesModelInspector>().Single()
-                );
-
             windsor.Kernel.AddFacility("rhino.esb", new RhinoServiceBusFacility());
 
             windsor.Register(
+				Component.For<ICache>().ImplementedBy<PersistentCache>()
+					.DependsOn(Property.ForKey("basePath").Eq(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache"))),
+				Component.For<IMessageModule>().ImplementedBy<CachingMessageModule>(),
                 AllTypes.FromAssemblyContaining<MyBooksResponseConsumer>()
                     .Where(x => typeof(IMessageConsumer).IsAssignableFrom(x))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
                 AllTypes.FromAssemblyContaining<AddToQueue>()
                     .Where(x => x.Namespace.StartsWith("Alexandria.Client.Commands"))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
-                Component.For<ApplicationModel>().ImplementedBy<ApplicationModel>()
+                Component.For<ApplicationModel>()
                 );
 
             var serviceBus = windsor.Resolve<IStartableServiceBus>();
             serviceBus.Start();
 
-            return new WindsorAdapter(windsor);
+        	return new WindsorAdapter(windsor);
         }
 
         protected override object CreateRootModel()

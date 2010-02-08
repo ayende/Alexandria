@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBookToQueue.cs" />
     <Compile Include="BookDTO.cs" />
-    <Compile Include="ICachableRequest.cs" />
-    <Compile Include="ICachableResponse.cs" />
+    <Compile Include="ChangeBookPositionInQueue.cs" />
+    <Compile Include="ICacheableRequest.cs" />
+    <Compile Include="ICacheableResponse.cs" />
     <Compile Include="MyBooksRequest.cs" />
     <Compile Include="MyBooksResponse.cs" />
     <Compile Include="MyQueueRequest.cs" />
@@ -55,13 +57,17 @@
     <Compile Include="MyRecommendationsRequest.cs" />
     <Compile Include="MyRecommendationsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveBookFromQueue.cs" />
     <Compile Include="SearchRequest.cs" />
     <Compile Include="SearchResponse.cs" />
     <Compile Include="SubscriptionDetailsDTO.cs" />
     <Compile Include="SubscriptionDetailsRequest.cs" />
     <Compile Include="SubscriptionDetailsResponse.cs" />
-    <Compile Include="UpdateDetailsRequest.cs" />
-    <Compile Include="UpdateDetailsResponse.cs" />
+    <Compile Include="UpdateDetails.cs" />
+    <Compile Include="UpdateDetailsResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

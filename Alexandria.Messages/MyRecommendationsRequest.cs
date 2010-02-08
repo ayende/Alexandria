@@ -1,6 +1,6 @@
 namespace Alexandria.Messages
 {
-	public class MyRecommendationsRequest : ICachableRequest
+	public class MyRecommendationsRequest : ICacheableRequest
 	{
 		public long UserId { get; set; }
 

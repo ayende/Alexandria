@@ -1,7 +1,9 @@
 ﻿namespace Alexandria.Client.Commands
 {
     using System;
+    using System.Linq;
     using System.Windows.Input;
+    using Messages;
     using Rhino.ServiceBus;
     using ViewModels;
 
@@ -19,7 +21,25 @@
         public void Execute(object parameter)
         {
             var book = (BookModel) parameter;
-            applicationModel.MyQueue.Queue.Add(book);
+
+            var queue = applicationModel.MyQueue.Queue;
+
+            if (queue.Any(x => x.Id == book.Id) == false) // avoid adding twice
+                queue.Add(book);
+            bus.Send(
+                new AddBookToQueue
+                    {
+                        UserId = Context.CurrentUserId,
+                        BookId = book.Id
+                    },
+                new MyQueueRequest
+                    {
+                        UserId = Context.CurrentUserId
+                    },
+                new MyRecommendationsRequest
+                    {
+                        UserId = Context.CurrentUserId
+                    });
         }
 
         public bool CanExecute(object parameter)

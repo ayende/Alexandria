@@ -34,8 +34,8 @@ namespace Alexandria.Client.ViewModels
 
             bus.Send(new SearchRequest
                          {
-                             UserId = 1,
-                             Query = query
+                             UserId = Context.CurrentUserId,
+                             Search = query
                          });
         }
     }

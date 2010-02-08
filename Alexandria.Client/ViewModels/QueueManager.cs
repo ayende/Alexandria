@@ -2,6 +2,7 @@ namespace Alexandria.Client.ViewModels
 {
     using Caliburn.PresentationFramework;
     using Caliburn.PresentationFramework.Screens;
+    using Messages;
     using Rhino.ServiceBus;
 
     public class QueueManager : Screen
@@ -17,23 +18,33 @@ namespace Alexandria.Client.ViewModels
 
         public BindableCollection<BookModel> Queue { get; set; }
 
-        public void MoveForwardInQueue(BookModel book)
+        public void MoveForwardInQueue(BookModel bookModel)
         {
-            var currentIndex = Queue.IndexOf(book);
-            ExecuteQueueReorder(currentIndex, currentIndex - 1);
+            ExecuteQueueReorder(bookModel, -1);
         }
 
-        public void MoveBackInQueue(BookModel book)
+        public void MoveBackInQueue(BookModel bookModel)
         {
-            var currentIndex = Queue.IndexOf(book);
-            ExecuteQueueReorder(currentIndex, currentIndex + 1);
+            ExecuteQueueReorder(bookModel, 1);
         }
 
-        private void ExecuteQueueReorder(int oldIndex, int newIndex)
+        private void ExecuteQueueReorder(BookModel bookModel, int delta)
         {
+            var oldIndex = Queue.IndexOf(bookModel);
+            var newIndex = oldIndex + delta;
             Queue.Move(oldIndex, newIndex);
 
-            //TODO: send reorder msg
+            bus.Send(
+                        new ChangeBookPositionInQueue
+                        {
+                            UserId = Context.CurrentUserId,
+                            BookId = bookModel.Id,
+                            NewPosition = newIndex
+                        },
+                        new MyQueueRequest
+                        {
+                            UserId = Context.CurrentUserId
+                        });
         }
 
         public bool CanMoveForwardInQueue(BookModel book)
@@ -51,7 +62,20 @@ namespace Alexandria.Client.ViewModels
         {
             Queue.Remove(book);
 
-            //TODO: send remove msg
+            bus.Send(
+                new RemoveBookFromQueue
+                    {
+                        UserId = Context.CurrentUserId,
+                        BookId = book.Id
+                    },
+                new MyQueueRequest
+                    {
+                        UserId = Context.CurrentUserId
+                    },
+                new MyRecommendationsRequest
+                    {
+                        UserId = Context.CurrentUserId
+                    });
         }
     }
 }
