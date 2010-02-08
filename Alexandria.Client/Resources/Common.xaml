@@ -3,6 +3,7 @@
                     xmlns:Converters="clr-namespace:Alexandria.Client.Infrastructure"
                     xmlns:c="clr-namespace:Alexandria.Client.Controls">
 
+    <Converters:NotConverter x:Key="NotConverter" />
     <Converters:TimeSpanToHumanReadableStringConverter x:Key="TimespanConverter" />
 
     <LinearGradientBrush x:Key="WindowBackground"

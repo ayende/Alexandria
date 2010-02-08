@@ -18,8 +18,9 @@ namespace Alexandria.Client
             Search = new Search(bus);
             MyQueue = new QueueManager(bus);
             SubscriptionDetails = new SubscriptionDetails(bus);
+            Recommendations = new Recommendations();
 
-            PotentialBooks = new Recommendations();
+            PotentialBooks = Recommendations;
 
             MyBooks = new BindableCollection<BookModel>();
         }
@@ -27,6 +28,12 @@ namespace Alexandria.Client
         public SubscriptionDetails SubscriptionDetails { get; set; }
         public QueueManager MyQueue { get; set; }
         public Search Search { get; set; }
+        public Recommendations Recommendations { get; set; }
+
+        public void CloseSearchResults()
+        {
+            PotentialBooks = Recommendations;
+        }
 
         public Screen PotentialBooks
         {

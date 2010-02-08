@@ -8,6 +8,7 @@ namespace Alexandria.Client.ViewModels
     public class Search : Screen
     {
         private readonly IServiceBus bus;
+        private bool isSearching;
 
         public Search(IServiceBus bus)
         {
@@ -17,8 +18,20 @@ namespace Alexandria.Client.ViewModels
 
         public BindableCollection<BookModel> Results { get; private set; }
 
+        public bool IsSearching
+        {
+            get { return isSearching; }
+            set
+            {
+                isSearching = value;
+                NotifyOfPropertyChange(() => IsSearching);
+            }
+        }
+
         public void FetchResultsFor(string query)
         {
+            IsSearching = true;
+
             bus.Send(new SearchRequest
                          {
                              UserId = 1,

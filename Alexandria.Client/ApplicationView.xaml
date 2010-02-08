@@ -1,9 +1,7 @@
 ﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Views="clr-namespace:Alexandria.Client.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Caliburn.PresentationFramework.ViewModels;assembly=Caliburn.PresentationFramework"
         xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
         x:Class="Alexandria.Client.ApplicationView"
         mc:Ignorable="d"
@@ -12,17 +10,20 @@
         WindowStartupLocation="CenterScreen"
         Title="Alexandria">
 
-    <DockPanel Margin="12,0">
+    <DockPanel Margin="12 0">
 
-        <DockPanel DockPanel.Dock="Top"
+        <DockPanel x:Name="Header"
+                   DockPanel.Dock="Top"
                    Margin="0 10 0 0">
+            
             <StackPanel DockPanel.Dock="Right"
                         MinWidth="200">
                 <TextBlock><Hyperlink><InlineUIContainer>
                     		<TextBlock Text="{Binding SubscriptionDetails.Details.Name}" />
                     	</InlineUIContainer></Hyperlink></TextBlock>
 
-                <DockPanel DataContext="{Binding Search}">
+                <DockPanel DataContext="{Binding Search}"
+                           IsEnabled="{Binding IsSearching, Converter={StaticResource NotConverter}}">
                     <Button DockPanel.Dock="Right"
                             pf:Message.Attach="FetchResultsFor(Query)"
                             Margin="4 0 0 0">
@@ -31,12 +32,14 @@
                     </Button>
                     <TextBox x:Name="Query" />
                 </DockPanel>
+                
             </StackPanel>
             <Border>
                 <TextBlock Text="Alexandria"
                            FontSize="18.667"
                            FontWeight="Bold" />
             </Border>
+            
         </DockPanel>
 
         <Grid Margin="0 8 0 0">

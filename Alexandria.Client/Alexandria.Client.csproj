@@ -152,17 +152,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddToQueue.cs" />
     <Compile Include="Consumers\MyBooksResponseConsumer.cs" />
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
-    <Compile Include="Consumers\SearchConsumer.cs" />
+    <Compile Include="Consumers\SearchResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
-    <Compile Include="Consumers\UpdateDetailsConsumer.cs" />
+    <Compile Include="Consumers\UpdateDetailsResponseConsumer.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
     <Compile Include="Infrastructure\Cache.cs" />
     <Compile Include="Infrastructure\CachedData.cs" />
     <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Infrastructure\NotConverter.cs" />
     <Compile Include="Infrastructure\RevealWhen.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Infrastructure\TimeSpanToHumanReadableStringConverter.cs" />

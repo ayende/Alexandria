@@ -33,7 +33,7 @@ namespace Alexandria.Client.ViewModels
         {
             Queue.Move(oldIndex, newIndex);
 
-            //TODO: //TODO: send reorder msg
+            //TODO: send reorder msg
         }
 
         public bool CanMoveForwardInQueue(BookModel book)
@@ -45,13 +45,6 @@ namespace Alexandria.Client.ViewModels
         {
             var lastIndex = Queue.Count - 1;
             return Queue.IndexOf(book) < lastIndex;
-        }
-
-        public void AddToQueue(BookModel book)
-        {
-            Queue.Add(book);
-
-            //TODO: send add msg
         }
 
         public void RemoveFromQueue(BookModel book)

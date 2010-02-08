@@ -1,6 +1,7 @@
 ﻿namespace Alexandria.Client
 {
     using System.Linq;
+    using System.Windows.Input;
     using Caliburn.PresentationFramework.ApplicationModel;
     using Caliburn.Windsor;
     using Castle.Core;
@@ -8,6 +9,7 @@
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
     using Castle.Windsor.Configuration.Interpreters;
+    using Commands;
     using Consumers;
     using Microsoft.Practices.ServiceLocation;
     using Rhino.ServiceBus;
@@ -30,6 +32,9 @@
             windsor.Register(
                 AllTypes.FromAssemblyContaining<MyBooksResponseConsumer>()
                     .Where(x => typeof(IMessageConsumer).IsAssignableFrom(x))
+                    .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
+                AllTypes.FromAssemblyContaining<AddToQueue>()
+                    .Where(x => x.Namespace.StartsWith("Alexandria.Client.Commands"))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
                 Component.For<ApplicationModel>().ImplementedBy<ApplicationModel>()
                 );
