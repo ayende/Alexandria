@@ -153,7 +153,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AddToQueueCommand.cs" />
     <Compile Include="Consumers\MyBooksResponseConsumer.cs" />
     <Compile Include="Consumers\MyQueueResponseConsumer.cs" />
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
@@ -186,11 +185,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ApplicationModel.cs" />
-    <Compile Include="ViewModels\QueueManager.cs" />
     <Compile Include="ViewModels\BookModel.cs" />
     <Compile Include="ViewModels\ContactInfo.cs" />
-    <Compile Include="ViewModels\Recommendations.cs" />
-    <Compile Include="ViewModels\Search.cs" />
     <Compile Include="ViewModels\SubscriptionDetails.cs" />
     <Compile Include="Views\SubscriptionDetails\ChangesPending.xaml.cs">
       <DependentUpon>ChangesPending.xaml</DependentUpon>

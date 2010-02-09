@@ -15,7 +15,7 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(MyQueueResponse message)
         {
-            applicationModel.MyQueue.Queue.UpdateFrom(message.Queue);
+            applicationModel.Queue.UpdateFrom(message.Queue);
         }
     }
 }

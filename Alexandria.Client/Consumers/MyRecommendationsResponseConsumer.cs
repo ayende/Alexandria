@@ -15,7 +15,7 @@ namespace Alexandria.Client.Consumers
 
         public void Consume(MyRecommendationsResponse message)
         {
-            applicationModel.Recommendations.List.UpdateFrom(message.Recommendations);
+            applicationModel.Recommendations.UpdateFrom(message.Recommendations);
         }
     }
 }

@@ -1,25 +1,20 @@
-﻿using System;
-using System.IO;
-using Alexandria.Client.Infrastructure;
-using Rhino.ServiceBus.MessageModules;
-
-namespace Alexandria.Client
+﻿namespace Alexandria.Client
 {
-    using System.Linq;
-    using System.Windows.Input;
+    using System;
+    using System.IO;
     using Caliburn.PresentationFramework.ApplicationModel;
     using Caliburn.Windsor;
     using Castle.Core;
-    using Castle.MicroKernel.ModelBuilder.Inspectors;
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
     using Castle.Windsor.Configuration.Interpreters;
-    using Commands;
     using Consumers;
+    using Infrastructure;
     using Microsoft.Practices.ServiceLocation;
     using Rhino.ServiceBus;
     using Rhino.ServiceBus.Impl;
     using Rhino.ServiceBus.Internal;
+    using Rhino.ServiceBus.MessageModules;
 
     public partial class App : CaliburnApplication
     {
@@ -30,14 +25,12 @@ namespace Alexandria.Client
             windsor.Kernel.AddFacility("rhino.esb", new RhinoServiceBusFacility());
 
             windsor.Register(
-				Component.For<ICache>().ImplementedBy<PersistentCache>()
-					.DependsOn(Property.ForKey("basePath").Eq(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache"))),
-				Component.For<IMessageModule>().ImplementedBy<CachingMessageModule>(),
+                Component.For<ICache>().ImplementedBy<PersistentCache>()
+                    .DependsOn(
+                    Property.ForKey("basePath").Eq(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache"))),
+                Component.For<IMessageModule>().ImplementedBy<CachingMessageModule>(),
                 AllTypes.FromAssemblyContaining<MyBooksResponseConsumer>()
-                    .Where(x => typeof(IMessageConsumer).IsAssignableFrom(x))
-                    .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
-                AllTypes.FromAssemblyContaining<AddToQueueCommand>()
-                    .Where(x => x.Namespace.StartsWith("Alexandria.Client.Commands"))
+                    .Where(x => typeof (IMessageConsumer).IsAssignableFrom(x))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
                 Component.For<ApplicationModel>()
                 );
@@ -45,7 +38,7 @@ namespace Alexandria.Client
             var serviceBus = windsor.Resolve<IStartableServiceBus>();
             serviceBus.Start();
 
-        	return new WindsorAdapter(windsor);
+            return new WindsorAdapter(windsor);
         }
 
         protected override object CreateRootModel()
