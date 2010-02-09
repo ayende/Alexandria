@@ -6,6 +6,7 @@
 
     <Converters:NotConverter x:Key="NotConverter" />
     <Converters:TimeSpanToHumanReadableStringConverter x:Key="TimespanConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" /> 
 
     <LinearGradientBrush x:Key="WindowBackground"
                          EndPoint="0.5,1"

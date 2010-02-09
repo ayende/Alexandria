@@ -7,7 +7,7 @@
 
     <HeaderedContentControl Header="Recommendations"
                             Style="{DynamicResource BookListContainer}">
-        <c:BookSummaryList ItemsSource="{Binding List}"
+        <c:BookSummaryList ItemsSource="{Binding Recommendations}"
                            HorizontalAlignment="Left">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>

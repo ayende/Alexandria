@@ -10,7 +10,8 @@
              d:DesignWidth="200"
              d:DesignHeight="140">
 
-    <HeaderedContentControl Style="{DynamicResource BookListContainer}">
+    <HeaderedContentControl Style="{DynamicResource BookListContainer}"
+                            Visibility="{Binding DisplaySearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
         <HeaderedContentControl.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>
@@ -20,7 +21,7 @@
                                Margin="4 0"
                                DockPanel.Dock="Left" />
 
-                    <Button pf:Message.Attach="CloseSearchResults"
+                    <Button pf:Message.Attach="HideSearchResults"
                             Content="x"
                             HorizontalAlignment="Right"
                             DockPanel.Dock="Right"
@@ -29,7 +30,7 @@
                 </DockPanel>
             </DataTemplate>
         </HeaderedContentControl.HeaderTemplate>
-        <c:BookSummaryList ItemsSource="{Binding Results}"
+        <c:BookSummaryList ItemsSource="{Binding SearchResults}"
                            HorizontalAlignment="Left">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>

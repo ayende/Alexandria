@@ -10,6 +10,8 @@ namespace Alexandria.Client
     public class ApplicationModel : Screen
     {
         private readonly IServiceBus bus;
+        private bool displaySearchResults;
+        private bool isCurrentlySearching;
         private SubscriptionDetails subscriptionDetails;
         private int userId = 1;
 
@@ -38,6 +40,26 @@ namespace Alexandria.Client
         public BindableCollection<BookModel> Recommendations { get; set; }
         public BindableCollection<BookModel> MyBooks { get; set; }
         public BindableCollection<BookModel> SearchResults { get; set; }
+
+        public bool IsCurrentlySearching
+        {
+            get { return isCurrentlySearching; }
+            set
+            {
+                isCurrentlySearching = value;
+                NotifyOfPropertyChange(() => IsCurrentlySearching);
+            }
+        }
+
+        public bool DisplaySearchResults
+        {
+            get { return displaySearchResults; }
+            set
+            {
+                displaySearchResults = value;
+                NotifyOfPropertyChange(() => DisplaySearchResults);
+            }
+        }
 
         protected override void OnInitialize()
         {
@@ -125,12 +147,20 @@ namespace Alexandria.Client
 
         public void Search(string search)
         {
+            IsCurrentlySearching = true;
+            SearchResults.Clear();
+
             bus.Send(
                 new SearchQuery
                     {
                         Search = search,
                         UserId = userId
                     });
+        }
+
+        public void HideSearchResults()
+        {
+            DisplaySearchResults = false;
         }
 
         public void RemoveFromQueue(BookModel book)

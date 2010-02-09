@@ -28,10 +28,9 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <DockPanel DataContext="{Binding Search}"
-                           IsEnabled="{Binding IsSearching, Converter={StaticResource NotConverter}}">
+                <DockPanel IsEnabled="{Binding IsCurrentlySearching, Converter={StaticResource NotConverter}}">
                     <Button DockPanel.Dock="Right"
-                            pf:Message.Attach="FetchResultsFor(Query)"
+                            pf:Message.Attach="Search(Query)"
                             Margin="4 0 0 0">
                         <Image Source="Resources/Icons/zoom.png"
                                Stretch="None" />
@@ -66,13 +65,15 @@
                 <Views:MyBooks />
             </StackPanel>
 
-            <ContentControl x:Name="MyQueue"
-                            Grid.Column="2"
-                            d:LayoutOverrides="Width" />
+            <Views:MyQueue Grid.Column="2"
+                           d:LayoutOverrides="Width" />
 
-            <ContentControl x:Name="PotentialBooks"
-                            Grid.Column="4"
-                            d:LayoutOverrides="Width" />
+            <Views:Recommendations Grid.Column="4"
+                                   d:LayoutOverrides="Width" />
+
+            <Views:Search Grid.Column="4"
+                          d:LayoutOverrides="Width" />
+
         </Grid>
 
     </DockPanel>

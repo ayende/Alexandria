@@ -119,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\QueueManager.xaml">
+    <Page Include="Views\MyQueue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,8 +197,8 @@
     <Compile Include="Views\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QueueManager.xaml.cs">
-      <DependentUpon>QueueManager.xaml</DependentUpon>
+    <Compile Include="Views\MyQueue.xaml.cs">
+      <DependentUpon>MyQueue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Recommendations.xaml.cs">
       <DependentUpon>Recommendations.xaml</DependentUpon>

@@ -2,9 +2,9 @@
 {
     using System.Windows.Controls;
 
-    public partial class QueueManager : UserControl
+    public partial class MyQueue : UserControl
     {
-        public QueueManager()
+        public MyQueue()
         {
             InitializeComponent();
         }
