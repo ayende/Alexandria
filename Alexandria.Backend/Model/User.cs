@@ -39,7 +39,7 @@ namespace Alexandria.Backend.Model
 			// add any other business logic related to removing book from queue
 		}
 
-	    public void ChangeAddress(string street, string houseNumber, string city, string country, string zipCode)
+        public virtual void ChangeAddress(string street, string houseNumber, string city, string country, string zipCode)
 	    {
             Address.Street = street;
             Address.HouseNumber = houseNumber;
