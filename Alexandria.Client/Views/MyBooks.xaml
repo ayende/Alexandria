@@ -5,30 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="Alexandria.Client.Views.MyBooks"
              mc:Ignorable="d"
-             d:DesignWidth="300"
-             d:DesignHeight="200">
+             d:DesignWidth="200"
+             d:DesignHeight="500">
 
-    <DockPanel>
-
-        <TextBlock DockPanel.Dock="Top"
-                   FontSize="13.333"
-                   FontWeight="Bold"
-                   Text="At Home" />
-
-        <Border Background="White"
-                CornerRadius="4"
-                BorderThickness="1"
-                BorderBrush="#FF707070"
-                SnapsToDevicePixels="True">
-
-            <c:BookSummaryList ItemsSource="{Binding MyBooks}">
-                <c:BookSummaryList.ItemTemplate>
-                    <DataTemplate>
-                        <c:BookSummary BookModel="{Binding}" />
-                    </DataTemplate>
-                </c:BookSummaryList.ItemTemplate>
-            </c:BookSummaryList>
-        </Border>
-    </DockPanel>
+    <HeaderedContentControl Header="At Home"
+                            Style="{DynamicResource BookListContainer}">
+        <c:BookSummaryList ItemsSource="{Binding MyBooks}">
+            <c:BookSummaryList.ItemTemplate>
+                <DataTemplate>
+                    <c:BookSummary BookModel="{Binding}" />
+                </DataTemplate>
+            </c:BookSummaryList.ItemTemplate>
+        </c:BookSummaryList>
+    </HeaderedContentControl>
 
 </UserControl>

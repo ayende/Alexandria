@@ -6,7 +6,7 @@
 
     <Converters:NotConverter x:Key="NotConverter" />
     <Converters:TimeSpanToHumanReadableStringConverter x:Key="TimespanConverter" />
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" /> 
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <LinearGradientBrush x:Key="WindowBackground"
                          EndPoint="0.5,1"
@@ -50,24 +50,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <DockPanel>
 
-                        <TextBlock DockPanel.Dock="Top"
-                                   Text="Subscription Details"
-                                   FontWeight="Bold"
-                                   FontSize="13.333"
-                                   Margin="4 0" />
+                    <Border Background="{DynamicResource SubscriptionBackground}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="4"
+                            BorderBrush="#FF707070"
+                            BorderThickness="1">
+                        <DockPanel>
 
-                        <Border Background="{DynamicResource SubscriptionBackground}"
-                                SnapsToDevicePixels="True"
-                                CornerRadius="4"
-                                Padding="10"
-                                BorderBrush="#FF707070"
-                                BorderThickness="1">
-                            <ContentPresenter />
-                        </Border>
+                            <TextBlock DockPanel.Dock="Top"
+                                       Text="Subscription Details"
+                                       FontWeight="Bold"
+                                       FontSize="16"
+                                       Margin="4 2" />
+                            
+                            <ContentPresenter Margin="10 0 10 10" />
 
-                    </DockPanel>
+                        </DockPanel>
+                    </Border>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -229,8 +230,8 @@
                                     <TextBlock Text="{Binding Name}"
                                                FontWeight="Bold"
                                                DockPanel.Dock="Top" />
-																	<TextBlock Text="{Binding Author}"
-																						 FontStyle="Italic"/>
+                                    <TextBlock Text="{Binding Author}"
+                                               FontStyle="Italic" />
                                 </DockPanel>
                             </Border>
                         </Border.ToolTip>

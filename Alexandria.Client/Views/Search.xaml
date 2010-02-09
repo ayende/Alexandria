@@ -8,10 +8,9 @@
              x:Class="Alexandria.Client.Views.Search"
              mc:Ignorable="d"
              d:DesignWidth="200"
-             d:DesignHeight="140">
+             d:DesignHeight="500">
 
-    <HeaderedContentControl Style="{DynamicResource BookListContainer}"
-                            Visibility="{Binding DisplaySearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
+    <HeaderedContentControl Style="{DynamicResource BookListContainer}">
         <HeaderedContentControl.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>

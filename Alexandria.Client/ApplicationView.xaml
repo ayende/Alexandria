@@ -35,7 +35,8 @@
                         <Image Source="Resources/Icons/zoom.png"
                                Stretch="None" />
                     </Button>
-                    <TextBox x:Name="Query" />
+                    <TextBox x:Name="Query"
+                             pf:Message.Attach="Search(Query)" />
                 </DockPanel>
 
             </StackPanel>
@@ -56,14 +57,15 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <DockPanel Grid.Column="0">
                 <ContentControl x:Name="SubscriptionDetails"
+                                DockPanel.Dock="Top"
                                 MinHeight="230"
-                                Margin="0 0 0 4"
-                                ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}" />
+                                ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}"
+                                Margin="0,0,0,8" />
 
                 <Views:MyBooks />
-            </StackPanel>
+            </DockPanel>
 
             <Views:MyQueue Grid.Column="2"
                            d:LayoutOverrides="Width" />
@@ -72,6 +74,7 @@
                                    d:LayoutOverrides="Width" />
 
             <Views:Search Grid.Column="4"
+                          Visibility="{Binding DisplaySearchResults, Converter={StaticResource BooleanToVisibilityConverter}}"
                           d:LayoutOverrides="Width" />
 
         </Grid>
