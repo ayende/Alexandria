@@ -18,11 +18,29 @@ namespace Alexandria.Client
             this.bus = bus;
 
             MyBooks = new BindableCollection<BookModel>();
+			subscriptionDetails = new SubscriptionDetails(bus, userId);
 
             MyQueue = new QueueManager(bus);
             SubscriptionDetails = new SubscriptionDetails(bus);
 
             var addToQueue = new AddToQueueCommand(bus, MyQueue);
+		    bus.Send(
+		                new MyBooksQuery
+		                    {
+		                        UserId = userId
+		                    },
+		                new MyQueueQuery
+		                    {
+		                        UserId = userId
+		                    },
+		                new MyRecommendationsQuery
+		                    {
+		                        UserId = userId
+		                    },
+		                new SubscriptionDetailsQuery
+		                    {
+		                        UserId = userId
+		                    });
 
             Recommendations = new Recommendations(addToQueue);
             Search = new Search(bus, addToQueue);
@@ -36,6 +54,7 @@ namespace Alexandria.Client
         public Recommendations Recommendations { get; set; }
 
         public INotifyPropertyChanged PotentialBooks
+			        	new MyQueueQuery
         {
             get { return potentialBooks; }
             set
@@ -48,6 +67,8 @@ namespace Alexandria.Client
         public BindableCollection<BookModel> MyBooks { get; set; }
 
         public void CloseSearchResults()
+			        	new MyQueueQuery
+			        	new MyRecommendationsQuery
         {
             PotentialBooks = Recommendations;
         }
@@ -55,7 +76,7 @@ namespace Alexandria.Client
         protected override void OnInitialize()
         {
             bus.Send(
-                new SubscriptionDetailsRequest
+			        	new SearchQuery
                     {
                         UserId = Context.CurrentUserId
                     },
@@ -63,11 +84,11 @@ namespace Alexandria.Client
                     {
                         UserId = Context.CurrentUserId
                     },
-                new MyQueueRequest
+			        	new MyQueueQuery
                     {
                         UserId = Context.CurrentUserId
                     },
-                new MyRecommendationsRequest
+			        	new MyRecommendationsQuery
                     {
                         UserId = Context.CurrentUserId
                     });

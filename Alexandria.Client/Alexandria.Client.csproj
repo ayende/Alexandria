@@ -159,7 +159,7 @@
     <Compile Include="Consumers\MyRecommendationsResponseConsumer.cs" />
     <Compile Include="Consumers\SearchResponseConsumer.cs" />
     <Compile Include="Consumers\SubscriptionDetailsResponseConsumer.cs" />
-    <Compile Include="Consumers\UpdateDetailsResultConsumer.cs" />
+    <Compile Include="Consumers\UpdateAddressResultConsumer.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Controls\BookSummary.cs" />
     <Compile Include="Controls\BookSummaryList.cs" />
@@ -225,6 +225,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

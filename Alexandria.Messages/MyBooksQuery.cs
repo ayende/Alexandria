@@ -1,13 +1,12 @@
 namespace Alexandria.Messages
 {
-	public class SearchRequest : ICacheableRequest
+	public class MyBooksQuery : ICacheableQuery
 	{
 		public long UserId { get; set; }
-		public string Search { get; set; }
 
 		public string Key
 		{
-			get { return "Search (" + Search + ")"; }
+			get { return "MyBooks (UserId #" + UserId + ")"; }
 		}
 
 		public override string ToString()

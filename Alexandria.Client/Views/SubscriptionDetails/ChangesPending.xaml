@@ -30,6 +30,7 @@
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Editable.Street}" />
+                            <TextBlock Text=" " />
                             <TextBlock Text="{Binding Editable.HouseNumber}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">

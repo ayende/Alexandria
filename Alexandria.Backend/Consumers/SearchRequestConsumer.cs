@@ -7,7 +7,7 @@ using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
 {
-	public class SearchRequestConsumer : ConsumerOf<SearchRequest>
+	public class SearchRequestConsumer : ConsumerOf<SearchQuery>
 	{
 		private readonly ISession session;
 		private readonly IServiceBus bus;
@@ -18,7 +18,7 @@ namespace Alexandria.Backend.Consumers
 			this.bus = bus;
 		}
 
-		public void Consume(SearchRequest message)
+		public void Consume(SearchQuery message)
 		{
 			// note: the search implementation shown here is 
 			// just a demo and suffers from numerous performance issues

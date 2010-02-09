@@ -49,9 +49,9 @@ namespace Alexandria.Client.Infrastructure
 
 		private void TransportOnMessageSent(CurrentMessageInformation currentMessageInformation)
 		{
-			var containsNonCachableMessages = currentMessageInformation.AllMessages.Any(x=>x is ICacheableRequest == false);
+			var containsNonCachableMessages = currentMessageInformation.AllMessages.Any(x=>x is ICacheableQuery == false);
 
-		    var cacheableRequests = currentMessageInformation.AllMessages.OfType<ICacheableRequest>();
+		    var cacheableRequests = currentMessageInformation.AllMessages.OfType<ICacheableQuery>();
 		    if(containsNonCachableMessages) 
 			{
 				// since we are making a non cachable request, the 

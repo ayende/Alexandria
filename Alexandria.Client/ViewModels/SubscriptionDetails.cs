@@ -8,6 +8,7 @@ namespace Alexandria.Client.ViewModels
     public class SubscriptionDetails : Screen
     {
         private readonly IServiceBus bus;
+        private readonly int userId;
         private ContactInfo details;
         private ContactInfo editable;
 		private string errorMessage;
@@ -15,9 +16,10 @@ namespace Alexandria.Client.ViewModels
         private int numberOfPossibleBooksOut;
         private ViewMode viewMode;
 
-        public SubscriptionDetails(IServiceBus bus)
+        public SubscriptionDetails(IServiceBus bus, int userId)
         {
             this.bus = bus;
+            this.userId = userId;
 
             ViewMode = ViewMode.Retrieving;
             Details = new ContactInfo();
@@ -94,7 +96,8 @@ namespace Alexandria.Client.ViewModels
             Editable.City = Details.City;
             Editable.ZipCode = Details.ZipCode;
             Editable.Country = Details.Country;
-            //Editable.CreditCard = Details.CreditCard;
+            // This field is explicitly ommitted
+            // Editable.CreditCard = Details.CreditCard;
 			ErrorMessage = null;
 		}
 
@@ -108,21 +111,19 @@ namespace Alexandria.Client.ViewModels
         public void Save()
         {
             ViewMode = ViewMode.ChangesPending;
-
-            bus.Send(new UpdateDetails
-                         {
-                             UserId = Context.CurrentUserId,
-                             Details = new SubscriptionDetailsDTO
-                                           {
-                                               Name = Editable.Name,
-                                               Street = Editable.Street,
-                                               HouseNumber = Editable.HouseNumber,
-                                               City = Editable.City,
-                                               ZipCode = Editable.ZipCode,
-                                               Country = Editable.Country,
-                                               CreditCard = Editable.CreditCard
-                                           }
-                         });
+            //TODO: add logic to handle credit card changes
+            bus.Send(new UpdateAddress
+                     {
+                         UserId = userId,
+                         Details = new AddressDTO
+                                   {
+                                       Street = Editable.Street,
+                                       HouseNumber = Editable.HouseNumber,
+                                       City = Editable.City,
+                                       ZipCode = Editable.ZipCode,
+                                       Country = Editable.Country,
+                                   }
+                     });
         }
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
@@ -142,6 +143,7 @@ namespace Alexandria.Client.ViewModels
             Details.CreditCard = subscriptionDetails.CreditCard;
         }
 
+        //from SubscriptionDetails
     	public void CompleteEdit()
     	{
 			Details = Editable;

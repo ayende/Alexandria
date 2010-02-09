@@ -38,5 +38,16 @@ namespace Alexandria.Backend.Model
 			Recommendations.Add(book);
 			// add any other business logic related to removing book from queue
 		}
+
+	    public void ChangeAddress(string street, string houseNumber, string city, string country, string zipCode)
+	    {
+            Address.Street = street;
+            Address.HouseNumber = houseNumber;
+            Address.City = city;
+	        Address.Country = country;
+            Address.ZipCode = zipCode;
+
+            //add business logic to handle change of address logic, such as increased shipping fees, etc
+        }
 	}
 }

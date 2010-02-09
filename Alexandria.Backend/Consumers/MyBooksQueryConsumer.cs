@@ -9,18 +9,18 @@ using Rhino.ServiceBus;
 
 namespace Alexandria.Backend.Consumers
 {
-	public class MyBooksRequestConsumer : ConsumerOf<MyBooksRequest>
+	public class MyBooksQueryConsumer : ConsumerOf<MyBooksQuery>
 	{
 		private readonly ISession session;
 		private readonly IServiceBus bus;
 
-		public MyBooksRequestConsumer(ISession session, IServiceBus bus)
+		public MyBooksQueryConsumer(ISession session, IServiceBus bus)
 		{
 			this.session = session;
 			this.bus = bus;
 		}
 
-		public void Consume(MyBooksRequest message)
+		public void Consume(MyBooksQuery message)
 		{
 			var user = session.Get<User>(message.UserId);
 			
