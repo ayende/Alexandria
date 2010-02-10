@@ -5,6 +5,7 @@
         xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
         xmlns:ViewModels="clr-namespace:Caliburn.PresentationFramework.ViewModels;assembly=Caliburn.PresentationFramework"
         xmlns:Views="clr-namespace:Alexandria.Client.Views"
+        xmlns:c="clr-namespace:Alexandria.Client.Controls"
         x:Class="Alexandria.Client.ApplicationView"
         mc:Ignorable="d"
         Width="960"
@@ -21,13 +22,19 @@
             <DockPanel DockPanel.Dock="Right"
                        MinWidth="200"
                        IsEnabled="{Binding IsCurrentlySearching, Converter={StaticResource NotConverter}}">
-                <Button DockPanel.Dock="Right"
-                        pf:Message.Attach="Search(Query)"
-                        Margin="4 0 0 0">
-                    <Image Source="Resources/Icons/zoom.png"
-                           Stretch="None" />
-                </Button>
-                <TextBox x:Name="Query" />
+                <DockPanel VerticalAlignment="Bottom">
+                    
+                    <c:ActivityIndicator Margin="0,0,4,0"
+                                         IsActive="{Binding IsCurrentlySearching}" />
+                    
+                    <Button pf:Message.Attach="Search(Query)"
+                            Margin="4,0,0,0"
+                            DockPanel.Dock="Right">
+                        <Image Source="Resources/Icons/zoom.png"
+                               Stretch="None" />
+                    </Button>
+                    <TextBox x:Name="Query" />
+                </DockPanel>
             </DockPanel>
 
             <Border>
@@ -39,31 +46,32 @@
         </DockPanel>
 
         <Grid Margin="0 8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="8" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="8" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <DockPanel Grid.Column="0">
+            <DockPanel Grid.Row="0">
                 <ContentControl x:Name="SubscriptionDetails"
                                 MinHeight="230"
                                 ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}"
-                                DockPanel.Dock="Top"
-                                Margin="0,0,0,4" />
+                                DockPanel.Dock="Left"
+                                Margin="0,0,8,0"
+                                Width="260" />
 
                 <Views:MyBooks />
             </DockPanel>
 
-            <Views:MyQueue Grid.Column="2"
+            <Views:MyQueue Grid.Row="2"
                            d:LayoutOverrides="Width" />
 
-            <Views:Recommendations Grid.Column="4"
+            <Views:Recommendations Grid.Row="4"
                                    d:LayoutOverrides="Width" />
 
-            <Views:Search Grid.Column="4"
+            <Views:Search Grid.Row="0"
                           Visibility="{Binding DisplaySearchResults, Converter={StaticResource BooleanToVisibilityConverter}}"
                           d:LayoutOverrides="Width" />
 
