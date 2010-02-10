@@ -10,14 +10,13 @@
 
     <HeaderedContentControl Header="Recommendations"
                             Style="{DynamicResource BookListContainer}">
-        <c:BookSummaryList ItemsSource="{Binding Recommendations}"
-                           HorizontalAlignment="Left">
+        <c:BookSummaryList ItemsSource="{Binding Recommendations}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Background="Transparent">
-                        <Button Content="Add"
+                        <Button DockPanel.Dock="Right"
+                                Content="Add"
                                 i:RevealWhen.HoverOverParent="True"
-                                DockPanel.Dock="Bottom"
                                 Style="{DynamicResource QueueControlButton}"
                                 pf:Message.Attach="AddToQueue($dataContext)" />
 

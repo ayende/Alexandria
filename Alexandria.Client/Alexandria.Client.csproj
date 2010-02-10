@@ -252,6 +252,13 @@
     <Resource Include="Resources\Icons\zoom.png" />
     <Resource Include="Library.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\arrow_down.png" />
+    <Resource Include="Resources\Icons\arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cog.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

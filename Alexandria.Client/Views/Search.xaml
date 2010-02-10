@@ -21,16 +21,17 @@
                                DockPanel.Dock="Left" />
 
                     <Button pf:Message.Attach="HideSearchResults"
-                            Content="x"
                             HorizontalAlignment="Right"
                             DockPanel.Dock="Right"
-                            Margin="2"
-                            FontSize="9.333" />
+                            Margin="2">
+                        <Image Source="../Resources/Icons/cancel.png"
+                               Width="9"
+                               Height="9" />
+                    </Button>
                 </DockPanel>
             </DataTemplate>
         </HeaderedContentControl.HeaderTemplate>
-        <c:BookSummaryList ItemsSource="{Binding SearchResults}"
-                           HorizontalAlignment="Left">
+        <c:BookSummaryList ItemsSource="{Binding SearchResults}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Background="Transparent">
