@@ -92,7 +92,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Margin"
-                Value="2,0,2,4" />
+                Value="4 0" />
         <Setter Property="VerticalAlignment"
                 Value="Top" />
         <Setter Property="FontWeight"

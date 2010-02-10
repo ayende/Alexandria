@@ -13,15 +13,14 @@
         <c:BookSummaryList ItemsSource="{Binding Recommendations}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Background="Transparent">
-                        <Button DockPanel.Dock="Right"
-                                Content="Add"
+                    <StackPanel Background="Transparent">
+                        <c:BookSummary BookModel="{Binding}" />
+
+                        <Button Content="Add"
                                 i:RevealWhen.HoverOverParent="True"
                                 Style="{DynamicResource QueueControlButton}"
                                 pf:Message.Attach="AddToQueue($dataContext)" />
-
-                        <c:BookSummary BookModel="{Binding}" />
-                    </DockPanel>
+                    </StackPanel>
                 </DataTemplate>
             </c:BookSummaryList.ItemTemplate>
         </c:BookSummaryList>

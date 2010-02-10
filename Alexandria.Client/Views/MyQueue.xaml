@@ -15,29 +15,31 @@
         <c:BookSummaryList ItemsSource="{Binding Queue}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Background="Transparent"
-                               Margin="0 0 0 6"
+                    <StackPanel Background="Transparent"
                                d:DesignWidth="120"
                                d:DesignHeight="160">
 
-                        <StackPanel DockPanel.Dock="Right"
-                                    i:RevealWhen.HoverOverParent="True"
-                                    VerticalAlignment="Top">
+                        <c:BookSummary BookModel="{Binding}" />
+                        
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 0 0 4">
                             <Button pf:Message.Attach="MoveForwardInQueue($dataContext)">
-                                <Image Source="../Resources/Icons/arrow_up.png"
+                                <Image Source="../Resources/Icons/arrow_right.png"
                                        Stretch="None" />
                             </Button>
                             <Button pf:Message.Attach="MoveBackInQueue($dataContext)">
-                                <Image Source="../Resources/Icons/arrow_down.png"
+                                <Image Source="../Resources/Icons/arrow_left.png"
                                        Stretch="None" />
                             </Button>
-                            <Button Content="Remove"
-                                    pf:Message.Attach="RemoveFromQueue($dataContext)"
-                                    Style="{DynamicResource QueueControlButton}" />
                         </StackPanel>
-
-                        <c:BookSummary BookModel="{Binding}" />
-                    </DockPanel>
+                        
+                        <Button i:RevealWhen.HoverOverParent="True"
+                                Content="Remove"
+                                pf:Message.Attach="RemoveFromQueue($dataContext)"
+                                Style="{DynamicResource QueueControlButton}" />
+                        
+                    </StackPanel>
                 </DataTemplate>
             </c:BookSummaryList.ItemTemplate>
         </c:BookSummaryList>

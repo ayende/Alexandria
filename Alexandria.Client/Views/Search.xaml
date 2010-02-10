@@ -34,15 +34,14 @@
         <c:BookSummaryList ItemsSource="{Binding SearchResults}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Background="Transparent">
+                    <StackPanel Background="Transparent">
+                        <c:BookSummary BookModel="{Binding}" />
+                        
                         <Button Content="Add"
                                 i:RevealWhen.HoverOverParent="True"
-                                DockPanel.Dock="Bottom"
                                 Style="{DynamicResource QueueControlButton}"
                                 pf:Message.Attach="AddToQueue($dataContext)" />
-
-                        <c:BookSummary BookModel="{Binding}" />
-                    </DockPanel>
+                    </StackPanel>
                 </DataTemplate>
             </c:BookSummaryList.ItemTemplate>
         </c:BookSummaryList>
