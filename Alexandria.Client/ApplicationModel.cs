@@ -1,7 +1,9 @@
 namespace Alexandria.Client
 {
+    using System.Diagnostics;
     using System.Linq;
     using Caliburn.PresentationFramework;
+    using Caliburn.PresentationFramework.Filters;
     using Caliburn.PresentationFramework.Screens;
     using Messages;
     using Rhino.ServiceBus;
@@ -82,12 +84,14 @@ namespace Alexandria.Client
                     });
         }
 
+        [AutoCheckAvailability]
         public void MoveForwardInQueue(BookModel book)
         {
             var currentIndex = Queue.IndexOf(book);
             ExecuteQueueReorder(currentIndex, currentIndex - 1);
         }
 
+        [AutoCheckAvailability]
         public void MoveBackInQueue(BookModel book)
         {
             var currentIndex = Queue.IndexOf(book);
