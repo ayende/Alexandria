@@ -209,12 +209,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ItemsControl">
-                    <Border MinHeight="130"
-                            MinWidth="100"
-                            HorizontalAlignment="Stretch"
-                            Padding="8">
-                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                      HorizontalAlignment="Stretch">
+                    <Border Padding="8">
+                        <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
@@ -257,7 +254,7 @@
                 <ControlTemplate TargetType="{x:Type c:ActivityIndicator}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="IsActiveStoryboard">
-                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
                                                            RepeatBehavior="Forever"
                                                            Storyboard.TargetName="border"
                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">

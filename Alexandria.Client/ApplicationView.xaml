@@ -47,7 +47,7 @@
 
         <Grid Margin="0 8">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="8" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="8" />
@@ -56,7 +56,7 @@
 
             <DockPanel Grid.Row="0">
                 <ContentControl x:Name="SubscriptionDetails"
-                                MinHeight="230"
+                                MinHeight="210"
                                 ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}"
                                 DockPanel.Dock="Left"
                                 Margin="0,0,8,0"
