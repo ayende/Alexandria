@@ -25,11 +25,11 @@
                                     HorizontalAlignment="Center"
                                     Margin="0 0 0 4">
                             <Button pf:Message.Attach="MoveForwardInQueue($dataContext)">
-                                <Image Source="../Resources/Icons/arrow_right.png"
+                                <Image Source="../Resources/Icons/arrow_left.png"
                                        Stretch="None" />
                             </Button>
                             <Button pf:Message.Attach="MoveBackInQueue($dataContext)">
-                                <Image Source="../Resources/Icons/arrow_left.png"
+                                <Image Source="../Resources/Icons/arrow_right.png"
                                        Stretch="None" />
                             </Button>
                         </StackPanel>
