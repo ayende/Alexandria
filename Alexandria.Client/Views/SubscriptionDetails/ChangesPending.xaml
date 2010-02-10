@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:Alexandria.Client.Controls"
              x:Class="Alexandria.Client.Views.SubscriptionDetails.ChangesPending"
              mc:Ignorable="d"
              d:DesignWidth="260"
@@ -10,9 +11,13 @@
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel TextBlock.FontSize="14.667">
 
-            <TextBlock Text="Changes Pending"
-                       DockPanel.Dock="Bottom"
-                       HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Center">
+                <c:ActivityIndicator IsActive="True"
+                                     Margin="0 0 4 0" />
+                <TextBlock Text="Changes Pending" />
+            </StackPanel>
 
             <Grid DockPanel.Dock="Top"
                   Margin="0,4,0,0">
@@ -50,7 +55,7 @@
                 </StackPanel>
             </Grid>
 
-             <StackPanel Orientation="Horizontal"
+            <StackPanel Orientation="Horizontal"
                         Margin="0 4 0 0">
 
                 <Button Visibility="Hidden"
