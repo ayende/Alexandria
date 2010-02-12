@@ -1,11 +1,11 @@
 namespace Alexandria.Client.ViewModels
 {
-    using Caliburn.PresentationFramework.Screens;
+    using Caliburn.Core;
     using Infrastructure;
     using Messages;
     using Rhino.ServiceBus;
 
-    public class SubscriptionDetails : Screen
+    public class SubscriptionDetails : PropertyChangedBase
     {
         private readonly IServiceBus bus;
         private readonly int userId;
@@ -32,7 +32,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 details = value;
-                NotifyOfPropertyChange( ()=> Details );
+                NotifyOfPropertyChange(() => Details);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 editable = value;
-                NotifyOfPropertyChange( ()=> Editable);
+                NotifyOfPropertyChange(() => Editable);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 numberOfPossibleBooksOut = value;
-                NotifyOfPropertyChange(()=>NumberOfPossibleBooksOut);
+                NotifyOfPropertyChange(() => NumberOfPossibleBooksOut);
             }
         }
 
@@ -82,7 +82,7 @@ namespace Alexandria.Client.ViewModels
             set
             {
                 monthlyCost = value;
-                NotifyOfPropertyChange( ()=> MonthlyCost );
+                NotifyOfPropertyChange(() => MonthlyCost);
             }
         }
 
@@ -113,17 +113,17 @@ namespace Alexandria.Client.ViewModels
             ViewMode = ViewMode.ChangesPending;
             //TODO: add logic to handle credit card changes
             bus.Send(new UpdateAddress
-                     {
-                         UserId = userId,
-                         Details = new AddressDTO
-                                   {
-                                       Street = Editable.Street,
-                                       HouseNumber = Editable.HouseNumber,
-                                       City = Editable.City,
-                                       ZipCode = Editable.ZipCode,
-                                       Country = Editable.Country,
-                                   }
-                     });
+            {
+                UserId = userId,
+                Details = new AddressDTO
+                {
+                    Street = Editable.Street,
+                    HouseNumber = Editable.HouseNumber,
+                    City = Editable.City,
+                    ZipCode = Editable.ZipCode,
+                    Country = Editable.Country,
+                }
+            });
         }
 
         public void UpdateFrom(SubscriptionDetailsDTO subscriptionDetails)
@@ -157,6 +157,5 @@ namespace Alexandria.Client.ViewModels
     		ViewMode = ViewMode.Error;
 			ErrorMessage = theErrorMessage;
     	}
-
     }
 }

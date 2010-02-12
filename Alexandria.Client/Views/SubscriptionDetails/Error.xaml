@@ -4,13 +4,12 @@
 
     <ContentControl Style="{DynamicResource SubscriptionDetailsContainer}">
         <DockPanel VerticalAlignment="Top">
-					<TextBlock
-											DockPanel.Dock="Bottom"
-											FontWeight="Heavy"
-											HorizontalAlignment="Center"
-											Text="{Binding ErrorMessage}"/>
+            <TextBlock x:Name="ErrorMessage"
+                       DockPanel.Dock="Bottom"
+                       FontWeight="Heavy"
+                       HorizontalAlignment="Center" />
 
-					<StackPanel DockPanel.Dock="Bottom"
+            <StackPanel DockPanel.Dock="Bottom"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         Margin="0 4 0 0">
@@ -54,20 +53,20 @@
                        Grid.Row="0"
                        Content="Name" />
 
-                <TextBox Grid.Column="2"
-                         Grid.Row="0"
-                         Text="{Binding Editable.Name}" />
+                <TextBox x:Name="Editable_Name"
+                         Grid.Column="2"
+                         Grid.Row="0" />
 
                 <Label Grid.Column="0"
                        Grid.Row="2"
                        Content="Number, Street" />
                 <DockPanel Grid.Column="2"
                            Grid.Row="2">
-                    <TextBox Text="{Binding Editable.HouseNumber}"
+                    <TextBox x:Name="Editable_HouseNumber"
                              DockPanel.Dock="Left"
                              Margin="0 0 4 0"
                              Width="60" />
-                    <TextBox Text="{Binding Editable.Street}" />
+                    <TextBox x:Name="Editable_Street" />
                 </DockPanel>
 
                 <Label Grid.Column="0"
@@ -75,10 +74,10 @@
                        Content="City, Zip" />
                 <DockPanel Grid.Column="2"
                            Grid.Row="4">
-                    <TextBox Text="{Binding Editable.ZipCode}"
+                    <TextBox x:Name="Editable_ZipCode"
                              DockPanel.Dock="Right"
                              Width="60" />
-                    <TextBox Text="{Binding Editable.City}"
+                    <TextBox x:Name="Editable_City"
                              Margin="0 0 4 0" />
                 </DockPanel>
 
@@ -86,21 +85,18 @@
                        Grid.Row="6"
                        Content="County" />
 
-                <TextBox Grid.Column="2"
-                         Grid.Row="6"
-                         Text="{Binding Editable.Country}" />
+                <TextBox x:Name="Editable_Country"
+                         Grid.Column="2"
+                         Grid.Row="6" />
 
                 <Label Grid.Column="0"
                        Grid.Row="8"
                        Content="Credit Card" />
 
-                <TextBox Grid.Column="2"
-                         Grid.Row="8"
-                         Text="{Binding Editable.CreditCard}" />
+                <TextBox x:Name="Editable_CreditCard"
+                         Grid.Column="2"
+                         Grid.Row="8" />
             </Grid>
-
-					
         </DockPanel>
     </ContentControl>
-
 </UserControl>

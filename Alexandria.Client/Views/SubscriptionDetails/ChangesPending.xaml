@@ -28,22 +28,21 @@
 
                 <DockPanel Grid.Column="0"
                            VerticalAlignment="Top">
-
                     <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="{Binding Editable.Name}"
+                        <TextBlock x:Name="Editable_Name"
                                    DockPanel.Dock="Top"
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Editable.Street}" />
+                            <TextBlock x:Name="Editable_Street" />
                             <TextBlock Text=" " />
-                            <TextBlock Text="{Binding Editable.HouseNumber}" />
+                            <TextBlock x:Name="Editable_HouseNumber" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Editable.City}" />
+                            <TextBlock x:Name="Editable_City" />
                             <TextBlock Text=", " />
-                            <TextBlock Text="{Binding Editable.ZipCode}" />
+                            <TextBlock  x:Name="Editable_ZipCode" />
                         </StackPanel>
-                        <TextBlock Text="{Binding Editable.Country}" />
+                        <TextBlock  x:Name="Editable_Country" />
                     </StackPanel>
                 </DockPanel>
 
@@ -66,9 +65,8 @@
                 </Button>
 
                 <TextBlock Text="Credit Card: " />
-                <TextBlock Text="{Binding Details.CreditCard}" />
+                <TextBlock x:Name="Details_CreditCard" />
             </StackPanel>
         </DockPanel>
     </ContentControl>
-
 </UserControl>

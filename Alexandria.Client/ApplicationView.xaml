@@ -2,8 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:pf="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
-        xmlns:ViewModels="clr-namespace:Caliburn.PresentationFramework.ViewModels;assembly=Caliburn.PresentationFramework"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:Views="clr-namespace:Alexandria.Client.Views"
         xmlns:c="clr-namespace:Alexandria.Client.Controls"
         x:Class="Alexandria.Client.ApplicationView"
@@ -49,7 +48,7 @@
             <DockPanel Grid.Row="0">
                 <ContentControl x:Name="SubscriptionDetails"
                                 MinHeight="210"
-                                ViewModels:View.Context="{Binding SubscriptionDetails.ViewMode}"
+                                cal:View.Context="{Binding SubscriptionDetails.ViewMode}"
                                 DockPanel.Dock="Left"
                                 Margin="0,0,8,0"
                                 Width="260" />

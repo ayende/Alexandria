@@ -30,20 +30,20 @@
                            VerticalAlignment="Top">
 
                     <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="{Binding Details.Name}"
+                        <TextBlock x:Name="Details_Name"
                                    DockPanel.Dock="Top"
                                    FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.Street}" />
-													<TextBlock Text=" " />
-                            <TextBlock Text="{Binding Details.HouseNumber}" />
+                            <TextBlock x:Name="Details_Street" />
+                            <TextBlock Text=" " />
+                            <TextBlock x:Name="Details_HouseNumber" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Details.City}" />
+                            <TextBlock x:Name="Details_City" />
                             <TextBlock Text=", " />
-                            <TextBlock Text="{Binding Details.ZipCode}" />
+                            <TextBlock x:Name="Details_ZipCode" />
                         </StackPanel>
-                        <TextBlock Text="{Binding Details.Country}" />
+                        <TextBlock x:Name="Details_Country" />
                     </StackPanel>
                 </DockPanel>
 
@@ -66,9 +66,8 @@
                 </Button>
 
                 <TextBlock Text="Credit Card: " />
-                <TextBlock Text="{Binding Details.CreditCard}" />
+                <TextBlock x:Name="Details_CreditCard" />
             </StackPanel>
         </DockPanel>
     </ContentControl>
-
 </UserControl>
