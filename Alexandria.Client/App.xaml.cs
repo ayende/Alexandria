@@ -18,6 +18,11 @@
 
     public partial class App : CaliburnApplication
     {
+        public App()
+        {
+            InitializeComponent();
+        }
+
         protected override IServiceLocator CreateContainer()
         {
             var windsor = new WindsorContainer(new XmlInterpreter());
@@ -30,7 +35,7 @@
                     Property.ForKey("basePath").Eq(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache"))),
                 Component.For<IMessageModule>().ImplementedBy<CachingMessageModule>(),
                 AllTypes.FromAssemblyContaining<MyBooksResponseConsumer>()
-                    .Where(x => typeof (IMessageConsumer).IsAssignableFrom(x))
+                    .Where(x => typeof(IMessageConsumer).IsAssignableFrom(x))
                     .Configure(registration => registration.LifeStyle.Is(LifestyleType.Transient)),
                 Component.For<ApplicationModel>()
                 );

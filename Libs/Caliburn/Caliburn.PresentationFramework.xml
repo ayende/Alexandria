@@ -2286,6 +2286,14 @@
             Tries to add validation to the binding.
             </summary>
         </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ApplicableBinding.CheckTextBox(System.Windows.DependencyObject,System.Windows.Data.Binding,System.Windows.DependencyProperty)">
+            <summary>
+            Checks if the element is a text box and uses UpdateSourceTrigger.PropertyChanged if so.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="property">The property.</param>
+            <param name="binding"></param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.Conventions.ApplicableBinding.ValueNotSet(System.Windows.DependencyObject)">
             <summary>
             Values the not set.
@@ -4148,6 +4156,12 @@
             An implementation of <see cref="T:Caliburn.PresentationFramework.Screens.IScreenCollection"/> that activates/deactivates all child screens together.
             </summary>
         </member>
+        <member name="M:Caliburn.PresentationFramework.Screens.ScreenConductor`1.WithCollection.AllScreensActive.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Screens.ScreenConductor`1.WithCollection.AllScreensActive"/> class.
+            </summary>
+            <param name="openPublicScreens">if set to <c>true</c> automatically opens screens represented by public properties.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.Screens.ScreenConductor`1.WithCollection.AllScreensActive.CanShutdown">
             <summary>
             Determines whether this instance can shutdown.
@@ -5364,14 +5378,13 @@
             Implemented by services that bind a view to a view model.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.IViewModelBinder.Bind(System.Object,System.Windows.DependencyObject,System.Object,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ViewModels.IViewModelBinder.Bind(System.Object,System.Windows.DependencyObject,System.Object)">
             <summary>
             Binds the specified viewModel to the view.
             </summary>
             <param name="viewModel">The model.</param>
             <param name="view">The view.</param>
             <param name="context">The context.</param>
-            <param name="useCachedConventions">Check the cache for conventions.</param>
         </member>
         <member name="P:Caliburn.PresentationFramework.ViewModels.IViewModelBinder.ApplyConventionsByDefault">
             <summary>
@@ -5387,14 +5400,13 @@
             </summary>
             <param name="viewModelDescriptionFactory"></param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.Bind(System.Object,System.Windows.DependencyObject,System.Object,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.Bind(System.Object,System.Windows.DependencyObject,System.Object)">
             <summary>
             Binds the specified viewModel to the view.
             </summary>
             <param name="viewModel">The model.</param>
             <param name="view">The view.</param>
             <param name="context">The context.</param>
-            <param name="useCachedConventions">Check the cache for conventions.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.BindCore(System.Object,System.Windows.DependencyObject,System.Object)">
             <summary>
@@ -5413,13 +5425,12 @@
             <param name="context">The context.</param>
             <returns><c>true</c> if conventions should be applied; otherwise, <c>false</c></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.ApplyConventions(System.Object,System.Windows.DependencyObject,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.ApplyConventions(System.Object,System.Windows.DependencyObject)">
             <summary>
             Applies the conventions.
             </summary>
             <param name="viewModel">The view model.</param>
             <param name="view">The view.</param>
-            <param name="useCachedConventions">Check cache for conventions.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder.GetModelType(System.Object)">
             <summary>
@@ -5453,12 +5464,11 @@
             <param name="viewType">Type of the view.</param>
             <param name="applicableConventions">The applicable conventions.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.IViewModelDescription.GetConventionsFor(System.Windows.DependencyObject,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ViewModels.IViewModelDescription.GetConventionsFor(System.Windows.DependencyObject)">
             <summary>
             Gets the conventions for the specified view.
             </summary>
             <param name="view">The view.</param>
-            <param name="useCache">Check cached conventions.</param>
             <returns>The applicable conventions.</returns>
         </member>
         <member name="P:Caliburn.PresentationFramework.ViewModels.IViewModelDescription.Properties">
@@ -5494,12 +5504,11 @@
             <param name="viewType">Type of the view.</param>
             <param name="applicableConventions">The applicable conventions.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelDescription.GetConventionsFor(System.Windows.DependencyObject,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultViewModelDescription.GetConventionsFor(System.Windows.DependencyObject)">
             <summary>
             Gets the conventions for the specified view.
             </summary>
             <param name="view">The view.</param>
-            <param name="useCachedConventions">Chech cache for conventions.</param>
             <returns>The applicable conventions.</returns>
         </member>
         <member name="P:Caliburn.PresentationFramework.ViewModels.DefaultViewModelDescription.TargetType">

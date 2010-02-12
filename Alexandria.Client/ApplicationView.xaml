@@ -12,37 +12,30 @@
         Height="820"
         WindowStartupLocation="CenterScreen"
         Title="Alexandria">
-
     <DockPanel Margin="12 0">
-
         <DockPanel x:Name="Header"
                    DockPanel.Dock="Top"
                    Margin="0 10 0 0">
-
             <DockPanel DockPanel.Dock="Right"
                        MinWidth="200"
                        IsEnabled="{Binding IsCurrentlySearching, Converter={StaticResource NotConverter}}">
                 <DockPanel VerticalAlignment="Bottom">
-                    
                     <c:ActivityIndicator Margin="0,0,4,0"
                                          IsActive="{Binding IsCurrentlySearching}" />
-                    
-                    <Button pf:Message.Attach="Search(Query)"
+                    <Button x:Name="Search"
                             Margin="4,0,0,0"
                             DockPanel.Dock="Right">
                         <Image Source="Resources/Icons/zoom.png"
                                Stretch="None" />
                     </Button>
-                    <TextBox x:Name="Query" />
+                    <TextBox x:Name="SearchText" />
                 </DockPanel>
             </DockPanel>
-
             <Border>
                 <TextBlock Text="Alexandria"
                            FontSize="24"
                            FontWeight="Bold" />
             </Border>
-
         </DockPanel>
 
         <Grid Margin="0 8">
@@ -53,7 +46,6 @@
                 <RowDefinition Height="8" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
             <DockPanel Grid.Row="0">
                 <ContentControl x:Name="SubscriptionDetails"
                                 MinHeight="210"
@@ -61,7 +53,6 @@
                                 DockPanel.Dock="Left"
                                 Margin="0,0,8,0"
                                 Width="260" />
-
                 <Views:MyBooks />
             </DockPanel>
 
@@ -74,9 +65,6 @@
             <Views:Search Grid.Row="0"
                           Visibility="{Binding DisplaySearchResults, Converter={StaticResource BooleanToVisibilityConverter}}"
                           d:LayoutOverrides="Width" />
-
         </Grid>
-
     </DockPanel>
-
 </Window>

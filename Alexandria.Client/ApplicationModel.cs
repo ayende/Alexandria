@@ -1,6 +1,5 @@
 namespace Alexandria.Client
 {
-    using System.Diagnostics;
     using System.Linq;
     using Caliburn.PresentationFramework;
     using Caliburn.PresentationFramework.Filters;
@@ -16,6 +15,7 @@ namespace Alexandria.Client
         private bool isCurrentlySearching;
         private SubscriptionDetails subscriptionDetails;
         private int userId = 1;
+        private string searchText;
 
         public ApplicationModel(IServiceBus bus)
         {
@@ -43,6 +43,17 @@ namespace Alexandria.Client
         public BindableCollection<BookModel> MyBooks { get; set; }
         public BindableCollection<BookModel> SearchResults { get; set; }
 
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                searchText = value;
+                NotifyOfPropertyChange(() => SearchText);
+                NotifyOfPropertyChange(() => CanSearch);
+            }
+        }
+
         public bool IsCurrentlySearching
         {
             get { return isCurrentlySearching; }
@@ -50,6 +61,7 @@ namespace Alexandria.Client
             {
                 isCurrentlySearching = value;
                 NotifyOfPropertyChange(() => IsCurrentlySearching);
+                NotifyOfPropertyChange(() => CanSearch);
             }
         }
 
@@ -63,25 +75,22 @@ namespace Alexandria.Client
             }
         }
 
-        protected override void OnInitialize()
+        public bool CanSearch
         {
+            get { return !isCurrentlySearching && !string.IsNullOrEmpty(SearchText); }
+        }
+
+        public void Search()
+        {
+            IsCurrentlySearching = true;
+            SearchResults.Clear();
+
             bus.Send(
-                new MyBooksQuery
-                    {
-                        UserId = userId
-                    },
-                new MyQueueQuery
-                    {
-                        UserId = userId
-                    },
-                new MyRecommendationsQuery
-                    {
-                        UserId = userId
-                    },
-                new SubscriptionDetailsQuery
-                    {
-                        UserId = userId
-                    });
+                new SearchQuery
+                {
+                    Search = SearchText,
+                    UserId = userId
+                });
         }
 
         [AutoCheckAvailability]
@@ -105,15 +114,15 @@ namespace Alexandria.Client
 
             bus.Send(
                 new ChangeBookPositionInQueue
-                    {
-                        UserId = userId,
-                        BookId = bookModel.Id,
-                        NewPosition = newIndex
-                    },
+                {
+                    UserId = userId,
+                    BookId = bookModel.Id,
+                    NewPosition = newIndex
+                },
                 new MyQueueQuery
-                    {
-                        UserId = userId
-                    });
+                {
+                    UserId = userId
+                });
         }
 
         public bool CanMoveForwardInQueue(BookModel book)
@@ -135,31 +144,18 @@ namespace Alexandria.Client
 
             bus.Send(
                 new AddBookToQueue
-                    {
-                        UserId = userId,
-                        BookId = book.Id
-                    },
+                {
+                    UserId = userId,
+                    BookId = book.Id
+                },
                 new MyQueueQuery
-                    {
-                        UserId = userId
-                    },
+                {
+                    UserId = userId
+                },
                 new MyRecommendationsQuery
-                    {
-                        UserId = userId
-                    });
-        }
-
-        public void Search(string search)
-        {
-            IsCurrentlySearching = true;
-            SearchResults.Clear();
-
-            bus.Send(
-                new SearchQuery
-                    {
-                        Search = search,
-                        UserId = userId
-                    });
+                {
+                    UserId = userId
+                });
         }
 
         public void HideSearchResults()
@@ -173,18 +169,39 @@ namespace Alexandria.Client
 
             bus.Send(
                 new RemoveBookFromQueue
-                    {
-                        UserId = userId,
-                        BookId = book.Id
-                    },
+                {
+                    UserId = userId,
+                    BookId = book.Id
+                },
                 new MyQueueQuery
-                    {
-                        UserId = userId
-                    },
+                {
+                    UserId = userId
+                },
                 new MyRecommendationsQuery
-                    {
-                        UserId = userId
-                    });
+                {
+                    UserId = userId
+                });
+        }
+
+        protected override void OnInitialize()
+        {
+            bus.Send(
+                new MyBooksQuery
+                {
+                    UserId = userId
+                },
+                new MyQueueQuery
+                {
+                    UserId = userId
+                },
+                new MyRecommendationsQuery
+                {
+                    UserId = userId
+                },
+                new SubscriptionDetailsQuery
+                {
+                    UserId = userId
+                });
         }
     }
 }
