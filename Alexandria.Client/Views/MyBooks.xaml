@@ -3,20 +3,19 @@
              xmlns:c="clr-namespace:Alexandria.Client.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Views="clr-namespace:Alexandria.Client.Views"
              x:Class="Alexandria.Client.Views.MyBooks"
              mc:Ignorable="d"
              d:DesignWidth="200"
              d:DesignHeight="500">
-
     <HeaderedContentControl Header="At Home"
                             Style="{DynamicResource BookListContainer}">
         <c:BookSummaryList ItemsSource="{Binding MyBooks}">
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
-                    <c:BookSummary BookModel="{Binding}" />
+                    <Views:BookSummary />
                 </DataTemplate>
             </c:BookSummaryList.ItemTemplate>
         </c:BookSummaryList>
     </HeaderedContentControl>
-
 </UserControl>

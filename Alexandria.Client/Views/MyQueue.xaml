@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="clr-namespace:Alexandria.Client.Infrastructure"
+             xmlns:Views="clr-namespace:Alexandria.Client.Views"
              mc:Ignorable="d"
              x:Class="Alexandria.Client.Views.MyQueue"
              d:DesignWidth="200"
@@ -19,7 +20,7 @@
                                d:DesignWidth="120"
                                d:DesignHeight="160">
 
-                        <c:BookSummary BookModel="{Binding}" />
+                        <Views:BookSummary />
                         
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"

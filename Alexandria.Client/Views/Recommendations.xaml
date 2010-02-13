@@ -5,6 +5,7 @@
              xmlns:i="clr-namespace:Alexandria.Client.Infrastructure"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Views="clr-namespace:Alexandria.Client.Views"
              x:Class="Alexandria.Client.Views.Recommendations"
              mc:Ignorable="d"
              d:DesignWidth="200"
@@ -16,7 +17,7 @@
             <c:BookSummaryList.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Background="Transparent">
-                        <c:BookSummary BookModel="{Binding}" />
+                        <Views:BookSummary />
 
                         <Button Content="Add"
                                 i:RevealWhen.HoverOverParent="True"

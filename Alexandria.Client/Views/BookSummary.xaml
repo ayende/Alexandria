@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Alexandria.Client.Views.BookSummary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Margin="4 0">
+        <Border.ToolTip>
+            <Border>
+                <DockPanel>
+                    <TextBlock Text="{Binding Name}"
+                               FontWeight="Bold"
+                               DockPanel.Dock="Top" />
+                    <TextBlock Text="{Binding Author}"
+                               FontStyle="Italic" />
+                </DockPanel>
+            </Border>
+        </Border.ToolTip>
+
+        <Image Source="{Binding Path=Image}"
+               Width="100"
+               Margin="4"
+               Stretch="Uniform" />
+    </Border>
+</UserControl>

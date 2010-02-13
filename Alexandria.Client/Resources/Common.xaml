@@ -219,34 +219,6 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type c:BookSummary}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="c:BookSummary">
-                    <Border Margin="4 0">
-
-                        <Border.ToolTip>
-                            <Border>
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Name}"
-                                               FontWeight="Bold"
-                                               DockPanel.Dock="Top" />
-                                    <TextBlock Text="{Binding Author}"
-                                               FontStyle="Italic" />
-                                </DockPanel>
-                            </Border>
-                        </Border.ToolTip>
-
-                        <Image Source="{Binding Path=Image}"
-                               Width="100"
-                               Margin="4"
-                               Stretch="Uniform" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="{x:Type c:ActivityIndicator}">
         <Setter Property="Template">
             <Setter.Value>
