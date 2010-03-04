@@ -52,5 +52,12 @@ namespace Alexandria.Client
         {
             return Container.GetInstance<ApplicationModel>();
         }
+
+        protected override void BeforeConfiguration()
+        {
+            base.BeforeConfiguration();
+
+            new EnvironmentVerifier().Verify();
+        }
     }
 }
