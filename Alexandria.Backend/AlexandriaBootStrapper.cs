@@ -2,7 +2,6 @@ using Alexandria.Backend.Modules;
 using Castle.Core;
 using Castle.Facilities.FactorySupport;
 using Castle.MicroKernel.Registration;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Cfg;
 using Rhino.ServiceBus.Hosting;
@@ -14,7 +13,7 @@ namespace Alexandria.Backend
   {
     public AlexandriaBootStrapper()
     {
-      NHibernateProfiler.Initialize();
+		//HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
     }
 
     protected override void ConfigureContainer()
